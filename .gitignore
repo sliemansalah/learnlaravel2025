@@ -1,0 +1,47 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Laravel practice app
+/lessons/*/practice-app/vendor/
+/lessons/*/practice-app/.env
+/lessons/*/practice-app/node_modules/
+/lessons/*/practice-app/storage/*.key
+/lessons/*/practice-app/.phpunit.result.cache
+
+# Environment files
+.env
+.env.backup
+.env.production
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+nul
+*.tmp
+*.temp
+
+# Build files
+/public/hot
+/public/storage
+/storage/*.key
+
+# Testing
+.phpunit.result.cache
+coverage/
