@@ -35,6 +35,11 @@
             <input type="number" name="price" value="{{ $product['price'] }}" required step="0.01">
         </div>
 
+        <div class="form-group">
+            <label>Description / الوصف:</label>
+            <textarea name="description" rows="5">{{ $product['description'] ?? '' }}</textarea>
+        </div>
+
         <div class="flex">
             <button type="submit" class="btn btn-success">
                 Update Product / تحديث المنتج
@@ -56,9 +61,9 @@
     </p>
 
     <pre style="background: #f4f4f4; padding: 1rem; border-radius: 5px; margin-top: 1rem; overflow-x: auto;">
-&lt;form method="POST" action="{{ route('products.update', $id) }}"&gt;
-    @csrf
-    @method('PUT')  &lt;!-- This tells Laravel to treat it as PUT --&gt;
+&lt;form method="POST" action="@{{ route('products.update', $id) }}"&gt;
+    @@csrf
+    @@method('PUT')  &lt;!-- This tells Laravel to treat it as PUT --&gt;
     ...
 &lt;/form&gt;</pre>
 </div>

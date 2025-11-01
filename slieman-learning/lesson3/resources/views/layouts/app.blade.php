@@ -77,6 +77,13 @@
             border: 1px solid #c3e6cb;
         }
 
+        .alert-error,
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
         /* Cards */
         .card {
             background: #fff;
@@ -262,6 +269,23 @@
             @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-error">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if($errors->any())
+                <div class="alert alert-error">
+                    <strong>Validation Errors / أخطاء التحقق:</strong>
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 

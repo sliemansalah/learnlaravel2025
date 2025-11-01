@@ -185,10 +185,16 @@ lesson3/
 
 ## Notes / ملاحظات
 
-- All controllers currently use fake data (arrays)
+- **ProductController** uses **session storage** for CRUD operations (Create, Read, Update, Delete work!)
+- يستخدم ProductController تخزين الجلسة للعمليات (الإنشاء، القراءة، التحديث، الحذف تعمل!)
+- Data persists during your browser session but resets when you restart the server
+- البيانات تبقى خلال جلسة المتصفح لكن تُعاد عند إعادة تشغيل الخادم
 - In real applications, controllers interact with Models to fetch database data
-- The application demonstrates MVC structure without actual database operations
-- Security features (validation, authentication) will be covered in later lessons
+- في التطبيقات الحقيقية، Controllers تتفاعل مع Models لجلب البيانات من قاعدة البيانات
+- Validation is included in ProductController (required fields, data types)
+- التحقق من البيانات مضمن في ProductController (الحقول المطلوبة، أنواع البيانات)
+- Database operations will be covered in Lesson 5: Databases and Migrations
+- عمليات قاعدة البيانات سيتم تغطيتها في الدرس 5
 
 ---
 
