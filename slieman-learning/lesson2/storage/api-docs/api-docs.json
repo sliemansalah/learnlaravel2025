@@ -1,0 +1,438 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Lesson 2 - Routing API Documentation",
+        "description": "Complete API documentation for all routes in Lesson 2 practice application",
+        "contact": {
+            "email": "student@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Development Server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Home Page",
+                "description": "Display the welcome page",
+                "operationId": "58658e34a5c8bd71c4a0afed6de10d20",
+                "responses": {
+                    "200": {
+                        "description": "Welcome page displayed"
+                    }
+                }
+            }
+        },
+        "/test/{id}/{slug}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Test Route with Parameters",
+                "description": "Test route with ID and slug parameters",
+                "operationId": "f94111afa284940bac0d5d4bd286a3ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Numeric ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Slug string",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns ID and slug"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get Products List",
+                "description": "Display list of all products",
+                "operationId": "aec9f298915c47fe72b43d31b202b14d",
+                "responses": {
+                    "200": {
+                        "description": "Products list displayed"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Create New Product",
+                "description": "Create a new product",
+                "operationId": "45c4789ad1ea630f799ea3347abf6e9f",
+                "responses": {
+                    "200": {
+                        "description": "Product created successfully"
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update Product",
+                "description": "Update a product completely",
+                "operationId": "d1696feed935f29bd8f8185c642d5a6f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product updated successfully"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete Product",
+                "description": "Delete a product",
+                "operationId": "12291ea0329c6d632463261e2dd069be",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product deleted successfully"
+                    }
+                }
+            }
+        },
+        "/product/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get Product by ID",
+                "description": "Display a specific product by numeric ID",
+                "operationId": "b6efff7573b541cda50c891e65201503",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID (numbers only)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product details displayed"
+                    }
+                }
+            }
+        },
+        "/products/{slug}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get Product by Slug",
+                "description": "Display a product by slug",
+                "operationId": "0493f793971c96269599462bdedfd39e",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Product slug (lowercase letters, numbers, hyphens)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product displayed"
+                    }
+                }
+            }
+        },
+        "/user/{name}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "User Greeting",
+                "description": "Display greeting message for user (optional name parameter)",
+                "operationId": "e86f8485a73bf377f4c53dcb3a63b67c",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "User name (optional, defaults to 'Guest')",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Greeting message displayed"
+                    }
+                }
+            }
+        },
+        "/category/{category}/product/{product}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get Product by Category",
+                "description": "Display product within a specific category",
+                "operationId": "fe8dccc0e96870af51f79e2837a3b7a6",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "Category name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "Product name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category and product displayed"
+                    }
+                }
+            }
+        },
+        "/dashboard": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "summary": "Dashboard",
+                "description": "Display user dashboard",
+                "operationId": "26884a630dc8d83f049a93f821fc965a",
+                "responses": {
+                    "200": {
+                        "description": "Dashboard displayed"
+                    }
+                }
+            }
+        },
+        "/profile": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "User Profile",
+                "description": "Display user profile page",
+                "operationId": "b3cd8b6f8b49849dcb9c99fab4652021",
+                "responses": {
+                    "200": {
+                        "description": "Profile page displayed"
+                    }
+                }
+            }
+        },
+        "/admin/dashboard": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin Dashboard",
+                "description": "Display admin dashboard",
+                "operationId": "42a5723e88fafd7de04db684e14c273b",
+                "responses": {
+                    "200": {
+                        "description": "Admin dashboard displayed"
+                    }
+                }
+            }
+        },
+        "/admin/users": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin - Manage Users",
+                "description": "Display user management page",
+                "operationId": "ab81d5eee7c744f73f79c1a10f41a96d",
+                "responses": {
+                    "200": {
+                        "description": "User management page displayed"
+                    }
+                }
+            }
+        },
+        "/admin/products": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin - Manage Products",
+                "description": "Display product management page",
+                "operationId": "183f3568720832095c03ebfe65f514e9",
+                "responses": {
+                    "200": {
+                        "description": "Product management page displayed"
+                    }
+                }
+            }
+        },
+        "/admin/settings": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Admin - Settings",
+                "description": "Display admin settings page",
+                "operationId": "8b63c98c7464882dff07daf16bde9e09",
+                "responses": {
+                    "200": {
+                        "description": "Settings page displayed"
+                    }
+                }
+            }
+        },
+        "/contact": {
+            "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Contact Form",
+                "description": "Display contact form",
+                "operationId": "45640f191c8b2ae399eb7ed46e0ed9bd",
+                "responses": {
+                    "200": {
+                        "description": "Contact form displayed"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Submit Contact Form",
+                "description": "Process contact form submission",
+                "operationId": "d462607f712b2cf2860a30adedb4ca46",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "User name",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User email",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "message": {
+                                        "description": "Message content",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Redirect to contact form with success message"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Home",
+            "description": "Home"
+        },
+        {
+            "name": "Test",
+            "description": "Test"
+        },
+        {
+            "name": "Products",
+            "description": "Products"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        },
+        {
+            "name": "Dashboard",
+            "description": "Dashboard"
+        },
+        {
+            "name": "Admin",
+            "description": "Admin"
+        },
+        {
+            "name": "Contact",
+            "description": "Contact"
+        }
+    ]
+}
