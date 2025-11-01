@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test/{id}/{slug}', function ($id, $slug) {
+    return 'our id is=' . $id . '- slug = ' . $slug;
+})->name('testPage');
+
 // ========================================
 // 2. تمرين: أنواع HTTP Methods
 // Exercise: HTTP Methods Types
