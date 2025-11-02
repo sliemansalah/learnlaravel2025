@@ -135,3 +135,35 @@ Route::get('/test-maintenance', function () {
         'maintenance_mode' => config('app.maintenance_mode', false),
     ]);
 });
+
+// ========================================
+// PDF Generation Routes
+// ========================================
+
+use App\Http\Controllers\PdfController;
+
+// PDF Index Page
+Route::get('/pdf', function () {
+    return view('pdf-index');
+})->name('pdf.index');
+
+// Basic PDF examples
+Route::get('/pdf/sample', [PdfController::class, 'generatePdf'])->name('pdf.sample');
+Route::get('/pdf/invoice', [PdfController::class, 'downloadPdf'])->name('pdf.invoice');
+Route::get('/pdf/landscape', [PdfController::class, 'customPdf'])->name('pdf.landscape');
+
+// Lesson 10 Documentation PDFs
+Route::get('/pdf/lesson10/complete', [PdfController::class, 'lesson10Complete'])->name('pdf.lesson10.complete');
+Route::get('/pdf/lesson10/middleware', [PdfController::class, 'middlewareDocumentation'])->name('pdf.lesson10.middleware');
+Route::get('/pdf/lesson10/code-examples', [PdfController::class, 'codeExamples'])->name('pdf.lesson10.code');
+Route::get('/pdf/lesson10/routes', [PdfController::class, 'routesDocumentation'])->name('pdf.lesson10.routes');
+
+// Markdown to PDF Conversion Routes
+Route::get('/pdf/md/all', [PdfController::class, 'allMarkdownPdfs'])->name('pdf.md.all');
+Route::get('/pdf/md/README', fn() => app(PdfController::class)->markdownToPdf('README'))->name('pdf.md.readme');
+Route::get('/pdf/md/README-EN', fn() => app(PdfController::class)->markdownToPdf('README-EN'))->name('pdf.md.readme-en');
+Route::get('/pdf/md/QUICK-REFERENCE', fn() => app(PdfController::class)->markdownToPdf('QUICK-REFERENCE'))->name('pdf.md.quick-ref');
+Route::get('/pdf/md/QUICK-REFERENCE-EN', fn() => app(PdfController::class)->markdownToPdf('QUICK-REFERENCE-EN'))->name('pdf.md.quick-ref-en');
+Route::get('/pdf/md/PRACTICE-GUIDE-AR', fn() => app(PdfController::class)->markdownToPdf('PRACTICE-GUIDE-AR'))->name('pdf.md.practice-ar');
+Route::get('/pdf/md/PRACTICE-GUIDE-EN', fn() => app(PdfController::class)->markdownToPdf('PRACTICE-GUIDE-EN'))->name('pdf.md.practice-en');
+Route::get('/pdf/md/FULL-EXAM-100-QUESTIONS', fn() => app(PdfController::class)->markdownToPdf('FULL-EXAM-100-QUESTIONS'))->name('pdf.md.exam');
