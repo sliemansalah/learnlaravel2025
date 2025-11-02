@@ -1,0 +1,71 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "defaultProfile": "{00000000-0000-0000-ba54-000000000002}",
+
+    "profiles": {
+        "defaults": {
+            "font": {
+                "face": "Cascadia Code",
+                "size": 11
+            },
+            "experimental.retroTerminalEffect": false,
+            "useAtlasEngine": true,
+            "intenseTextStyle": "all"
+        },
+        "list": [
+            {
+                "guid": "{00000000-0000-0000-ba54-000000000002}",
+                "name": "Git Bash (RTL Support)",
+                "commandline": "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l",
+                "icon": "%PROGRAMFILES%\\git\\mingw64\\share\\git\\git-for-windows.ico",
+                "startingDirectory": "D:\\learnlaravel2025",
+                "font": {
+                    "face": "Courier New",
+                    "size": 12
+                },
+                "colorScheme": "One Half Dark"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell (RTL)",
+                "commandline": "powershell.exe",
+                "font": {
+                    "face": "Courier New",
+                    "size": 12
+                }
+            }
+        ]
+    },
+
+    "schemes": [
+        {
+            "name": "One Half Dark",
+            "black": "#282c34",
+            "red": "#e06c75",
+            "green": "#98c379",
+            "yellow": "#e5c07b",
+            "blue": "#61afef",
+            "purple": "#c678dd",
+            "cyan": "#56b6c2",
+            "white": "#dcdfe4",
+            "brightBlack": "#5a6374",
+            "brightRed": "#e06c75",
+            "brightGreen": "#98c379",
+            "brightYellow": "#e5c07b",
+            "brightBlue": "#61afef",
+            "brightPurple": "#c678dd",
+            "brightCyan": "#56b6c2",
+            "brightWhite": "#dcdfe4",
+            "background": "#282c34",
+            "foreground": "#dcdfe4"
+        }
+    ],
+
+    "actions": [
+        { "command": "copy", "keys": "ctrl+c" },
+        { "command": "paste", "keys": "ctrl+v" },
+        { "command": "find", "keys": "ctrl+shift+f" }
+    ]
+}
