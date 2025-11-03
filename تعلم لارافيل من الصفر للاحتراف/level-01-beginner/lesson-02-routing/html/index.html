@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس الثاني: Routing الأساسي | تعلم Laravel من الصفر</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🚀 Laravel</h1>
+                    <span>من الصفر للاحتراف</span>
+                </div>
+                <nav>
+                    <a href="../lesson-01-intro/html/index.html">الدرس السابق</a>
+                    <a href="#theory">النظري</a>
+                    <a href="#practice">العملي</a>
+                    <a href="#exam">الاختبار</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="lesson-badge">الدرس 02</div>
+                <h1 class="hero-title">Routing الأساسي في Laravel</h1>
+                <p class="hero-subtitle">
+                    تعلم كيفية إنشاء Routes وإدارة المسارات في تطبيقات Laravel
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">موضوع رئيسي</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">مثال عملي</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100</span>
+                        <span class="stat-label">سؤال اختبار</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">120</span>
+                        <span class="stat-label">دقيقة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Learning Objectives -->
+        <section class="learning-objectives">
+            <h2>🎯 أهداف الدرس</h2>
+            <p>بنهاية هذا الدرس ستكون قادراً على:</p>
+            <div class="objectives-grid">
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>فهم مفهوم Routing وأهميته في Laravel</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>إنشاء Routes بأنواعها المختلفة (GET, POST, PUT, DELETE)</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>استخدام Route Parameters (إلزامية واختيارية)</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>إنشاء Named Routes واستخدامها</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>تنظيم Routes باستخدام Groups</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>فهم واستخدام Route Model Binding</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>بناء API Routes للتطبيقات</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>تطبيق أفضل الممارسات في Routing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson Cards -->
+        <section class="lesson-grid">
+
+            <!-- Theory Card -->
+            <div class="lesson-card" id="theory">
+                <div class="card-icon">📚</div>
+                <h3>الجزء النظري</h3>
+                <p>دليل شامل يغطي جميع مفاهيم Routing في Laravel</p>
+                <ul class="card-features">
+                    <li>ما هو Routing؟</li>
+                    <li>HTTP Methods المختلفة</li>
+                    <li>Route Parameters والقيود</li>
+                    <li>Named Routes وفوائدها</li>
+                    <li>Route Groups والتنظيم</li>
+                    <li>Route Model Binding</li>
+                    <li>API Routes</li>
+                    <li>أفضل الممارسات</li>
+                </ul>
+                <a href="../01-theory.md" class="btn" download>تحميل الملف النظري 📥</a>
+            </div>
+
+            <!-- Practice Card -->
+            <div class="lesson-card" id="practice">
+                <div class="card-icon">💻</div>
+                <h3>الجزء العملي</h3>
+                <p>تطبيقات عملية وأمثلة واقعية لبناء Routes</p>
+                <ul class="card-features">
+                    <li>مشروع نظام مدونة كامل</li>
+                    <li>Routes للمقالات والمستخدمين</li>
+                    <li>لوحة تحكم Admin</li>
+                    <li>API Routes عملية</li>
+                    <li>أمثلة Blade Templates</li>
+                    <li>تمارين تطبيقية</li>
+                    <li>نصائح وإرشادات</li>
+                </ul>
+                <a href="../02-practice.md" class="btn" download>تحميل الملف العملي 📥</a>
+            </div>
+
+            <!-- Interactive Exam Card -->
+            <div class="lesson-card" style="border: 3px solid #48bb78; background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);">
+                <div class="card-icon">🎯</div>
+                <h3>الاختبار التفاعلي البسيط</h3>
+                <p>اختبار تفاعلي بسيط: 15 سؤال اختيار متعدد مع تصحيح فوري</p>
+                <a href="interactive-exam.html" class="btn" style="background: linear-gradient(135deg, #48bb78, #38a169);">ابدأ الآن 🚀</a>
+            </div>
+
+            <!-- Advanced Exam Card -->
+            <div class="lesson-card" style="border: 3px solid #ed8936; background: linear-gradient(135deg, #fffaf0 0%, #feebc8 100%);">
+                <div class="card-icon">🚀</div>
+                <h3>🎯 الاختبار النهائي - 100 سؤال 🔥</h3>
+                <p>اختبار شامل ومتكامل: 40 اختيار متعدد + 40 صح/خطأ + 20 عملي = 100 نقطة | 120 دقيقة</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="interactive-exam-advanced.html" class="btn" style="background: linear-gradient(135deg, #ed8936, #dd6b20); animation: pulse 2s infinite; flex: 1; min-width: 150px;">ابدأ التحدي! 💪</a>
+                    <a href="exam-solutions.html" class="btn" style="background: linear-gradient(135deg, #667eea, #764ba2); flex: 1; min-width: 150px;">الحلول النموذجية 📚</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Topics Overview -->
+        <section class="topics-section">
+            <h2>📋 المواضيع المشمولة</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <h3>🌐 أساسيات Routing</h3>
+                    <ul>
+                        <li>تعريف Routing</li>
+                        <li>ملفات Routing (web.php, api.php)</li>
+                        <li>Route Closures</li>
+                        <li>Route::view و Route::redirect</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>📨 HTTP Methods</h3>
+                    <ul>
+                        <li>GET - جلب البيانات</li>
+                        <li>POST - إرسال بيانات جديدة</li>
+                        <li>PUT/PATCH - تحديث البيانات</li>
+                        <li>DELETE - حذف البيانات</li>
+                        <li>Route::match و Route::any</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🎯 Route Parameters</h3>
+                    <ul>
+                        <li>Required Parameters</li>
+                        <li>Optional Parameters</li>
+                        <li>Regular Expression Constraints</li>
+                        <li>Global Constraints</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🏷️ Named Routes</h3>
+                    <ul>
+                        <li>تسمية Routes</li>
+                        <li>استخدام route() helper</li>
+                        <li>Generating URLs</li>
+                        <li>Route Redirects</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>📁 Route Groups</h3>
+                    <ul>
+                        <li>Prefix Groups</li>
+                        <li>Name Prefix</li>
+                        <li>Middleware Groups</li>
+                        <li>Nested Groups</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🔗 Route Model Binding</h3>
+                    <ul>
+                        <li>Implicit Binding</li>
+                        <li>Custom Keys</li>
+                        <li>Explicit Binding</li>
+                        <li>Soft Deleted Models</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🌐 API Routes</h3>
+                    <ul>
+                        <li>الفرق بين web و api</li>
+                        <li>API Resource Routes</li>
+                        <li>Rate Limiting</li>
+                        <li>API Versioning</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>⚡ متقدم</h3>
+                    <ul>
+                        <li>Fallback Routes</li>
+                        <li>Route Caching</li>
+                        <li>CORS</li>
+                        <li>أفضل الممارسات</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Tips -->
+        <section class="tips-section">
+            <h2>💡 نصائح سريعة</h2>
+            <div class="tips-grid">
+                <div class="tip-card tip-success">
+                    <h4>✅ افعل</h4>
+                    <ul>
+                        <li>استخدم Named Routes دائماً</li>
+                        <li>ضع قيود على Parameters</li>
+                        <li>استخدم Route Groups للتنظيم</li>
+                        <li>استخدم Route Model Binding</li>
+                        <li>اختبر Routes بـ route:list</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card tip-danger">
+                    <h4>❌ لا تفعل</h4>
+                    <ul>
+                        <li>كتابة URLs مباشرة في الكود</li>
+                        <li>تكرار نفس المنطق في Routes</li>
+                        <li>نسيان ترتيب Routes</li>
+                        <li>استخدام Closures للمنطق المعقد</li>
+                        <li>إهمال Route Caching في الإنتاج</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Useful Commands -->
+        <section class="commands-section">
+            <h2>🛠️ أوامر مفيدة</h2>
+            <div class="command-grid">
+                <div class="command-item">
+                    <code>php artisan route:list</code>
+                    <p>عرض جميع Routes</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan route:cache</code>
+                    <p>تخزين Routes مؤقتاً</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan route:clear</code>
+                    <p>مسح cache الـ Routes</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan serve</code>
+                    <p>تشغيل السيرفر المحلي</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Project -->
+        <section class="project-section">
+            <h2>🚀 المشروع العملي</h2>
+            <div class="project-card">
+                <h3>نظام إدارة مدونة</h3>
+                <p>ستتعلم بناء نظام كامل يحتوي على:</p>
+                <div class="project-features">
+                    <div class="feature">✅ الصفحة الرئيسية</div>
+                    <div class="feature">✅ قائمة المقالات</div>
+                    <div class="feature">✅ عرض مقال منفرد</div>
+                    <div class="feature">✅ إنشاء مقال جديد</div>
+                    <div class="feature">✅ تعديل مقال</div>
+                    <div class="feature">✅ حذف مقال</div>
+                    <div class="feature">✅ ملفات المستخدمين</div>
+                    <div class="feature">✅ لوحة تحكم Admin</div>
+                    <div class="feature">✅ API Endpoints</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section class="resources-section">
+            <h2>📚 مصادر إضافية</h2>
+            <div class="resources-grid">
+                <a href="https://laravel.com/docs/routing" target="_blank" class="resource-card">
+                    <h4>📖 Laravel Routing Docs</h4>
+                    <p>التوثيق الرسمي من Laravel</p>
+                </a>
+                <a href="https://laracasts.com/series/laravel-from-scratch" target="_blank" class="resource-card">
+                    <h4>🎥 Laracasts</h4>
+                    <p>دروس فيديو احترافية</p>
+                </a>
+                <a href="https://restfulapi.net/" target="_blank" class="resource-card">
+                    <h4>🌐 RESTful API Design</h4>
+                    <p>أفضل ممارسات تصميم APIs</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <section class="lesson-navigation">
+            <a href="../lesson-01-intro/html/index.html" class="nav-btn nav-prev">
+                <span>⬅️</span>
+                <div>
+                    <small>الدرس السابق</small>
+                    <strong>مقدمة في Laravel</strong>
+                </div>
+            </a>
+            <a href="../lesson-03-controllers/html/index.html" class="nav-btn nav-next">
+                <div>
+                    <small>الدرس التالي</small>
+                    <strong>Controllers</strong>
+                </div>
+                <span>➡️</span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>🎓 تعلم Laravel من الصفر للاحتراف | الدرس 02: Routing</p>
+            <p>📅 2025 | 💻 تم التطوير بواسطة Claude Code</p>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

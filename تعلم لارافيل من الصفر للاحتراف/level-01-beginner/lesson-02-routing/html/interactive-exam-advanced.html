@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبار النهائي - الدرس 02: Routing الأساسي | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Interactive Exam Specific Styles */
+        .exam-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .exam-header {
+            background: linear-gradient(135deg, #ff2d20 0%, #c81e0f 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(255, 45, 32, 0.3);
+        }
+
+        .exam-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .exam-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-box .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .info-box .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar-wrapper {
+            background: #e2e8f0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #48bb78, #38a169);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .question-card.answered {
+            border-color: #e2e8f0;
+        }
+
+        .question-card.correct {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .question-card.incorrect {
+            border-color: #f56565;
+            background: #fff5f5;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ff2d20;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+            transform: translateX(-3px);
+        }
+
+        .option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #ff2d20;
+        }
+
+        .option-label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .option.selected {
+            background: #fff5f5;
+            border-color: #ff2d20;
+            font-weight: 600;
+        }
+
+        .option.correct-answer {
+            background: #f0fff4;
+            border-color: #48bb78;
+        }
+
+        .option.wrong-answer {
+            background: #fff5f5;
+            border-color: #f56565;
+        }
+
+        .option-icon {
+            font-size: 1.5rem;
+            display: none;
+        }
+
+        .option.correct-answer .option-icon.correct,
+        .option.wrong-answer .option-icon.incorrect {
+            display: block;
+        }
+
+        /* Explanation */
+        .explanation {
+            background: #ebf8ff;
+            border-right: 4px solid #4299e1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .explanation-title {
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .explanation-text {
+            color: #2d3748;
+            line-height: 1.8;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Action Buttons */
+        .exam-actions {
+            position: sticky;
+            bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 100;
+        }
+
+        .btn-exam {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #ff2d20, #c81e0f);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 45, 32, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-reset {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn-reset:hover {
+            background: #cbd5e0;
+        }
+
+        /* Results Modal */
+        .results-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .results-modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .results-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: scaleIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .results-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .results-title {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .results-score {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .results-score.excellent {
+            color: #48bb78;
+        }
+
+        .results-score.good {
+            color: #4299e1;
+        }
+
+        .results-score.pass {
+            color: #ed8936;
+        }
+
+        .results-score.fail {
+            color: #f56565;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 5px;
+        }
+
+        .results-message {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Timer */
+        .timer {
+            position: fixed;
+            top: 90px;
+            left: 20px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timer-icon {
+            font-size: 1.5rem;
+        }
+
+        .timer-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .timer.warning {
+            background: #fff5f5;
+            border: 2px solid #f56565;
+        }
+
+        .timer.warning .timer-value {
+            color: #f56565;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .exam-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .exam-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .question-card {
+                padding: 20px;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .results-content {
+                padding: 25px;
+            }
+
+            .results-score {
+                font-size: 2.5rem;
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .timer {
+                top: 70px;
+                left: 10px;
+                padding: 10px 15px;
+            }
+
+            .exam-actions {
+                bottom: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Timer -->
+    <div class="timer" id="timer">
+        <span class="timer-icon">⏱️</span>
+        <span class="timer-value" id="timerValue">90:00</span>
+    </div>
+
+    <!-- Exam Container -->
+    <div class="exam-container">
+        <!-- Exam Header -->
+        <div class="exam-header">
+            <h1>🎯 اختبار الدرس 02: Routing الأساسي</h1>
+            <p>100 سؤال شامل عن Routing في Laravel | 40 اختيار متعدد + 40 صح/خطأ + 20 عملي</p>
+
+            <div class="exam-info">
+                <div class="info-box">
+                    <div class="label">عدد الأسئلة</div>
+                    <div class="value" id="totalQuestions">100</div>
+                </div>
+                <div class="info-box">
+                    <div class="label">المدة</div>
+                    <div class="value">120 دقيقة</div>
+                </div>
+                <div class="info-box">
+                    <div class="label">الدرجة الكلية</div>
+                    <div class="value">100</div>
+                </div>
+                <div class="info-box">
+                    <div class="label">درجة النجاح</div>
+                    <div class="value">70%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+            <div class="progress-text" id="progressText">تم الإجابة على 0 من 100 سؤال</div>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questionsContainer"></div>
+
+        <!-- Action Buttons -->
+        <div class="exam-actions">
+            <button class="btn-exam btn-submit" id="submitBtn" disabled>
+                <span>✅</span>
+                <span>تصحيح الاختبار</span>
+            </button>
+            <button class="btn-exam btn-reset" id="resetBtn">
+                <span>🔄</span>
+                <span>إعادة المحاولة</span>
+            </button>
+            <a href="exam-solutions.html" class="btn-exam btn-reset" style="text-decoration: none; background: linear-gradient(135deg, #667eea, #764ba2);">
+                <span>📚</span>
+                <span>الحلول النموذجية</span>
+            </a>
+            <a href="index.html" class="btn-exam btn-reset" style="text-decoration: none;">
+                <span>🏠</span>
+                <span>العودة للرئيسية</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="results-modal" id="resultsModal">
+        <div class="results-content">
+            <div class="results-icon" id="resultsIcon">🎉</div>
+            <h2 class="results-title" id="resultsTitle">نتيجة الاختبار</h2>
+            <div class="results-score" id="resultsScore">85%</div>
+
+            <div class="results-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="correctCount">12</div>
+                    <div class="stat-label">إجابات صحيحة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="incorrectCount">3</div>
+                    <div class="stat-label">إجابات خاطئة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="timeSpent">45:30</div>
+                    <div class="stat-label">الوقت المستغرق</div>
+                </div>
+            </div>
+
+            <div class="results-message" id="resultsMessage">
+                أحسنت! أنت جاهز للانتقال إلى الدرس التالي 🎉
+            </div>
+
+            <div class="results-actions">
+                <button class="btn-exam btn-submit" onclick="closeResults()">
+                    <span>👀</span>
+                    <span>مراجعة الإجابات</span>
+                </button>
+                <button class="btn-exam btn-reset" onclick="resetExam()">
+                    <span>🔄</span>
+                    <span>محاولة جديدة</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+    <script src="assets/exam-questions-100-full.js"></script>
+    <script src="assets/exam-engine-advanced.js"></script>
+</body>
+</html>

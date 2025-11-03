@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس الثالث: Controllers | تعلم Laravel من الصفر</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🚀 Laravel</h1>
+                    <span>من الصفر للاحتراف</span>
+                </div>
+                <nav>
+                    <a href="../lesson-02-routing/html/index.html">الدرس السابق</a>
+                    <a href="#theory">النظري</a>
+                    <a href="#practice">العملي</a>
+                    <a href="#exam">الاختبار</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="lesson-badge">الدرس 03</div>
+                <h1 class="hero-title">Controllers (المتحكمات) في Laravel</h1>
+                <p class="hero-subtitle">
+                    تعلم كيفية إنشاء Controllers وتنظيم منطق التطبيق بشكل احترافي
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">موضوع رئيسي</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">60+</span>
+                        <span class="stat-label">مثال عملي</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100</span>
+                        <span class="stat-label">سؤال اختبار</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">150</span>
+                        <span class="stat-label">دقيقة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Learning Objectives -->
+        <section class="learning-objectives">
+            <h2>🎯 أهداف الدرس</h2>
+            <p>بنهاية هذا الدرس ستكون قادراً على:</p>
+            <div class="objectives-grid">
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>فهم دور Controllers في معمارية MVC</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>إنشاء Controllers باستخدام Artisan Command</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>استخدام Resource Controllers لعمليات CRUD</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>تطبيق Route Model Binding</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>تمرير البيانات من Controller إلى View</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>استخدام Dependency Injection</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>بناء API Controllers</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span>تطبيق أفضل الممارسات في Controllers</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson Cards -->
+        <section class="lesson-grid">
+
+            <!-- Theory Card -->
+            <div class="lesson-card" id="theory">
+                <div class="card-icon">📚</div>
+                <h3>الجزء النظري</h3>
+                <p>دليل شامل يغطي جميع مفاهيم Controllers في Laravel</p>
+                <ul class="card-features">
+                    <li>ما هو Controller؟</li>
+                    <li>دور Controllers في MVC</li>
+                    <li>أنواع Controllers</li>
+                    <li>Resource Controllers</li>
+                    <li>Single Action Controllers</li>
+                    <li>Dependency Injection</li>
+                    <li>Route Model Binding</li>
+                    <li>أفضل الممارسات</li>
+                </ul>
+                <a href="../01-theory.md" class="btn" download>تحميل الملف النظري 📥</a>
+            </div>
+
+            <!-- Practice Card -->
+            <div class="lesson-card" id="practice">
+                <div class="card-icon">💻</div>
+                <h3>الجزء العملي</h3>
+                <p>مشروع متكامل لنظام إدارة مكتبة</p>
+                <ul class="card-features">
+                    <li>نظام إدارة مكتبة كامل</li>
+                    <li>Controllers للكتب والمؤلفين</li>
+                    <li>Resource Controllers عملية</li>
+                    <li>Route Model Binding</li>
+                    <li>API Controllers</li>
+                    <li>Views متكاملة</li>
+                    <li>تمارين تطبيقية</li>
+                </ul>
+                <a href="../02-practice.md" class="btn" download>تحميل الملف العملي 📥</a>
+            </div>
+
+            <!-- Interactive Exam Card -->
+            <div class="lesson-card" style="border: 3px solid #48bb78; background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);">
+                <div class="card-icon">🎯</div>
+                <h3>الاختبار التفاعلي البسيط</h3>
+                <p>اختبار تفاعلي بسيط: 15 سؤال اختيار متعدد مع تصحيح فوري</p>
+                <a href="interactive-exam.html" class="btn" style="background: linear-gradient(135deg, #48bb78, #38a169);">ابدأ الآن 🚀</a>
+            </div>
+
+            <!-- Advanced Exam Card -->
+            <div class="lesson-card" style="border: 3px solid #ed8936; background: linear-gradient(135deg, #fffaf0 0%, #feebc8 100%);">
+                <div class="card-icon">🚀</div>
+                <h3>🎯 الاختبار النهائي - 100 سؤال 🔥</h3>
+                <p>اختبار شامل عن Controllers: 40 اختيار متعدد + 40 صح/خطأ + 20 عملي = 100 نقطة | 120 دقيقة</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="interactive-exam-advanced.html" class="btn" style="background: linear-gradient(135deg, #ed8936, #dd6b20); animation: pulse 2s infinite; flex: 1; min-width: 150px;">ابدأ التحدي! 💪</a>
+                    <a href="exam-solutions.html" class="btn" style="background: linear-gradient(135deg, #667eea, #764ba2); flex: 1; min-width: 150px;">الحلول النموذجية 📚</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Topics Overview -->
+        <section class="topics-section">
+            <h2>📋 المواضيع المشمولة</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <h3>🎯 أساسيات Controllers</h3>
+                    <ul>
+                        <li>تعريف Controller</li>
+                        <li>دور Controller في MVC</li>
+                        <li>إنشاء Controllers</li>
+                        <li>ربط Routes بـ Controllers</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🔧 أنواع Controllers</h3>
+                    <ul>
+                        <li>Controller عادي</li>
+                        <li>Resource Controller</li>
+                        <li>API Controller</li>
+                        <li>Single Action Controller</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>📦 Resource Controllers</h3>
+                    <ul>
+                        <li>7 Methods الجاهزة</li>
+                        <li>Route::resource()</li>
+                        <li>only() و except()</li>
+                        <li>تخصيص Parameters</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🔗 Route Model Binding</h3>
+                    <ul>
+                        <li>Implicit Binding</li>
+                        <li>Custom Keys</li>
+                        <li>Explicit Binding</li>
+                        <li>getRouteKeyName()</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>💉 Dependency Injection</h3>
+                    <ul>
+                        <li>DI في Constructor</li>
+                        <li>DI في Methods</li>
+                        <li>Request Injection</li>
+                        <li>Service Injection</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>📤 تمرير البيانات</h3>
+                    <ul>
+                        <li>Array Syntax</li>
+                        <li>compact() Function</li>
+                        <li>with() Method</li>
+                        <li>عرض في Blade</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>🛡️ Middleware</h3>
+                    <ul>
+                        <li>في Constructor</li>
+                        <li>only() و except()</li>
+                        <li>في Routes</li>
+                        <li>في Groups</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>⚡ أفضل الممارسات</h3>
+                    <ul>
+                        <li>Thin Controllers</li>
+                        <li>Form Requests</li>
+                        <li>Service Classes</li>
+                        <li>Repository Pattern</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Tips -->
+        <section class="tips-section">
+            <h2>💡 نصائح سريعة</h2>
+            <div class="tips-grid">
+                <div class="tip-card tip-success">
+                    <h4>✅ افعل</h4>
+                    <ul>
+                        <li>استخدم Resource Controllers</li>
+                        <li>استخدم Route Model Binding</li>
+                        <li>أبقِ Controllers نحيفة</li>
+                        <li>استخدم Form Requests</li>
+                        <li>استخدم Service Classes</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card tip-danger">
+                    <h4>❌ لا تفعل</h4>
+                    <ul>
+                        <li>كتابة منطق معقد في Controller</li>
+                        <li>استعلامات DB معقدة في Controller</li>
+                        <li>كتابة HTML في Controller</li>
+                        <li>تكرار الكود</li>
+                        <li>نسيان Validation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Useful Commands -->
+        <section class="commands-section">
+            <h2>🛠️ أوامر مفيدة</h2>
+            <div class="command-grid">
+                <div class="command-item">
+                    <code>php artisan make:controller PostController</code>
+                    <p>إنشاء controller عادي</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan make:controller PostController --resource</code>
+                    <p>إنشاء resource controller</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan make:controller PostController --api</code>
+                    <p>إنشاء API controller</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan make:controller ShowPost --invokable</code>
+                    <p>إنشاء single action controller</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan route:list</code>
+                    <p>عرض جميع Routes</p>
+                </div>
+                <div class="command-item">
+                    <code>php artisan serve</code>
+                    <p>تشغيل السيرفر المحلي</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Project -->
+        <section class="project-section">
+            <h2>🚀 المشروع العملي</h2>
+            <div class="project-card">
+                <h3>نظام إدارة مكتبة</h3>
+                <p>ستتعلم بناء نظام متكامل يحتوي على:</p>
+                <div class="project-features">
+                    <div class="feature">✅ إدارة الكتب (CRUD)</div>
+                    <div class="feature">✅ إدارة المؤلفين</div>
+                    <div class="feature">✅ إدارة التصنيفات</div>
+                    <div class="feature">✅ البحث المتقدم</div>
+                    <div class="feature">✅ Route Model Binding</div>
+                    <div class="feature">✅ Resource Controllers</div>
+                    <div class="feature">✅ API Endpoints</div>
+                    <div class="feature">✅ Views متكاملة</div>
+                    <div class="feature">✅ Validation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section class="resources-section">
+            <h2>📚 مصادر إضافية</h2>
+            <div class="resources-grid">
+                <a href="https://laravel.com/docs/controllers" target="_blank" class="resource-card">
+                    <h4>📖 Laravel Controllers Docs</h4>
+                    <p>التوثيق الرسمي من Laravel</p>
+                </a>
+                <a href="https://laracasts.com/series/laravel-from-scratch" target="_blank" class="resource-card">
+                    <h4>🎥 Laracasts</h4>
+                    <p>دروس فيديو احترافية</p>
+                </a>
+                <a href="https://laravel-news.com/category/tutorials" target="_blank" class="resource-card">
+                    <h4>📰 Laravel News</h4>
+                    <p>أخبار ودروس Laravel</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <section class="lesson-navigation">
+            <a href="../lesson-02-routing/html/index.html" class="nav-btn nav-prev">
+                <span>⬅️</span>
+                <div>
+                    <small>الدرس السابق</small>
+                    <strong>Routing الأساسي</strong>
+                </div>
+            </a>
+            <a href="../lesson-04-views/html/index.html" class="nav-btn nav-next">
+                <div>
+                    <small>الدرس التالي</small>
+                    <strong>Views و Blade</strong>
+                </div>
+                <span>➡️</span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>🎓 تعلم Laravel من الصفر للاحتراف | الدرس 03: Controllers</p>
+            <p>📅 2025 | 💻 تم التطوير بواسطة Claude Code</p>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

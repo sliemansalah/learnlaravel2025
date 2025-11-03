@@ -1,0 +1,958 @@
+/*
+ * Laravel Learning - Lesson 01 Intro
+ * Main Stylesheet
+ * Version: 1.0
+ */
+
+/* ========================================
+   Variables
+======================================== */
+:root {
+  --primary-color: #ff2d20;
+  --secondary-color: #2d3748;
+  --text-color: #1a202c;
+  --text-light: #4a5568;
+  --bg-color: #ffffff;
+  --bg-gray: #f7fafc;
+  --border-color: #e2e8f0;
+  --success-color: #48bb78;
+  --warning-color: #ed8936;
+  --error-color: #f56565;
+  --info-color: #4299e1;
+  --code-bg: #2d3748;
+  --code-text: #e2e8f0;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   Base Styles
+======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  direction: rtl;
+  text-align: right;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========================================
+   Header & Navigation
+======================================== */
+.header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #c81e0f 100%);
+  color: white;
+  padding: 30px 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+.breadcrumb {
+  background: var(--bg-gray);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.breadcrumb a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.breadcrumb a:hover {
+  opacity: 0.7;
+}
+
+.breadcrumb span {
+  margin: 0 8px;
+  color: var(--text-light);
+}
+
+/* ========================================
+   Navigation Menu
+======================================== */
+.nav-menu {
+  background: white;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.nav-menu a:hover {
+  background: var(--bg-gray);
+  color: var(--primary-color);
+}
+
+.nav-menu a.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ========================================
+   Content Sections
+======================================== */
+.content {
+  padding: 40px 0;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; border-bottom: 3px solid var(--primary-color); padding-bottom: 10px; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.3rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   Links
+======================================== */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* ========================================
+   Lists
+======================================== */
+ul, ol {
+  margin: 20px 0;
+  padding-right: 30px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+ul li::marker {
+  color: var(--primary-color);
+}
+
+/* ========================================
+   Tables
+======================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background: white;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px;
+  text-align: right;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: var(--bg-gray);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========================================
+   Code Blocks
+======================================== */
+code {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 20px 0;
+  box-shadow: var(--shadow);
+  direction: ltr;
+  text-align: left;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Alert Boxes
+======================================== */
+.alert {
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border-right: 4px solid;
+}
+
+.alert-success {
+  background: #f0fff4;
+  border-color: var(--success-color);
+  color: #22543d;
+}
+
+.alert-warning {
+  background: #fffaf0;
+  border-color: var(--warning-color);
+  color: #7c2d12;
+}
+
+.alert-error {
+  background: #fff5f5;
+  border-color: var(--error-color);
+  color: #742a2a;
+}
+
+.alert-info {
+  background: #ebf8ff;
+  border-color: var(--info-color);
+  color: #2c5282;
+}
+
+/* ========================================
+   Cards
+======================================== */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.card-body {
+  line-height: 1.8;
+}
+
+/* ========================================
+   Badges & Tags
+======================================== */
+.badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.badge-primary { background: var(--primary-color); color: white; }
+.badge-success { background: var(--success-color); color: white; }
+.badge-warning { background: var(--warning-color); color: white; }
+.badge-info { background: var(--info-color); color: white; }
+
+/* ========================================
+   Buttons
+======================================== */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #c81e0f;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #1a202c;
+}
+
+/* ========================================
+   Blockquote
+======================================== */
+blockquote {
+  border-right: 4px solid var(--primary-color);
+  padding: 15px 25px;
+  margin: 25px 0;
+  background: var(--bg-gray);
+  font-style: italic;
+  border-radius: 4px;
+}
+
+/* ========================================
+   Horizontal Rule
+======================================== */
+hr {
+  border: none;
+  border-top: 2px solid var(--border-color);
+  margin: 40px 0;
+}
+
+/* ========================================
+   Checkboxes & Todo Lists
+======================================== */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  padding: 10px;
+  margin: 5px 0;
+  background: var(--bg-gray);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checklist li::before {
+  content: '☐';
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+
+.checklist li.checked::before {
+  content: '☑';
+}
+
+/* ========================================
+   Images
+======================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: var(--shadow);
+}
+
+/* ========================================
+   Footer
+======================================== */
+.footer {
+  background: var(--secondary-color);
+  color: white;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer-section a {
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================
+   Scroll to Top Button
+======================================== */
+#scrollTop {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: var(--primary-color);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s;
+  z-index: 999;
+}
+
+#scrollTop:hover {
+  background: #c81e0f;
+  transform: translateY(-5px);
+}
+
+#scrollTop.show {
+  display: flex;
+}
+
+/* ========================================
+   Responsive Design
+======================================== */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+}
+
+/* ========================================
+   Print Styles
+======================================== */
+@media print {
+  .header,
+  .nav-menu,
+  .footer,
+  #scrollTop {
+    display: none;
+  }
+
+  body {
+    color: black;
+    background: white;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  pre {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   Dark Mode Support (Optional)
+======================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #e2e8f0;
+    --text-light: #a0aec0;
+    --bg-color: #1a202c;
+    --bg-gray: #2d3748;
+    --border-color: #4a5568;
+    --secondary-color: #e2e8f0;
+  }
+
+  body {
+    background-color: var(--bg-color);
+  }
+
+  .card,
+  table {
+    background: var(--bg-gray);
+  }
+
+  .nav-menu {
+    background: var(--bg-gray);
+  }
+}
+
+/* ========================================
+   Animations
+======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ========================================
+   Utility Classes
+======================================== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.p-1 { padding: 10px; }
+.p-2 { padding: 20px; }
+.p-3 { padding: 30px; }
+
+/* ========================================
+   Enhanced Content Formatting
+======================================== */
+.content h1:first-child {
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.content h2 {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+}
+
+.content h3 {
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+.content table {
+  margin: 25px 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.content table thead {
+  background: linear-gradient(135deg, #ff2d20 0%, #c81e0f 100%);
+}
+
+.content table th {
+  padding: 15px 12px;
+  font-weight: 600;
+  color: white;
+  text-align: right;
+  border: none;
+}
+
+.content table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.content table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.content table tbody tr:hover {
+  background-color: var(--bg-gray);
+}
+
+.content table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Fix for nested lists */
+.content ul ul,
+.content ol ol,
+.content ul ol,
+.content ol ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Better spacing for content */
+.content > *:not(:first-child) {
+  margin-top: 20px;
+}
+
+/* Code blocks in content */
+.content pre {
+  margin: 25px 0;
+  border-radius: 8px;
+}
+
+.content code:not(pre code) {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bg-gray);
+  color: var(--secondary-color);
+  font-size: 0.9em;
+}
+
+/* Blockquotes in content */
+.content blockquote {
+  margin: 25px 0;
+  padding: 20px 25px;
+  background: var(--bg-gray);
+  border-right: 4px solid var(--primary-color);
+  border-left: none;
+  font-style: normal;
+}
+
+.content blockquote p {
+  margin: 0;
+}
+
+/* Better HR */
+.content hr {
+  margin: 40px 0;
+  border: none;
+  border-top: 3px solid var(--border-color);
+}
+
+/* Enhanced lists */
+.content ul li,
+.content ol li {
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.content ul li::marker {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.content ol {
+  counter-reset: item;
+}
+
+.content ol li {
+  counter-increment: item;
+}
+
+/* Checklist styling */
+.content input[type="checkbox"] {
+  margin-left: 8px;
+  cursor: not-allowed;
+}
+
+/* Image styling */
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 25px 0;
+  box-shadow: var(--shadow);
+}
+
+/* Better paragraph spacing */
+.content p {
+  margin-bottom: 18px;
+  line-height: 1.9;
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links in content */
+.content a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.content a:hover {
+  border-bottom-color: var(--primary-color);
+}
+
+/* ========================================
+   Special Content Boxes
+======================================== */
+.content .info-box,
+.content .warning-box,
+.content .success-box,
+.content .error-box {
+  padding: 20px 25px;
+  margin: 25px 0;
+  border-radius: 8px;
+  border-right: 4px solid;
+}
+
+.content .info-box {
+  background: #ebf8ff;
+  border-color: var(--info-color);
+  color: #2c5282;
+}
+
+.content .warning-box {
+  background: #fffaf0;
+  border-color: var(--warning-color);
+  color: #7c2d12;
+}
+
+.content .success-box {
+  background: #f0fff4;
+  border-color: var(--success-color);
+  color: #22543d;
+}
+
+.content .error-box {
+  background: #fff5f5;
+  border-color: var(--error-color);
+  color: #742a2a;
+}
+
+/* ========================================
+   Table of Contents
+======================================== */
+.table-of-contents {
+  position: relative;
+  margin: 30px 0;
+  max-height: 500px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  z-index: 1;
+}
+
+.table-of-contents .card-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #c81e0f 100%);
+  color: white;
+  padding: 15px 20px;
+  margin: 0;
+  border-radius: 8px 8px 0 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: none;
+  text-align: center;
+}
+
+.table-of-contents .card-body {
+  padding: 20px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+.toc-list li {
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.toc-list li:hover {
+  background: rgba(255, 45, 32, 0.1);
+  transform: translateX(-3px);
+}
+
+.toc-list li.h2 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.toc-list li.h3 {
+  padding-right: 30px;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.toc-list li.h4 {
+  padding-right: 45px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+  display: block;
+  line-height: 1.6;
+}
+
+.toc-list a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.toc-list a::before {
+  content: "• ";
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.toc-list li.h3 a::before {
+  content: "◦ ";
+  color: #ff6b6b;
+}
+
+.toc-list li.h4 a::before {
+  content: "▪ ";
+  color: #ff9999;
+}
+
+/* Scrollbar for TOC */
+.table-of-contents::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-of-contents::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.table-of-contents::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.table-of-contents::-webkit-scrollbar-thumb:hover {
+  background: #c81e0f;
+}
+
+/* Responsive TOC */
+@media (max-width: 768px) {
+  .table-of-contents {
+    max-height: 350px;
+    margin: 20px 0;
+  }
+
+  .toc-list li.h3 {
+    padding-right: 20px;
+    font-size: 0.85rem;
+  }
+
+  .toc-list li.h4 {
+    padding-right: 35px;
+    font-size: 0.8rem;
+  }
+
+  .table-of-contents .card-header {
+    font-size: 1rem;
+    padding: 12px 15px;
+  }
+}

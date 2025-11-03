@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحلول النموذجية - الدرس 03: Controllers | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Solutions Page Styles */
+        body {
+            background: #f7fafc;
+        }
+
+        .solutions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .solutions-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .solutions-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .solutions-header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-left: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            font-size: 1.2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            border-right: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: #2d3748;
+            font-size: 1.5rem;
+        }
+
+        .section-header .section-info {
+            color: #718096;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Solution Card */
+        .solution-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+        }
+
+        .solution-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .question-type {
+            background: #f0f4ff;
+            color: #667eea;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .question-points {
+            background: #f0fff4;
+            color: #48bb78;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: auto;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Options Display */
+        .options-list {
+            margin: 15px 0;
+        }
+
+        .option-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            background: #f7fafc;
+            transition: all 0.3s;
+        }
+
+        .option-item.correct {
+            background: #f0fff4;
+            border-color: #48bb78;
+            font-weight: 600;
+        }
+
+        .option-item.correct::before {
+            content: "✅ ";
+            margin-left: 8px;
+        }
+
+        .option-label {
+            color: #4a5568;
+        }
+
+        .option-item.correct .option-label {
+            color: #22543d;
+        }
+
+        /* Correct Answer Display */
+        .correct-answer {
+            background: #f0fff4;
+            border: 2px solid #48bb78;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .correct-answer-label {
+            color: #22543d;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .correct-answer-text {
+            color: #2d5016;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            margin-top: 8px;
+        }
+
+        .accepted-answers {
+            margin-top: 10px;
+        }
+
+        .accepted-answers-label {
+            font-size: 0.9rem;
+            color: #2d5016;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .accepted-answer-item {
+            display: inline-block;
+            background: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            border: 1px solid #9ae6b4;
+        }
+
+        /* Explanation */
+        .explanation {
+            background: #ebf8ff;
+            border-right: 4px solid #4299e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .explanation-title {
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .explanation-text {
+            color: #2d3748;
+            line-height: 1.8;
+            font-size: 0.98rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-action {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        /* Statistics Summary */
+        .stats-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-top: 5px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .filter-controls,
+            .action-buttons {
+                display: none;
+            }
+
+            .solution-card {
+                page-break-inside: avoid;
+                border: 1px solid #e2e8f0;
+            }
+
+            .solutions-header {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .solutions-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .action-buttons {
+                bottom: 10px;
+                padding: 10px 15px;
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .btn-action {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="solutions-container">
+        <!-- Header -->
+        <div class="solutions-header">
+            <h1>📚 الحلول النموذجية - الدرس 03: Controllers</h1>
+            <p>جميع أسئلة اختبار Controllers (100 سؤال) مع الإجابات الصحيحة والشروحات التفصيلية</p>
+        </div>
+
+        <!-- Statistics Summary -->
+        <div class="stats-summary">
+            <div class="stat-box">
+                <div class="stat-value" id="totalQuestions">100</div>
+                <div class="stat-label">إجمالي الأسئلة</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="mcqCount">40</div>
+                <div class="stat-label">اختيار متعدد</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="tfCount">40</div>
+                <div class="stat-label">صح/خطأ</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="practicalCount">20</div>
+                <div class="stat-label">عملي</div>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <span class="filter-label">تصفية حسب النوع:</span>
+            <button class="filter-btn active" data-type="all">الكل</button>
+            <button class="filter-btn" data-type="multiple-choice">اختيار متعدد</button>
+            <button class="filter-btn" data-type="true-false">صح/خطأ</button>
+            <button class="filter-btn" data-type="fill-blank">ملء فراغات</button>
+            <button class="filter-btn" data-type="command">أوامر</button>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث في الأسئلة...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <!-- Solutions Container -->
+        <div id="solutionsContainer"></div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="interactive-exam-advanced.html" class="btn-action btn-primary">
+            <span>🎯</span>
+            <span>ابدأ الاختبار</span>
+        </a>
+        <button onclick="window.print()" class="btn-action btn-secondary">
+            <span>🖨️</span>
+            <span>طباعة</span>
+        </button>
+        <a href="index.html" class="btn-action btn-secondary">
+            <span>🏠</span>
+            <span>الرئيسية</span>
+        </a>
+    </div>
+
+    <script src="assets/script.js"></script>
+    <script src="assets/exam-questions-100-full.js"></script>
+    <script src="assets/exam-solutions.js"></script>
+</body>
+</html>
