@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="composer: command not found">
+    <title>حل المشاكل الشائعة | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>troubleshooting</span>
+    </div>
+
+    <main class="content container">
+        <h1>حل المشاكل الشائعة</h1>
+<h1>Troubleshooting Guide</h1>
+<hr>
+<h2>🔧 مشاكل التثبيت</h2>
+<h3>المشكلة 1: composer: command not found</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code class="language-bash">composer: command not found
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>Windows:</strong></p>
+<ol>
+<li>أعد تشغيل Command Prompt كـ Administrator</li>
+<li>تأكد من إضافة Composer إلى PATH</li>
+<li>أعد تشغيل الكمبيوتر</li>
+</ol>
+<p><strong>macOS/Linux:</strong></p>
+<pre><code class="language-bash"># تأكد من التثبيت
+which composer
+
+# إذا لم يكن مثبت
+php -r &quot;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&quot;
+php composer-setup.php
+php -r &quot;unlink(&#39;composer-setup.php&#39;);&quot;
+sudo mv composer.phar /usr/local/bin/composer
+</code></pre>
+<hr>
+<h3>المشكلة 2: PHP version not supported</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Your requirements could not be resolved to an installable set of packages.
+laravel/framework requires php ^8.2
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>تحديث PHP:</strong></p>
+<p><strong>Windows (XAMPP/WAMP):</strong></p>
+<ol>
+<li>حمّل أحدث نسخة من XAMPP</li>
+<li>ثبّت النسخة الجديدة</li>
+<li>تأكد من PATH</li>
+</ol>
+<p><strong>macOS (Homebrew):</strong></p>
+<pre><code class="language-bash">brew update
+brew upgrade php
+</code></pre>
+<p><strong>Ubuntu/Debian:</strong></p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install php8.2
+</code></pre>
+<p><strong>التحقق:</strong></p>
+<pre><code class="language-bash">php -v
+</code></pre>
+<hr>
+<h3>المشكلة 3: Extensions مفقودة</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Class &#39;PDO&#39; not found
+mbstring extension is missing
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>Windows:</strong></p>
+<ol>
+<li>افتح <code>php.ini</code></li>
+<li>ابحث عن Extensions المطلوبة:</li>
+</ol>
+<pre><code class="language-ini">extension=mbstring
+extension=openssl
+extension=pdo_mysql
+extension=curl
+extension=fileinfo
+extension=tokenizer
+extension=xml
+</code></pre>
+<ol start="3">
+<li>احذف <code>;</code> من بداية السطر</li>
+<li>احفظ وأعد تشغيل السيرفر</li>
+</ol>
+<p><strong>macOS/Linux:</strong></p>
+<pre><code class="language-bash"># Ubuntu/Debian
+sudo apt install php8.2-mbstring php8.2-xml php8.2-mysql php8.2-curl
+
+# macOS (Homebrew)
+# عادة تأتي مع PHP
+</code></pre>
+<p><strong>التحقق:</strong></p>
+<pre><code class="language-bash">php -m | grep mbstring
+</code></pre>
+<hr>
+<h2>🚀 مشاكل تشغيل السيرفر</h2>
+<h3>المشكلة 4: Port already in use</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Failed to listen on 127.0.0.1:8000 (reason: Address already in use)
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>الطريقة 1: استخدام port مختلف</strong></p>
+<pre><code class="language-bash">php artisan serve --port=8080
+</code></pre>
+<p><strong>الطريقة 2: إيقاف العملية القديمة</strong></p>
+<p><strong>Windows:</strong></p>
+<pre><code class="language-bash">netstat -ano | findstr :8000
+taskkill /PID [PID_NUMBER] /F
+</code></pre>
+<p><strong>macOS/Linux:</strong></p>
+<pre><code class="language-bash">lsof -ti:8000 | xargs kill -9
+</code></pre>
+<hr>
+<h3>المشكلة 5: 404 Not Found لجميع الصفحات</h3>
+<p><strong>الأعراض:</strong></p>
+<ul>
+<li><code>/</code> يعمل</li>
+<li>أي صفحة أخرى تعطي 404</li>
+</ul>
+<p><strong>الحل:</strong></p>
+<ol>
+<li><strong>تأكد من تشغيل السيرفر بشكل صحيح:</strong></li>
+</ol>
+<pre><code class="language-bash">php artisan serve
+</code></pre>
+<ol start="2">
+<li><strong>تحقق من الـ Routes:</strong></li>
+</ol>
+<pre><code class="language-bash">php artisan route:list
+</code></pre>
+<ol start="3">
+<li><strong>امسح route cache:</strong></li>
+</ol>
+<pre><code class="language-bash">php artisan route:clear
+php artisan route:cache
+</code></pre>
+<hr>
+<h2>📄 مشاكل Routes</h2>
+<h3>المشكلة 6: Route لا يعمل</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>404 | Not Found
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>1. تحقق من syntax:</strong></p>
+<pre><code class="language-php">// ✅ صحيح
+Route::get(&#39;/users&#39;, function () {
+    return &#39;Users&#39;;
+});
+
+// ❌ خطأ
+Route::get(&#39;users&#39;, function () {  // ينقص /
+    return &#39;Users&#39;;
+});
+</code></pre>
+<p><strong>2. تحقق من ترتيب Routes:</strong></p>
+<pre><code class="language-php">// ❌ خطأ - الـ specific route بعد dynamic
+Route::get(&#39;/user/{id}&#39;, ...);
+Route::get(&#39;/user/profile&#39;, ...);  // لن يعمل
+
+// ✅ صحيح
+Route::get(&#39;/user/profile&#39;, ...);
+Route::get(&#39;/user/{id}&#39;, ...);
+</code></pre>
+<p><strong>3. امسح route cache:</strong></p>
+<pre><code class="language-bash">php artisan route:clear
+</code></pre>
+<hr>
+<h3>المشكلة 7: Parameter validation لا يعمل</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/user/{id}&#39;, ...)
+    -&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;);
+// لكن /user/abc يعمل!
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>تحقق من syntax:</strong></p>
+<pre><code class="language-php">// ✅ صحيح
+-&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;)
+
+// ❌ خطأ شائع
+-&gt;where(&#39;id&#39;, &#39;[0-9]&#39;)  // ينقص +
+-&gt;where(&#39;id&#39;, &#39;\d+&#39;)    // لا تستخدم \d
+</code></pre>
+<hr>
+<h2>👀 مشاكل Views</h2>
+<h3>المشكلة 8: View not found</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>View [welcome] not found.
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>1. تحقق من المسار:</strong></p>
+<pre><code class="language-php">// الملف: resources/views/welcome.blade.php
+return view(&#39;welcome&#39;);  // ✅
+
+// الملف: resources/views/admin/dashboard.blade.php
+return view(&#39;admin.dashboard&#39;);  // ✅
+return view(&#39;admin/dashboard&#39;);  // ✅ أيضاً
+
+// ❌ خطأ شائع
+return view(&#39;admin\dashboard&#39;);  // Windows - لا تستخدم \
+</code></pre>
+<p><strong>2. تحقق من التسمية:</strong></p>
+<ul>
+<li>يجب أن ينتهي بـ <code>.blade.php</code></li>
+<li>Laravel case-sensitive في Linux/macOS</li>
+</ul>
+<p><strong>3. امسح view cache:</strong></p>
+<pre><code class="language-bash">php artisan view:clear
+</code></pre>
+<hr>
+<h3>المشكلة 9: متغير غير معرّف في View</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Undefined variable $name
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>1. تأكد من تمرير المتغير:</strong></p>
+<pre><code class="language-php">// ❌ خطأ
+return view(&#39;user&#39;);
+
+// ✅ صحيح
+return view(&#39;user&#39;, [&#39;name&#39; =&gt; &#39;John&#39;]);
+</code></pre>
+<p><strong>2. استخدم قيمة افتراضية:</strong></p>
+<pre><code class="language-blade">{{-- في View --}}
+{{ $name ?? &#39;Guest&#39; }}
+</code></pre>
+<p><strong>3. تحقق من اسم المتغير:</strong></p>
+<pre><code class="language-php">// في Controller
+return view(&#39;user&#39;, [&#39;userName&#39; =&gt; &#39;John&#39;]);
+</code></pre>
+<pre><code class="language-blade">{{-- في View - يجب أن يطابق الاسم --}}
+{{ $userName }}  ✅
+{{ $name }}      ❌
+</code></pre>
+<hr>
+<h3>المشكلة 10: Blade directive لا يعمل</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code class="language-blade">{{-- يظهر كـ text بدلاً من تنفيذه --}}
+@if ($user)
+    Hello
+@endif
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>تأكد من امتداد الملف:</strong></p>
+<ul>
+<li>❌ <code>welcome.php</code></li>
+<li>✅ <code>welcome.blade.php</code></li>
+</ul>
+<hr>
+<h2>🎮 مشاكل Controllers</h2>
+<h3>المشكلة 11: Class not found</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Class &#39;App\Http\Controllers\UserController&#39; not found
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>1. تحقق من namespace:</strong></p>
+<pre><code class="language-php">// في Controller
+namespace App\Http\Controllers;
+
+class UserController extends Controller
+{
+    // ...
+}
+</code></pre>
+<p><strong>2. تحقق من use statement في Routes:</strong></p>
+<pre><code class="language-php">use App\Http\Controllers\UserController;
+
+Route::get(&#39;/users&#39;, [UserController::class, &#39;index&#39;]);
+</code></pre>
+<p><strong>3. شغّل composer dump-autoload:</strong></p>
+<pre><code class="language-bash">composer dump-autoload
+</code></pre>
+<hr>
+<h3>المشكلة 12: Method not found</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Method App\Http\Controllers\UserController::show does not exist
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>1. تحقق من اسم Method:</strong></p>
+<pre><code class="language-php">// في Controller
+public function show($id)  // ✅
+{
+    // ...
+}
+
+// في Route
+Route::get(&#39;/users/{id}&#39;, [UserController::class, &#39;show&#39;]);  // ✅
+</code></pre>
+<p><strong>2. تحقق من typos:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/users/{id}&#39;, [UserController::class, &#39;shwo&#39;]);  // ❌ typo
+</code></pre>
+<hr>
+<h2>🔒 مشاكل Permissions (Linux/macOS)</h2>
+<h3>المشكلة 13: Permission denied</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>file_put_contents(...): failed to open stream: Permission denied
+</code></pre>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># امنح صلاحيات للمجلدات
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+
+# إذا لم يعمل
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+</code></pre>
+<hr>
+<h2>🐛 مشاكل عامة</h2>
+<h3>المشكلة 14: صفحة بيضاء فارغة</h3>
+<p><strong>الحل:</strong></p>
+<p><strong>1. فعّل عرض الأخطاء:</strong></p>
+<p>في <code>.env</code>:</p>
+<pre><code class="language-env">APP_DEBUG=true
+</code></pre>
+<p><strong>2. تحقق من logs:</strong></p>
+<pre><code>storage/logs/laravel.log
+</code></pre>
+<p><strong>3. امسح cache:</strong></p>
+<pre><code class="language-bash">php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+</code></pre>
+<hr>
+<h3>المشكلة 15: CSRF token mismatch</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>419 | Page Expired
+</code></pre>
+<p><strong>الحل:</strong></p>
+<p><strong>في Forms:</strong></p>
+<pre><code class="language-blade">&lt;form method=&quot;POST&quot; action=&quot;/submit&quot;&gt;
+    @csrf  {{-- لا تنسى! --}}
+    &lt;!-- ... --&gt;
+&lt;/form&gt;
+</code></pre>
+<hr>
+<h2>📋 Checklist عند حدوث مشكلة</h2>
+<pre><code class="language-bash"># 1. امسح جميع الـ caches
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+# 2. أعد تحميل autoloader
+composer dump-autoload
+
+# 3. تحقق من الـ logs
+tail -f storage/logs/laravel.log
+
+# 4. تأكد من البيئة
+php artisan about
+
+# 5. اختبر الـ routes
+php artisan route:list
+</code></pre>
+<hr>
+<h2>💡 نصائح لتجنب المشاكل</h2>
+<p>✅ <strong>افعل:</strong></p>
+<ul>
+<li>احفظ الملفات دائماً (Ctrl+S / Cmd+S)</li>
+<li>استخدم <code>php artisan route:list</code> للتحقق</li>
+<li>راجع logs في <code>storage/logs/</code></li>
+<li>استخدم <code>dd()</code> للـ debugging</li>
+<li>اقرأ رسائل الأخطاء بعناية</li>
+</ul>
+<p>❌ <strong>لا تفعل:</strong></p>
+<ul>
+<li>لا تعدّل vendor/</li>
+<li>لا تنسى .env</li>
+<li>لا تستخدم <code>\</code> في paths</li>
+<li>لا تنسخ كود بدون فهم</li>
+</ul>
+<hr>
+<p><strong>إذا لم تجد الحل هنا، ابحث في:</strong></p>
+<ul>
+<li><a href="https://laravel.com/docs">Laravel Documentation</a></li>
+<li><a href="https://stackoverflow.com/questions/tagged/laravel">Stack Overflow</a></li>
+<li><a href="https://laravel.io">Laravel.io Forum</a></li>
+</ul>
+<p><strong>حظاً موفقاً! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

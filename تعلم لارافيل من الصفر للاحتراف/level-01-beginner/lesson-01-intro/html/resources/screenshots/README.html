@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="هذا المجلد مخصص لحفظ لقطات الشاشة (Screenshots) التوضيحية للدرس الأول.">
+    <title>Screenshots - لقطات الشاشة | Laravel Learning</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../../index.html">الرئيسية</a></li>
+                <li><a href="../../01-theory.html">النظري</a></li>
+                <li><a href="../../02-practice.html">العملي</a></li>
+                <li><a href="../../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../../exercises/README.html">التمارين</a></li>
+                <li><a href="../../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>README</span>
+    </div>
+
+    <main class="content container">
+        <h1>Screenshots - لقطات الشاشة</h1>
+<h1>Screenshots Directory</h1>
+<hr>
+<h2>📸 الغرض من هذا المجلد</h2>
+<p>هذا المجلد مخصص لحفظ لقطات الشاشة (Screenshots) التوضيحية للدرس الأول.</p>
+<hr>
+<h2>📋 لقطات الشاشة المقترحة</h2>
+<h3>1️⃣ <strong>Installation &amp; Setup</strong> (التثبيت والإعداد)</h3>
+<h4><code>01-composer-version.png</code></h4>
+<pre><code class="language-bash">composer --version
+</code></pre>
+<ul>
+<li>لقطة شاشة تُظهر إصدار Composer</li>
+<li>للتأكد من تثبيت Composer بنجاح</li>
+</ul>
+<h4><code>02-php-version.png</code></h4>
+<pre><code class="language-bash">php -v
+</code></pre>
+<ul>
+<li>لقطة شاشة تُظهر إصدار PHP</li>
+<li>يجب أن يكون PHP 8.2 أو أحدث</li>
+</ul>
+<h4><code>03-laravel-new-project.png</code></h4>
+<pre><code class="language-bash">composer create-project laravel/laravel my-app
+</code></pre>
+<ul>
+<li>عملية إنشاء مشروع Laravel جديد</li>
+<li>تُظهر progress التثبيت</li>
+</ul>
+<h4><code>04-project-structure.png</code></h4>
+<ul>
+<li>لقطة من VS Code أو IDE</li>
+<li>تُظهر هيكل مجلدات Laravel الكامل</li>
+</ul>
+<hr>
+<h3>2️⃣ <strong>Running the Server</strong> (تشغيل السيرفر)</h3>
+<h4><code>05-artisan-serve.png</code></h4>
+<pre><code class="language-bash">php artisan serve
+</code></pre>
+<ul>
+<li>Terminal يُظهر رسالة:<pre><code>Laravel development server started: http://127.0.0.1:8000
+</code></pre>
+</li>
+</ul>
+<h4><code>06-welcome-page.png</code></h4>
+<ul>
+<li>متصفح يعرض صفحة Laravel الافتراضية</li>
+<li>URL: <a href="http://localhost:8000">http://localhost:8000</a></li>
+<li>الصفحة الترحيبية بتصميم Laravel الجديد</li>
+</ul>
+<hr>
+<h3>3️⃣ <strong>Routes</strong> (المسارات)</h3>
+<h4><code>07-routes-web-php.png</code></h4>
+<ul>
+<li>ملف <code>routes/web.php</code> مفتوح في المحرر</li>
+<li>يُظهر مثال routes بسيطة</li>
+</ul>
+<h4><code>08-route-list.png</code></h4>
+<pre><code class="language-bash">php artisan route:list
+</code></pre>
+<ul>
+<li>جدول يُظهر جميع الـ routes المُسجلة</li>
+<li>Columns: Method, URI, Name, Action</li>
+</ul>
+<h4><code>09-simple-route-output.png</code></h4>
+<ul>
+<li>متصفح يعرض نتيجة route بسيط</li>
+<li>مثال: &quot;مرحباً بك في Laravel!&quot;</li>
+</ul>
+<h4><code>10-route-with-parameter.png</code></h4>
+<ul>
+<li>متصفح يعرض route مع parameter</li>
+<li>مثال: <code>/user/ahmed</code> يعرض &quot;مرحباً أحمد&quot;</li>
+</ul>
+<hr>
+<h3>4️⃣ <strong>Views</strong> (العروض)</h3>
+<h4><code>11-blade-file-structure.png</code></h4>
+<ul>
+<li>مجلد <code>resources/views/</code> في VS Code</li>
+<li>يُظهر ملفات .blade.php</li>
+</ul>
+<h4><code>12-simple-blade-view.png</code></h4>
+<ul>
+<li>ملف blade بسيط مفتوح</li>
+<li>محتوى HTML + Blade syntax</li>
+</ul>
+<h4><code>13-blade-variables.png</code></h4>
+<ul>
+<li>مثال على استخدام <code>{{ $variable }}</code> في Blade</li>
+<li>المتصفح يعرض النتيجة</li>
+</ul>
+<h4><code>14-blade-loops.png</code></h4>
+<ul>
+<li>كود Blade يحتوي على @foreach</li>
+<li>المتصفح يعرض القائمة الناتجة</li>
+</ul>
+<h4><code>15-layout-example.png</code></h4>
+<ul>
+<li>ملف Layout (layouts/app.blade.php) مفتوح</li>
+<li>يُظهر @yield و structure كامل</li>
+</ul>
+<hr>
+<h3>5️⃣ <strong>Controllers</strong> (المتحكمات)</h3>
+<h4><code>16-make-controller.png</code></h4>
+<pre><code class="language-bash">php artisan make:controller UserController
+</code></pre>
+<ul>
+<li>Terminal يُظهر رسالة النجاح:<pre><code>Controller created successfully.
+</code></pre>
+</li>
+</ul>
+<h4><code>17-controller-file.png</code></h4>
+<ul>
+<li>ملف Controller مفتوح في المحرر</li>
+<li>يُظهر namespace, class, methods</li>
+</ul>
+<h4><code>18-resource-controller.png</code></h4>
+<pre><code class="language-bash">php artisan make:controller ProductController --resource
+</code></pre>
+<ul>
+<li>Controller مع جميع الـ methods (index, create, store, ...)</li>
+</ul>
+<h4><code>19-route-controller.png</code></h4>
+<ul>
+<li>ملف <code>routes/web.php</code> يُظهر كيفية ربط Route بـ Controller</li>
+</ul>
+<pre><code class="language-php">Route::get(&#39;/users&#39;, [UserController::class, &#39;index&#39;]);
+</code></pre>
+<hr>
+<h3>6️⃣ <strong>Database</strong> (قاعدة البيانات)</h3>
+<h4><code>20-env-file.png</code></h4>
+<ul>
+<li>ملف <code>.env</code> مفتوح</li>
+<li>يُظهر إعدادات قاعدة البيانات</li>
+</ul>
+<pre><code class="language-env">DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+</code></pre>
+<h4><code>21-migrate-command.png</code></h4>
+<pre><code class="language-bash">php artisan migrate
+</code></pre>
+<ul>
+<li>Terminal يُظهر عملية Migration</li>
+<li>جدول الـ migrations المُنفذة</li>
+</ul>
+<hr>
+<h3>7️⃣ <strong>Common Errors</strong> (أخطاء شائعة)</h3>
+<h4><code>22-404-error.png</code></h4>
+<ul>
+<li>صفحة 404 في Laravel</li>
+<li>مثال على route غير موجود</li>
+</ul>
+<h4><code>23-view-not-found.png</code></h4>
+<ul>
+<li>رسالة خطأ: &quot;View [welcome] not found&quot;</li>
+<li>كيف تبدو الرسالة في Laravel</li>
+</ul>
+<h4><code>24-controller-not-found.png</code></h4>
+<ul>
+<li>خطأ: &quot;Class &#39;UserController&#39; not found&quot;</li>
+<li>مثال توضيحي</li>
+</ul>
+<hr>
+<h3>8️⃣ <strong>Development Tools</strong> (أدوات التطوير)</h3>
+<h4><code>25-vscode-laravel.png</code></h4>
+<ul>
+<li>VS Code مع مشروع Laravel مفتوح</li>
+<li>Extensions موصى بها (Laravel Blade Snippets, ...)</li>
+</ul>
+<h4><code>26-postman-test.png</code></h4>
+<ul>
+<li>Postman يختبر API endpoint</li>
+<li>Request و Response</li>
+</ul>
+<h4><code>27-browser-devtools.png</code></h4>
+<ul>
+<li>متصفح مع DevTools مفتوح</li>
+<li>يُظهر Network tab أو Console</li>
+</ul>
+<hr>
+<h2>🎯 كيفية إضافة Screenshots</h2>
+<h3>الطريقة 1: التقاط لقطات يدوياً</h3>
+<p><strong>Windows:</strong></p>
+<ul>
+<li><code>Windows + Shift + S</code> → اختر المنطقة → احفظ</li>
+<li>أو: <code>PrtScn</code> ثم الصق في Paint</li>
+</ul>
+<p><strong>macOS:</strong></p>
+<ul>
+<li><code>Cmd + Shift + 4</code> → اختر المنطقة</li>
+<li>الصورة تُحفظ على Desktop</li>
+</ul>
+<p><strong>Linux:</strong></p>
+<ul>
+<li><code>Shift + PrtScn</code> → اختر المنطقة</li>
+<li>أو استخدم <code>gnome-screenshot</code></li>
+</ul>
+<h3>الطريقة 2: استخدام أدوات</h3>
+<ul>
+<li><strong>Lightshot</strong> (Windows/macOS): <a href="https://app.prntscr.com">https://app.prntscr.com</a></li>
+<li><strong>Snagit</strong> (مدفوع لكن احترافي)</li>
+<li><strong>ShareX</strong> (Windows - مجاني)</li>
+</ul>
+<hr>
+<h2>📐 مواصفات الصور المقترحة</h2>
+<h3>الحجم:</h3>
+<ul>
+<li><strong>العرض:</strong> 1200-1920 بكسل</li>
+<li><strong>الارتفاع:</strong> حسب المحتوى</li>
+<li><strong>التنسيق:</strong> PNG (للجودة) أو JPG</li>
+</ul>
+<h3>التسمية:</h3>
+<pre><code>[رقم]-[وصف-قصير].png
+
+أمثلة:
+✅ 01-composer-version.png
+✅ 06-welcome-page.png
+✅ 18-resource-controller.png
+
+❌ screenshot1.png (غير واضح)
+❌ صورة.png (استخدم إنجليزي)
+</code></pre>
+<h3>الجودة:</h3>
+<ul>
+<li>✅ واضحة وسهلة القراءة</li>
+<li>✅ Font size مناسب</li>
+<li>✅ ألوان متباينة</li>
+<li>✅ لا توجد معلومات حساسة (passwords, tokens, ...)</li>
+</ul>
+<hr>
+<h2>🎨 نصائح لالتقاط Screenshots احترافية</h2>
+<h3>1️⃣ إعدادات Terminal</h3>
+<pre><code class="language-bash"># اجعل الـ font أكبر
+# Windows Terminal: Ctrl + Plus
+# macOS Terminal: Cmd + Plus
+
+# استخدم theme واضح
+# موصى به: Dracula, Nord, One Dark
+</code></pre>
+<h3>2️⃣ إعدادات VS Code</h3>
+<pre><code class="language-json">{
+  &quot;editor.fontSize&quot;: 16,
+  &quot;editor.fontFamily&quot;: &quot;Fira Code, Consolas&quot;,
+  &quot;editor.lineHeight&quot;: 24,
+  &quot;workbench.colorTheme&quot;: &quot;One Dark Pro&quot;
+}
+</code></pre>
+<h3>3️⃣ Browser</h3>
+<ul>
+<li>استخدم Zoom: 100% أو 110%</li>
+<li>أغلق Tabs غير الضرورية</li>
+<li>استخدم Incognito (لإخفاء Extensions)</li>
+</ul>
+<h3>4️⃣ التعليقات التوضيحية</h3>
+<p>استخدم أدوات مثل:</p>
+<ul>
+<li><strong>Arrows</strong> (أسهم): لتوجيه الانتباه</li>
+<li><strong>Boxes</strong> (مربعات): لتحديد أجزاء مهمة</li>
+<li><strong>Text</strong> (نص): لشرح إضافي</li>
+</ul>
+<hr>
+<h2>📂 هيكل المجلد المقترح</h2>
+<pre><code>screenshots/
+│
+├── 01-installation/
+│   ├── 01-composer-version.png
+│   ├── 02-php-version.png
+│   └── 03-laravel-new-project.png
+│
+├── 02-first-steps/
+│   ├── 04-project-structure.png
+│   ├── 05-artisan-serve.png
+│   └── 06-welcome-page.png
+│
+├── 03-routes/
+│   ├── 07-routes-web-php.png
+│   ├── 08-route-list.png
+│   └── ...
+│
+├── 04-views/
+│   └── ...
+│
+├── 05-controllers/
+│   └── ...
+│
+└── 06-errors/
+    └── ...
+</code></pre>
+<hr>
+<h2>🔗 استخدام Screenshots في Markdown</h2>
+<h3>في الملفات التعليمية:</h3>
+<pre><code class="language-markdown">## مثال: تشغيل السيرفر
+
+اكتب الأمر التالي:
+bash
+php artisan serve
+
+
+النتيجة:
+
+![Laravel Server Started](screenshots/05-artisan-serve.png)
+
+سترى رسالة تخبرك أن السيرفر يعمل على المنفذ 8000.
+</code></pre>
+<hr>
+<h2>✅ Checklist للـ Screenshots</h2>
+<p>قبل حفظ أي screenshot، تأكد:</p>
+<ul>
+<li><input disabled="" type="checkbox"> الصورة واضحة وسهلة القراءة</li>
+<li><input disabled="" type="checkbox"> Font size مناسب (لا صغير جداً)</li>
+<li><input disabled="" type="checkbox"> لا توجد معلومات حساسة</li>
+<li><input disabled="" type="checkbox"> اسم الملف وصفي</li>
+<li><input disabled="" type="checkbox"> الحجم مناسب (ليس كبير جداً)</li>
+<li><input disabled="" type="checkbox"> التنسيق: PNG للكود، JPG للصور العادية</li>
+</ul>
+<hr>
+<h2>📝 ملاحظات</h2>
+<h3>لماذا المجلد فارغ؟</h3>
+<p>هذا المجلد <strong>اختياري</strong> - يمكن للمتعلم:</p>
+<ol>
+<li>✅ الاستعانة بالقائمة أعلاه والتقاط صور أثناء التعلم</li>
+<li>✅ تحميل screenshots جاهزة (إذا توفرت)</li>
+<li>✅ الاستمرار بدون صور (الدروس نصية كافية)</li>
+</ol>
+<h3>متى تُستخدم Screenshots؟</h3>
+<ul>
+<li>✅ للمبتدئين تماماً (تساعد في الفهم)</li>
+<li>✅ عند توثيق خطوات معقدة</li>
+<li>✅ لتوضيح الأخطاء وحلولها</li>
+<li>✅ لعرض واجهات المستخدم</li>
+</ul>
+<hr>
+<h2>💡 بدائل للـ Screenshots</h2>
+<h3>1️⃣ GIF Animations</h3>
+<p>استخدم أدوات مثل:</p>
+<ul>
+<li><strong>ScreenToGif</strong> (Windows)</li>
+<li><strong>LICEcap</strong> (Cross-platform)</li>
+<li><strong>Kap</strong> (macOS)</li>
+</ul>
+<p>مفيد لـ:</p>
+<ul>
+<li>خطوات متعددة</li>
+<li>تفاعلات UI</li>
+</ul>
+<h3>2️⃣ فيديوهات قصيرة</h3>
+<ul>
+<li><strong>Loom</strong> - تسجيل سريع مع شرح صوتي</li>
+<li><strong>OBS Studio</strong> - تسجيل احترافي</li>
+</ul>
+<h3>3️⃣ Code Snippets مصورة</h3>
+<p>استخدم:</p>
+<ul>
+<li><strong>Carbon</strong> (<a href="https://carbon.now.sh">https://carbon.now.sh</a>)</li>
+<li><strong>Ray.so</strong> (<a href="https://ray.so">https://ray.so</a>)</li>
+</ul>
+<hr>
+<h2>🎯 الخلاصة</h2>
+<p>هذا المجلد <strong>مرجع</strong> لك لإضافة screenshots عند الحاجة. ليس إلزامياً، لكنه مفيد جداً للمبتدئين!</p>
+<p><strong>نصيحة:</strong> إذا كنت تتعلم، التقط screenshots لخطواتك - ستكون مرجع مستقبلي لك! 📸</p>
+<hr>
+<p><strong>بالتوفيق! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../../01-theory.html">الدرس النظري</a>
+                    <a href="../../02-practice.html">التطبيق العملي</a>
+                    <a href="../../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/script.js"></script>
+</body>
+</html>

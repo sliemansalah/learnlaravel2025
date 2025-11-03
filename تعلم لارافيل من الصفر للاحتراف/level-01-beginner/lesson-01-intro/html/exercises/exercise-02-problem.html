@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="في هذا التمرين، ستتعلم كيفية إنشاء Views مع Blade Template Engine واستخدام Layouts.">
+    <title>التمرين 2: إنشاء Views و Layout | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>exercise 02 problem</span>
+    </div>
+
+    <main class="content container">
+        <h1>التمرين 2: إنشاء Views و Layout</h1>
+<h1>Exercise 2: Creating Views and Layout</h1>
+<hr>
+<h2>📋 وصف التمرين</h2>
+<p>في هذا التمرين، ستتعلم كيفية إنشاء Views مع Blade Template Engine واستخدام Layouts.</p>
+<p><strong>المستوى:</strong> ⭐⭐☆ (متوسط)<br><strong>الوقت المقترح:</strong> 25-30 دقيقة<br><strong>الملفات المطلوبة:</strong></p>
+<ul>
+<li><code>resources/views/layouts/app.blade.php</code></li>
+<li><code>resources/views/home.blade.php</code></li>
+<li><code>resources/views/products.blade.php</code></li>
+<li><code>resources/views/cart.blade.php</code></li>
+<li><code>routes/web.php</code></li>
+</ul>
+<hr>
+<h2>🎯 الأهداف التعليمية</h2>
+<ul>
+<li>✅ إنشاء Layout أساسي</li>
+<li>✅ استخدام @yield و @section</li>
+<li>✅ تمرير بيانات للـ Views</li>
+<li>✅ استخدام Blade Directives (@foreach, @if, إلخ)</li>
+<li>✅ استخدام @include</li>
+</ul>
+<hr>
+<h2>📝 المطلوب</h2>
+<h3>المهمة 1: إنشاء Layout (10 دقائق)</h3>
+<p>أنشئ ملف <code>resources/views/layouts/app.blade.php</code> يحتوي على:</p>
+<h4>المتطلبات:</h4>
+<ul>
+<li>✅ HTML5 Structure كامل</li>
+<li>✅ <code>&lt;title&gt;</code> ديناميكي باستخدام <code>@yield(&#39;title&#39;)</code></li>
+<li>✅ Navigation Bar يحتوي على:<ul>
+<li>روابط: الرئيسية، المنتجات، سلة المشتريات</li>
+</ul>
+</li>
+<li>✅ Main Content Area باستخدام <code>@yield(&#39;content&#39;)</code></li>
+<li>✅ Footer يحتوي على: &quot;© 2025 متجري - جميع الحقوق محفوظة&quot;</li>
+<li>✅ تنسيق CSS بسيط (inline styles أو <code>&lt;style&gt;</code> tag)</li>
+</ul>
+<hr>
+<h3>المهمة 2: صفحة Home (5 دقائق)</h3>
+<p>أنشئ <code>resources/views/home.blade.php</code>:</p>
+<h4>المتطلبات:</h4>
+<ul>
+<li>✅ تستخدم Layout: <code>layouts.app</code></li>
+<li>✅ العنوان: &quot;الصفحة الرئيسية&quot;</li>
+<li>✅ محتوى يحتوي على:<ul>
+<li>عنوان ترحيبي</li>
+<li>فقرة وصفية</li>
+<li>قائمة بـ 3 مميزات للمتجر</li>
+</ul>
+</li>
+</ul>
+<p><strong>Route:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/&#39;, function () {
+    return view(&#39;home&#39;);
+});
+</code></pre>
+<hr>
+<h3>المهمة 3: صفحة Products (7 دقائق)</h3>
+<p>أنشئ <code>resources/views/products.blade.php</code>:</p>
+<h4>المتطلبات:</h4>
+<ul>
+<li>✅ تستخدم Layout: <code>layouts.app</code></li>
+<li>✅ العنوان: &quot;المنتجات&quot;</li>
+<li>✅ عرض قائمة منتجات باستخدام <code>@foreach</code></li>
+<li>✅ كل منتج يعرض: الاسم، السعر، الوصف</li>
+<li>✅ إذا كانت القائمة فارغة، عرض رسالة &quot;لا توجد منتجات&quot;</li>
+</ul>
+<p><strong>البيانات:</strong></p>
+<pre><code class="language-php">$products = [
+    [&#39;id&#39; =&gt; 1, &#39;name&#39; =&gt; &#39;لابتوب HP&#39;, &#39;price&#39; =&gt; 3000, &#39;description&#39; =&gt; &#39;لابتوب قوي للعمل&#39;],
+    [&#39;id&#39; =&gt; 2, &#39;name&#39; =&gt; &#39;هاتف Samsung&#39;, &#39;price&#39; =&gt; 2000, &#39;description&#39; =&gt; &#39;هاتف ذكي حديث&#39;],
+    [&#39;id&#39; =&gt; 3, &#39;name&#39; =&gt; &#39;سماعات Sony&#39;, &#39;price&#39; =&gt; 500, &#39;description&#39; =&gt; &#39;سماعات عالية الجودة&#39;],
+];
+</code></pre>
+<p><strong>Route:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/products&#39;, function () {
+    // البيانات هنا
+    return view(&#39;products&#39;, compact(&#39;products&#39;));
+});
+</code></pre>
+<hr>
+<h3>المهمة 4: صفحة Cart (5 دقائق)</h3>
+<p>أنشئ <code>resources/views/cart.blade.php</code>:</p>
+<h4>المتطلبات:</h4>
+<ul>
+<li>✅ تستخدم Layout: <code>layouts.app</code></li>
+<li>✅ العنوان: &quot;سلة المشتريات&quot;</li>
+<li>✅ عرض items في السلة</li>
+<li>✅ حساب المجموع الكلي</li>
+<li>✅ إذا كانت السلة فارغة، عرض &quot;سلة المشتريات فارغة&quot;</li>
+</ul>
+<p><strong>البيانات:</strong></p>
+<pre><code class="language-php">$cartItems = [
+    [&#39;name&#39; =&gt; &#39;لابتوب HP&#39;, &#39;price&#39; =&gt; 3000, &#39;quantity&#39; =&gt; 1],
+    [&#39;name&#39; =&gt; &#39;سماعات Sony&#39;, &#39;price&#39; =&gt; 500, &#39;quantity&#39; =&gt; 2],
+];
+</code></pre>
+<p><strong>Route:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/cart&#39;, function () {
+    // البيانات هنا
+    return view(&#39;cart&#39;, compact(&#39;cartItems&#39;));
+});
+</code></pre>
+<hr>
+<h2>✅ معايير التقييم</h2>
+<table>
+<thead>
+<tr>
+<th>المعيار</th>
+<th>النقاط</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Layout صحيح ومنظم</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Home page كاملة</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Products page مع loop</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Cart page مع حساب المجموع</td>
+<td>20</td>
+</tr>
+<tr>
+<td>التنسيق والتصميم</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>المجموع</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>💡 نصائح</h2>
+<ol>
+<li>ابدأ بالـ Layout أولاً</li>
+<li>اختبر كل view بعد إنشائه</li>
+<li>استخدم <code>@forelse</code> بدلاً من <code>@foreach</code> مع <code>@empty</code></li>
+<li>لا تنسى <code>compact()</code> عند تمرير البيانات</li>
+</ol>
+<hr>
+<p><strong>بالتوفيق! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

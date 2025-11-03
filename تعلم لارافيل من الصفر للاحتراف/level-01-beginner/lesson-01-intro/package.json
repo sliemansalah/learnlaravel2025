@@ -1,0 +1,23 @@
+{
+  "name": "laravel-lesson-01-intro",
+  "version": "1.0.0",
+  "description": "Laravel Learning - Lesson 01: Introduction to Laravel",
+  "main": "convert-improved.js",
+  "scripts": {
+    "convert": "node convert-improved.js",
+    "serve": "cd html && python -m http.server 8000",
+    "build": "node convert-improved.js",
+    "start": "npm run convert && npm run serve"
+  },
+  "keywords": [
+    "laravel",
+    "learning",
+    "tutorial",
+    "arabic"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^12.0.0"
+  }
+}

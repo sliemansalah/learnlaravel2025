@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="namespace App\Http\Controllers;">
+    <title>حل التمرين 3: إنشاء Controller | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>exercise 03 solution</span>
+    </div>
+
+    <main class="content container">
+        <h1>حل التمرين 3: إنشاء Controller</h1>
+<h1>Exercise 3 Solution</h1>
+<hr>
+<h2>💻 الحل الكامل</h2>
+<h3>1. ProductController</h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    private $products = [
+        [&#39;id&#39; =&gt; 1, &#39;name&#39; =&gt; &#39;لابتوب HP&#39;, &#39;price&#39; =&gt; 3000, &#39;description&#39; =&gt; &#39;لابتوب قوي للعمل&#39;],
+        [&#39;id&#39; =&gt; 2, &#39;name&#39; =&gt; &#39;هاتف Samsung&#39;, &#39;price&#39; =&gt; 2000, &#39;description&#39; =&gt; &#39;هاتف ذكي حديث&#39;],
+        [&#39;id&#39; =&gt; 3, &#39;name&#39; =&gt; &#39;سماعات Sony&#39;, &#39;price&#39; =&gt; 500, &#39;description&#39; =&gt; &#39;سماعات عالية الجودة&#39;],
+    ];
+
+    public function index()
+    {
+        $products = $this-&gt;products;
+        return view(&#39;products&#39;, compact(&#39;products&#39;));
+    }
+
+    public function show($id)
+    {
+        $product = collect($this-&gt;products)-&gt;firstWhere(&#39;id&#39;, $id);
+
+        if (!$product) {
+            abort(404, &#39;المنتج غير موجود&#39;);
+        }
+
+        return view(&#39;product-details&#39;, compact(&#39;product&#39;));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request-&gt;input(&#39;q&#39;);
+
+        $results = collect($this-&gt;products)-&gt;filter(function ($product) use ($query) {
+            return str_contains($product[&#39;name&#39;], $query);
+        });
+
+        return view(&#39;products&#39;, [&#39;products&#39; =&gt; $results]);
+    }
+}
+</code></pre>
+<h3>2. CartController</h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class CartController extends Controller
+{
+    public function index()
+    {
+        // في الحقيقة، نجلب من Session
+        $cartItems = [
+            [&#39;name&#39; =&gt; &#39;لابتوب HP&#39;, &#39;price&#39; =&gt; 3000, &#39;quantity&#39; =&gt; 1],
+            [&#39;name&#39; =&gt; &#39;سماعات Sony&#39;, &#39;price&#39; =&gt; 500, &#39;quantity&#39; =&gt; 2],
+        ];
+
+        return view(&#39;cart&#39;, compact(&#39;cartItems&#39;));
+    }
+
+    public function add($productId)
+    {
+        // في الحقيقة، نضيف للـ Session
+        return redirect()-&gt;back()-&gt;with(&#39;success&#39;, &#39;تم إضافة المنتج للسلة&#39;);
+    }
+
+    public function remove($productId)
+    {
+        // في الحقيقة، نحذف من الـ Session
+        return redirect()-&gt;back()-&gt;with(&#39;success&#39;, &#39;تم حذف المنتج من السلة&#39;);
+    }
+}
+</code></pre>
+<h3>3. Routes</h3>
+<pre><code class="language-php">&lt;?php
+
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/&#39;, function () {
+    return view(&#39;home&#39;);
+});
+
+// Product Routes
+Route::get(&#39;/products&#39;, [ProductController::class, &#39;index&#39;])-&gt;name(&#39;products.index&#39;);
+Route::get(&#39;/products/{id}&#39;, [ProductController::class, &#39;show&#39;])-&gt;name(&#39;products.show&#39;);
+Route::get(&#39;/search&#39;, [ProductController::class, &#39;search&#39;])-&gt;name(&#39;products.search&#39;);
+
+// Cart Routes
+Route::get(&#39;/cart&#39;, [CartController::class, &#39;index&#39;])-&gt;name(&#39;cart.index&#39;);
+Route::post(&#39;/cart/add/{productId}&#39;, [CartController::class, &#39;add&#39;])-&gt;name(&#39;cart.add&#39;);
+Route::delete(&#39;/cart/remove/{productId}&#39;, [CartController::class, &#39;remove&#39;])-&gt;name(&#39;cart.remove&#39;);
+</code></pre>
+<hr>
+<h2>📖 النقاط المهمة</h2>
+<h3>1. استخدام Property للبيانات</h3>
+<pre><code class="language-php">private $products = [ /* ... */ ];
+</code></pre>
+<p>في التطبيق الحقيقي، نجلب من Database.</p>
+<h3>2. استخدام collect()</h3>
+<pre><code class="language-php">$product = collect($this-&gt;products)-&gt;firstWhere(&#39;id&#39;, $id);
+</code></pre>
+<p>Laravel Collections توفر methods مفيدة.</p>
+<h3>3. Named Routes</h3>
+<pre><code class="language-php">-&gt;name(&#39;products.index&#39;)
+</code></pre>
+<p>تسهل الإشارة للـ routes.</p>
+<hr>
+<p><strong>أحسنت! أنهيت جميع التمارين! 🎉</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="هذا هو الحل النموذجي للتمرين الأول.">
+    <title>حل التمرين 1: إنشاء Routes بسيطة | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>exercise 01 solution</span>
+    </div>
+
+    <main class="content container">
+        <h1>حل التمرين 1: إنشاء Routes بسيطة</h1>
+<h1>Exercise 1 Solution: Creating Simple Routes</h1>
+<hr>
+<h2>📋 الحل الكامل</h2>
+<p>هذا هو الحل النموذجي للتمرين الأول.</p>
+<p><strong>ملاحظة:</strong> قد يكون حلك مختلفاً قليلاً وهذا طبيعي، المهم أن يعمل بشكل صحيح!</p>
+<hr>
+<h2>💻 الكود الكامل</h2>
+<h3>ملف <code>routes/web.php</code></h3>
+<pre><code class="language-php">&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+// ==================================================
+// المهمة 1: Routes البسيطة
+// ==================================================
+
+// 1. الصفحة الرئيسية
+Route::get(&#39;/&#39;, function () {
+    return &#39;مرحباً بك في متجرنا الإلكتروني&#39;;
+});
+
+// 2. صفحة من نحن
+Route::get(&#39;/about&#39;, function () {
+    return &#39;&lt;h1&gt;من نحن&lt;/h1&gt;&lt;p&gt;نحن شركة متخصصة في البرمجة منذ عام 2020&lt;/p&gt;&#39;;
+});
+
+// 3. صفحة الاتصال
+Route::get(&#39;/contact&#39;, function () {
+    return [
+        &#39;email&#39; =&gt; &#39;info@example.com&#39;,
+        &#39;phone&#39; =&gt; &#39;+966500000000&#39;,
+        &#39;address&#39; =&gt; &#39;الرياض، المملكة العربية السعودية&#39;
+    ];
+});
+
+// ==================================================
+// المهمة 2: Routes مع Parameters
+// ==================================================
+
+// 4. صفحة المنتج
+Route::get(&#39;/product/{id}&#39;, function ($id) {
+    return &quot;رقم المنتج: {$id}&quot;;
+})-&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;);
+
+// 5. صفحة المستخدم
+Route::get(&#39;/user/{username}&#39;, function ($username) {
+    return &quot;صفحة المستخدم: {$username}&quot;;
+})-&gt;where(&#39;username&#39;, &#39;[a-zA-Z]+&#39;);
+
+// 6. صفحة المقال مع التعليق
+Route::get(&#39;/article/{articleId}/comment/{commentId}&#39;, function ($articleId, $commentId) {
+    return &quot;المقال رقم {$articleId}، التعليق رقم {$commentId}&quot;;
+})-&gt;where([
+    &#39;articleId&#39; =&gt; &#39;[0-9]+&#39;,
+    &#39;commentId&#39; =&gt; &#39;[0-9]+&#39;
+]);
+
+// ==================================================
+// المهمة 3: Optional Parameters
+// ==================================================
+
+// 7. صفحة الترحيب
+Route::get(&#39;/welcome/{name?}&#39;, function ($name = null) {
+    if ($name) {
+        return &quot;أهلاً {$name}، نورت الموقع!&quot;;
+    }
+    return &quot;أهلاً ضيفنا العزيز، نورت الموقع!&quot;;
+});
+
+// ==================================================
+// المهمة 4: Named Routes و Redirects
+// ==================================================
+
+// 8. Dashboard Route
+Route::get(&#39;/dashboard&#39;, function () {
+    return &#39;لوحة التحكم&#39;;
+})-&gt;name(&#39;dashboard&#39;);
+
+// 9. Admin Panel Route
+Route::get(&#39;/admin&#39;, function () {
+    return redirect()-&gt;route(&#39;dashboard&#39;);
+});
+
+// 10. Old Shop Route
+Route::permanentRedirect(&#39;/old-shop&#39;, &#39;/&#39;);
+
+// ==================================================
+// المهمة 5: Route Groups
+// ==================================================
+
+// 11. مجموعة Admin Routes
+Route::prefix(&#39;admin&#39;)-&gt;group(function () {
+    Route::get(&#39;/users&#39;, function () {
+        return &#39;قائمة المستخدمين&#39;;
+    });
+
+    Route::get(&#39;/products&#39;, function () {
+        return &#39;قائمة المنتجات&#39;;
+    });
+
+    Route::get(&#39;/orders&#39;, function () {
+        return &#39;قائمة الطلبات&#39;;
+    });
+});
+</code></pre>
+<hr>
+<h2>📖 شرح الحل</h2>
+<h3>المهمة 1: Routes البسيطة</h3>
+<h4>الـ Route 1-2: String و HTML</h4>
+<pre><code class="language-php">// إرجاع نص بسيط
+return &#39;نص&#39;;
+
+// إرجاع HTML
+return &#39;&lt;h1&gt;عنوان&lt;/h1&gt;&#39;;
+</code></pre>
+<p>Laravel يدعم إرجاع strings مباشرة من الـ routes.</p>
+<h4>الـ Route 3: JSON</h4>
+<pre><code class="language-php">return [
+    &#39;key&#39; =&gt; &#39;value&#39;
+];
+</code></pre>
+<p>عند إرجاع array، Laravel يحوله تلقائياً إلى JSON.</p>
+<hr>
+<h3>المهمة 2: Routes مع Parameters</h3>
+<h4>استقبال Parameters</h4>
+<pre><code class="language-php">Route::get(&#39;/product/{id}&#39;, function ($id) {
+    // استخدام $id
+});
+</code></pre>
+<p>اسم المتغير في الـ function يجب أن يطابق اسمه في الـ URL.</p>
+<h4>Validation على Parameters</h4>
+<pre><code class="language-php">-&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;)  // أرقام فقط
+-&gt;where(&#39;username&#39;, &#39;[a-zA-Z]+&#39;)  // حروف فقط
+</code></pre>
+<p>الـ <code>+</code> تعني &quot;واحد أو أكثر&quot;.</p>
+<h4>Multiple Parameters Validation</h4>
+<pre><code class="language-php">-&gt;where([
+    &#39;articleId&#39; =&gt; &#39;[0-9]+&#39;,
+    &#39;commentId&#39; =&gt; &#39;[0-9]+&#39;
+])
+</code></pre>
+<hr>
+<h3>المهمة 3: Optional Parameters</h3>
+<pre><code class="language-php">Route::get(&#39;/welcome/{name?}&#39;, function ($name = null) {
+    if ($name) {
+        // إذا تم تمرير name
+    }
+    // إذا لم يتم تمرير name
+});
+</code></pre>
+<p><strong>ملاحظات:</strong></p>
+<ul>
+<li><code>{name?}</code> الـ <code>?</code> تجعل الـ parameter اختياري</li>
+<li><code>$name = null</code> قيمة افتراضية</li>
+<li>يمكن استخدام <code>isset($name)</code> أو <code>if ($name)</code></li>
+</ul>
+<p><strong>طريقة أخرى:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/welcome/{name?}&#39;, function ($name = &#39;ضيفنا العزيز&#39;) {
+    return &quot;أهلاً {$name}، نورت الموقع!&quot;;
+});
+</code></pre>
+<hr>
+<h3>المهمة 4: Named Routes و Redirects</h3>
+<h4>Named Routes</h4>
+<pre><code class="language-php">Route::get(&#39;/dashboard&#39;, function () {
+    return &#39;لوحة التحكم&#39;;
+})-&gt;name(&#39;dashboard&#39;);
+</code></pre>
+<p><strong>فائدة:</strong> يمكن الرجوع له بالاسم بدلاً من URL:</p>
+<pre><code class="language-php">redirect()-&gt;route(&#39;dashboard&#39;)  // بدلاً من redirect(&#39;/dashboard&#39;)
+</code></pre>
+<h4>Redirects</h4>
+<pre><code class="language-php">// Redirect عادي
+Route::get(&#39;/admin&#39;, function () {
+    return redirect()-&gt;route(&#39;dashboard&#39;);
+});
+
+// Permanent Redirect (301)
+Route::permanentRedirect(&#39;/old-shop&#39;, &#39;/&#39;);
+</code></pre>
+<p><strong>الفرق:</strong></p>
+<ul>
+<li><code>redirect()</code>: 302 (Temporary)</li>
+<li><code>permanentRedirect()</code>: 301 (Permanent)</li>
+</ul>
+<hr>
+<h3>المهمة 5: Route Groups</h3>
+<pre><code class="language-php">Route::prefix(&#39;admin&#39;)-&gt;group(function () {
+    Route::get(&#39;/users&#39;, ...);     // /admin/users
+    Route::get(&#39;/products&#39;, ...);  // /admin/products
+});
+</code></pre>
+<p><strong>فائدة:</strong> تجنب تكرار الـ prefix.</p>
+<hr>
+<h2>✅ اختبار الحل</h2>
+<h3>نتائج متوقعة:</h3>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>النتيجة المتوقعة</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td>مرحباً بك في متجرنا الإلكتروني</td>
+</tr>
+<tr>
+<td><code>/about</code></td>
+<td>HTML مع عنوان وفقرة</td>
+</tr>
+<tr>
+<td><code>/contact</code></td>
+<td>JSON مع بيانات الاتصال</td>
+</tr>
+<tr>
+<td><code>/product/123</code></td>
+<td>رقم المنتج: 123</td>
+</tr>
+<tr>
+<td><code>/product/abc</code></td>
+<td>404 (فشل validation)</td>
+</tr>
+<tr>
+<td><code>/user/ahmed</code></td>
+<td>صفحة المستخدم: ahmed</td>
+</tr>
+<tr>
+<td><code>/user/123</code></td>
+<td>404 (فشل validation)</td>
+</tr>
+<tr>
+<td><code>/article/5/comment/10</code></td>
+<td>المقال رقم 5، التعليق رقم 10</td>
+</tr>
+<tr>
+<td><code>/welcome/أحمد</code></td>
+<td>أهلاً أحمد، نورت الموقع!</td>
+</tr>
+<tr>
+<td><code>/welcome</code></td>
+<td>أهلاً ضيفنا العزيز، نورت الموقع!</td>
+</tr>
+<tr>
+<td><code>/dashboard</code></td>
+<td>لوحة التحكم</td>
+</tr>
+<tr>
+<td><code>/admin</code></td>
+<td>Redirect إلى /dashboard</td>
+</tr>
+<tr>
+<td><code>/old-shop</code></td>
+<td>Redirect إلى / (301)</td>
+</tr>
+<tr>
+<td><code>/admin/users</code></td>
+<td>قائمة المستخدمين</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔍 مقارنة الحلول</h2>
+<h3>قد تكون كتبت:</h3>
+<h4>للـ Optional Parameter:</h4>
+<pre><code class="language-php">// حلك (صحيح)
+Route::get(&#39;/welcome/{name?}&#39;, function ($name = &#39;ضيفنا العزيز&#39;) {
+    return &quot;أهلاً {$name}، نورت الموقع!&quot;;
+});
+
+// الحل النموذجي (أيضاً صحيح)
+Route::get(&#39;/welcome/{name?}&#39;, function ($name = null) {
+    if ($name) {
+        return &quot;أهلاً {$name}، نورت الموقع!&quot;;
+    }
+    return &quot;أهلاً ضيفنا العزيز، نورت الموقع!&quot;;
+});
+</code></pre>
+<p><strong>كلاهما صحيح!</strong> الفرق فقط في الأسلوب.</p>
+<hr>
+<h4>للـ Redirect:</h4>
+<pre><code class="language-php">// طريقة 1 (مستخدمة في الحل)
+Route::get(&#39;/admin&#39;, function () {
+    return redirect()-&gt;route(&#39;dashboard&#39;);
+});
+
+// طريقة 2 (أيضاً صحيحة)
+Route::redirect(&#39;/admin&#39;, &#39;/dashboard&#39;);
+</code></pre>
+<hr>
+<h2>💡 نقاط تعلمها</h2>
+<h3>من هذا التمرين تعلمت:</h3>
+<p>✅ <strong>1. Route Basics</strong></p>
+<ul>
+<li>كيفية إنشاء routes بسيطة</li>
+<li>الفرق بين string, HTML, و JSON</li>
+</ul>
+<p>✅ <strong>2. Route Parameters</strong></p>
+<ul>
+<li>كيفية استقبال parameters</li>
+<li>كيفية عمل validation عليها</li>
+<li>استخدام multiple parameters</li>
+</ul>
+<p>✅ <strong>3. Optional Parameters</strong></p>
+<ul>
+<li>استخدام <code>?</code> للجعل parameter اختياري</li>
+<li>التعامل مع القيم الافتراضية</li>
+</ul>
+<p>✅ <strong>4. Named Routes</strong></p>
+<ul>
+<li>تسمية الـ routes</li>
+<li>استخدام الأسماء في redirects</li>
+</ul>
+<p>✅ <strong>5. Redirects</strong></p>
+<ul>
+<li>الفرق بين temporary و permanent redirects</li>
+<li>استخدام <code>redirect()</code></li>
+</ul>
+<p>✅ <strong>6. Route Groups</strong></p>
+<ul>
+<li>تنظيم الـ routes بالـ groups</li>
+<li>استخدام prefix</li>
+</ul>
+<hr>
+<h2>🚀 تحسينات إضافية</h2>
+<h3>يمكنك تحسين الحل بـ:</h3>
+<h4>1. إضافة Middleware للـ Admin Group</h4>
+<pre><code class="language-php">Route::prefix(&#39;admin&#39;)-&gt;middleware(&#39;auth&#39;)-&gt;group(function () {
+    // ...
+});
+</code></pre>
+<h4>2. استخدام Name Prefix للـ Admin Routes</h4>
+<pre><code class="language-php">Route::prefix(&#39;admin&#39;)-&gt;name(&#39;admin.&#39;)-&gt;group(function () {
+    Route::get(&#39;/users&#39;, function () {
+        return &#39;قائمة المستخدمين&#39;;
+    })-&gt;name(&#39;users&#39;);  // اسمه: admin.users
+});
+</code></pre>
+<h4>3. استخدام Controller بدلاً من Closures</h4>
+<pre><code class="language-php">Route::get(&#39;/product/{id}&#39;, [ProductController::class, &#39;show&#39;])
+    -&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;);
+</code></pre>
+<hr>
+<h2>📊 تقييم الحل</h2>
+<h3>إذا حصلت على:</h3>
+<p>✅ <strong>90-100 نقطة:</strong> ممتاز! لديك فهم جيد للـ Routing</p>
+<p>✅ <strong>80-89 نقطة:</strong> جيد جداً! راجع النقاط الناقصة</p>
+<p>⚠️ <strong>70-79 نقطة:</strong> جيد، لكن تحتاج مراجعة</p>
+<p>❌ <strong>أقل من 70:</strong> راجع الدرس النظري وحاول مرة أخرى</p>
+<hr>
+<h2>⏭️ الخطوة التالية</h2>
+<p>✅ <strong>أنهيت التمرين الأول؟</strong></p>
+<ol>
+<li>تأكد من فهم جميع النقاط</li>
+<li>جرّب التحسينات الإضافية</li>
+<li>انتقل إلى <strong><code>exercise-02-problem.md</code></strong></li>
+</ol>
+<hr>
+<p><strong>مبروك! أنجزت التمرين الأول بنجاح! 🎉</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

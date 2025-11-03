@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="المدة المقدرة: 2-3 ساعات | Estimated Duration: 2-3 hours">
+    <title>الدرس 1: التطبيق العملي - تثبيت Laravel وإنشاء أول مشروع | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li><a href="./01-theory.html">النظري</a></li>
+                <li><a href="./02-practice.html">العملي</a></li>
+                <li><a href="./03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="./04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="./code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="./exercises/README.html">التمارين</a></li>
+                <li><a href="./resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="./index.html">الرئيسية</a>
+        <span>›</span>
+        <span>02 practice</span>
+    </div>
+
+    <main class="content container">
+        <h1>الدرس 1: التطبيق العملي - تثبيت Laravel وإنشاء أول مشروع</h1>
+<h1>Lesson 1: Practical Application - Installing Laravel and Creating First Project</h1>
+<p><strong>المدة المقدرة:</strong> 2-3 ساعات | Estimated Duration: 2-3 hours<br><strong>المستوى:</strong> مبتدئ | Level: Beginner</p>
+<hr>
+<h2>📋 جدول المحتويات | Table of Contents</h2>
+<ol>
+<li><a href="#%D8%AA%D8%AB%D8%A8%D9%8A%D8%AA-%D8%A7%D9%84%D9%85%D8%AA%D8%B7%D9%84%D8%A8%D8%A7%D8%AA">تثبيت المتطلبات</a></li>
+<li><a href="#%D8%A5%D9%86%D8%B4%D8%A7%D8%A1-%D9%85%D8%B4%D8%B1%D9%88%D8%B9-laravel">إنشاء مشروع Laravel</a></li>
+<li><a href="#%D8%AA%D8%B4%D8%BA%D9%8A%D9%84-%D8%A7%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9">تشغيل المشروع</a></li>
+<li><a href="#%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D8%A7%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9">استكشاف المشروع</a></li>
+<li><a href="#%D8%A5%D8%B9%D8%AF%D8%A7%D8%AF-%D9%82%D8%A7%D8%B9%D8%AF%D8%A9-%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA">إعداد قاعدة البيانات</a></li>
+<li><a href="#%D8%A3%D9%88%D9%84-%D8%AA%D8%B9%D8%AF%D9%8A%D9%84">أول تعديل</a></li>
+<li><a href="#artisan-commands">Artisan Commands</a></li>
+</ol>
+<hr>
+<h2>🎯 أهداف الدرس العملي</h2>
+<p>بنهاية هذا الدرس، ستكون قد:</p>
+<ul>
+<li>✅ ثبّتَّ جميع المتطلبات (PHP, Composer)</li>
+<li>✅ أنشأتَ مشروع Laravel جديد</li>
+<li>✅ شغّلتَ السيرفر المحلي</li>
+<li>✅ استكشفتَ هيكل المشروع</li>
+<li>✅ أعددتَ قاعدة البيانات</li>
+<li>✅ قمتَ بأول تعديل على الصفحة الرئيسية</li>
+<li>✅ تعلمتَ أوامر Artisan الأساسية</li>
+</ul>
+<hr>
+<h2>📥 تثبيت المتطلبات</h2>
+<h3>الخطوة 1: تثبيت PHP</h3>
+<h4>Windows:</h4>
+<p><strong>الطريقة الأولى: استخدام Laravel Herd (موصى بها)</strong></p>
+<pre><code class="language-bash"># 1. تحميل Laravel Herd من:
+https://herd.laravel.com/windows
+
+# 2. تثبيت البرنامج (Double-click)
+# 3. Laravel Herd سيثبت PHP, Composer, Nginx تلقائياً
+
+# 4. التحقق من التثبيت
+herd --version
+php --version
+composer --version
+</code></pre>
+<p><strong>الطريقة الثانية: استخدام XAMPP</strong></p>
+<pre><code class="language-bash"># 1. تحميل XAMPP من:
+https://www.apachefriends.org/download.html
+
+# 2. تثبيت XAMPP
+# 3. إضافة PHP إلى PATH:
+#    - افتح System Properties
+#    - Environment Variables
+#    - أضف: C:\xampp\php إلى Path
+
+# 4. التحقق
+php --version
+</code></pre>
+<h4>macOS:</h4>
+<pre><code class="language-bash"># الطريقة الأولى: Laravel Herd
+# تحميل من: https://herd.laravel.com
+
+# الطريقة الثانية: Homebrew
+brew install php@8.2
+
+# التحقق
+php --version
+</code></pre>
+<h4>Linux (Ubuntu/Debian):</h4>
+<pre><code class="language-bash"># تثبيت PHP 8.2
+sudo apt update
+sudo apt install php8.2 php8.2-cli php8.2-common php8.2-mysql \
+php8.2-zip php8.2-gd php8.2-mbstring php8.2-curl php8.2-xml php8.2-bcmath
+
+# التحقق
+php --version
+</code></pre>
+<h3>الخطوة 2: تثبيت Composer</h3>
+<h4>Windows:</h4>
+<pre><code class="language-bash"># 1. تحميل من:
+https://getcomposer.org/Composer-Setup.exe
+
+# 2. تشغيل المثبت واتباع الخطوات
+
+# 3. التحقق (في CMD أو PowerShell جديد)
+composer --version
+</code></pre>
+<h4>macOS/Linux:</h4>
+<pre><code class="language-bash"># تثبيت Composer عالمياً
+php -r &quot;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&quot;
+php composer-setup.php
+php -r &quot;unlink(&#39;composer-setup.php&#39;);&quot;
+sudo mv composer.phar /usr/local/bin/composer
+
+# التحقق
+composer --version
+</code></pre>
+<h3>الخطوة 3: التحقق من Extensions</h3>
+<pre><code class="language-bash"># عرض جميع Extensions المثبتة
+php -m
+
+# التحقق من extensions مهمة
+php -m | grep mbstring
+php -m | grep openssl
+php -m | grep pdo
+php -m | grep tokenizer
+php -m | grep xml
+</code></pre>
+<hr>
+<h2>🚀 إنشاء مشروع Laravel</h2>
+<h3>الطريقة الأولى: باستخدام Composer (موصى بها)</h3>
+<pre><code class="language-bash"># الانتقال إلى مجلد المشاريع
+cd C:\xampp\htdocs     # Windows
+cd ~/Sites             # macOS
+cd ~/projects          # Linux
+
+# إنشاء مشروع جديد
+composer create-project laravel/laravel my-first-app
+
+# سيستغرق هذا 2-5 دقائق
+</code></pre>
+<h3>الطريقة الثانية: باستخدام Laravel Installer</h3>
+<pre><code class="language-bash"># تثبيت Laravel Installer (مرة واحدة فقط)
+composer global require laravel/installer
+
+# إضافة Composer bin إلى PATH
+# Windows: %USERPROFILE%\AppData\Roaming\Composer\vendor\bin
+# macOS/Linux: ~/.composer/vendor/bin
+
+# إنشاء مشروع جديد
+laravel new my-first-app
+</code></pre>
+<h3>الطريقة الثالثة: باستخدام Laravel Herd</h3>
+<pre><code class="language-bash"># إذا كنت تستخدم Herd، فقط:
+cd ~/Herd        # macOS
+cd C:\Herd       # Windows
+
+# أنشئ مجلد جديد
+mkdir my-first-app
+cd my-first-app
+
+# استخدم Composer
+composer create-project laravel/laravel .
+</code></pre>
+<h3>ما يحدث أثناء التثبيت:</h3>
+<pre><code>Installing Laravel...
+  ↓
+⏳ تحميل Laravel framework
+⏳ تحميل dependencies من Composer
+⏳ إنشاء هيكل المشروع
+⏳ إنشاء .env file
+⏳ توليد Application Key
+✅ Application ready!
+</code></pre>
+<hr>
+<h2>🏃 تشغيل المشروع</h2>
+<h3>الخطوة 1: الدخول إلى مجلد المشروع</h3>
+<pre><code class="language-bash">cd my-first-app
+</code></pre>
+<h3>الخطوة 2: تشغيل السيرفر المحلي</h3>
+<pre><code class="language-bash"># استخدام Artisan Serve
+php artisan serve
+
+# ستظهر رسالة:
+# Starting Laravel development server: http://127.0.0.1:8000
+</code></pre>
+<p><strong>ملاحظة:</strong> اترك Terminal مفتوحاً أثناء التطوير!</p>
+<h3>الخطوة 3: فتح المتصفح</h3>
+<pre><code>افتح المتصفح واذهب إلى:
+http://localhost:8000
+أو
+http://127.0.0.1:8000
+</code></pre>
+<h3>يجب أن ترى صفحة Laravel الافتراضية! 🎉</h3>
+<pre><code>╔══════════════════════════════════╗
+║                                  ║
+║          Laravel                 ║
+║                                  ║
+║     Welcome to Laravel 11        ║
+║                                  ║
+║   [Documentation] [Laracasts]   ║
+║                                  ║
+╚══════════════════════════════════╝
+</code></pre>
+<hr>
+<h2>🔍 استكشاف المشروع</h2>
+<h3>الخطوة 1: فتح المشروع في VS Code</h3>
+<pre><code class="language-bash"># في Terminal، من داخل مجلد المشروع:
+code .
+
+# أو افتح VS Code يدوياً:
+# File → Open Folder → اختر my-first-app
+</code></pre>
+<h3>الخطوة 2: استكشاف الملفات الرئيسية</h3>
+<h4>1. ملف <code>.env</code> - إعدادات البيئة</h4>
+<pre><code class="language-env">APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:xxxxxxxxxxxxxxxxxxxxx
+APP_DEBUG=true
+APP_URL=http://localhost
+
+# قاعدة البيانات
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+</code></pre>
+<p><strong>🔒 مهم جداً:</strong></p>
+<ul>
+<li>لا تشارك ملف <code>.env</code> أبداً!</li>
+<li>يحتوي على معلومات حساسة</li>
+<li>مُستثنى من Git تلقائياً</li>
+</ul>
+<h4>2. ملف <code>routes/web.php</code> - التوجيه</h4>
+<pre><code class="language-php">&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/&#39;, function () {
+    return view(&#39;welcome&#39;);
+});
+</code></pre>
+<p><strong>الشرح:</strong></p>
+<ul>
+<li><code>Route::get()</code> - يعرف route لـ GET request</li>
+<li><code>&#39;/&#39;</code> - المسار (الصفحة الرئيسية)</li>
+<li><code>function()</code> - ما سيحدث عند زيارة هذا المسار</li>
+<li><code>view(&#39;welcome&#39;)</code> - يعرض view اسمه welcome</li>
+</ul>
+<h4>3. ملف <code>resources/views/welcome.blade.php</code> - العرض</h4>
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;{{ str_replace(&#39;_&#39;, &#39;-&#39;, app()-&gt;getLocale()) }}&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Laravel&lt;/title&gt;
+    &lt;!-- ... --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to Laravel!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4>4. ملف <code>composer.json</code> - الاعتماديات</h4>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;laravel/laravel&quot;,
+    &quot;type&quot;: &quot;project&quot;,
+    &quot;require&quot;: {
+        &quot;php&quot;: &quot;^8.2&quot;,
+        &quot;laravel/framework&quot;: &quot;^11.0&quot;
+    }
+}
+</code></pre>
+<h3>الخطوة 3: تصفح المجلدات</h3>
+<pre><code>my-first-app/
+│
+├── 📁 app/                    ← افتح هذا!
+│   ├── Http/Controllers/     ← سنعمل هنا كثيراً
+│   └── Models/               ← وهنا أيضاً
+│
+├── 📁 routes/                 ← افتح هذا!
+│   └── web.php              ← سنعدل هذا الملف كثيراً
+│
+├── 📁 resources/              ← افتح هذا!
+│   └── views/               ← ملفات Blade هنا
+│       └── welcome.blade.php
+│
+├── 📁 database/               ← سنستخدمه لاحقاً
+│   └── migrations/
+│
+└── 📄 .env                    ← ملف الإعدادات
+</code></pre>
+<hr>
+<h2>💾 إعداد قاعدة البيانات</h2>
+<h3>الخطوة 1: إنشاء قاعدة بيانات</h3>
+<h4>باستخدام MySQL (XAMPP/WAMP):</h4>
+<pre><code class="language-sql">-- افتح phpMyAdmin: http://localhost/phpmyadmin
+
+-- أنشئ قاعدة بيانات جديدة:
+CREATE DATABASE my_first_app;
+</code></pre>
+<h4>باستخدام SQLite (أسهل للتجربة):</h4>
+<pre><code class="language-bash"># Laravel يدعم SQLite خارج الصندوق
+# أنشئ ملف database:
+touch database/database.sqlite    # macOS/Linux
+type nul &gt; database\database.sqlite    # Windows
+</code></pre>
+<h3>الخطوة 2: تحديث ملف <code>.env</code></h3>
+<h4>للـ MySQL:</h4>
+<pre><code class="language-env">DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=my_first_app    ← اسم القاعدة التي أنشأتها
+DB_USERNAME=root
+DB_PASSWORD=                ← كلمة المرور (فارغة في XAMPP)
+</code></pre>
+<h4>للـ SQLite:</h4>
+<pre><code class="language-env">DB_CONNECTION=sqlite
+# احذف أو علّق على البقية:
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+</code></pre>
+<h3>الخطوة 3: تشغيل Migrations</h3>
+<pre><code class="language-bash"># هذا ينشئ الجداول الأساسية
+php artisan migrate
+
+# ستظهر رسالة:
+# Migration table created successfully.
+# Migrating: 2014_10_12_000000_create_users_table
+# Migrated:  2014_10_12_000000_create_users_table (45.23ms)
+# ...
+</code></pre>
+<p><strong>ماذا حدث؟</strong></p>
+<ul>
+<li>تم إنشاء جدول <code>users</code></li>
+<li>تم إنشاء جدول <code>password_reset_tokens</code></li>
+<li>تم إنشاء جدول <code>sessions</code></li>
+<li>تم إنشاء جدول <code>migrations</code> لتتبع Migrations</li>
+</ul>
+<h3>الخطوة 4: التحقق من الجداول</h3>
+<pre><code class="language-bash"># باستخدام Artisan Tinker (REPL)
+php artisan tinker
+
+# داخل Tinker:
+&gt;&gt;&gt; DB::select(&#39;SHOW TABLES&#39;);
+# أو للـ SQLite:
+&gt;&gt;&gt; DB::select(&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;&quot;);
+
+# للخروج:
+&gt;&gt;&gt; exit
+</code></pre>
+<hr>
+<h2>✏️ أول تعديل - تخصيص الصفحة الرئيسية</h2>
+<h3>التعديل 1: تغيير النص الرئيسي</h3>
+<p>افتح <code>resources/views/welcome.blade.php</code> وعدّل:</p>
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;مشروعي الأول&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin: 0 0 20px 0;
+        }
+        p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;🎉 مرحباً بك في Laravel!&lt;/h1&gt;
+        &lt;p&gt;هذا هو مشروعك الأول&lt;/p&gt;
+        &lt;p&gt;أنت الآن مطور Laravel 🚀&lt;/p&gt;
+        &lt;div class=&quot;badge&quot;&gt;Laravel {{ app()-&gt;version() }}&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>احفظ الملف وأعد تحميل الصفحة في المتصفح!</strong> 🎨</p>
+<h3>التعديل 2: إضافة route جديد</h3>
+<p>افتح <code>routes/web.php</code> وأضف:</p>
+<pre><code class="language-php">&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/&#39;, function () {
+    return view(&#39;welcome&#39;);
+});
+
+// Route جديد!
+Route::get(&#39;/hello&#39;, function () {
+    return &#39;&lt;h1 style=&quot;text-align:center; margin-top:100px; color:#667eea;&quot;&gt;مرحباً من Laravel! 👋&lt;/h1&gt;&#39;;
+});
+
+// Route مع parameter
+Route::get(&#39;/hello/{name}&#39;, function ($name) {
+    return &quot;&lt;h1 style=&#39;text-align:center; margin-top:100px; color:#764ba2;&#39;&gt;مرحباً {$name}! 🎉&lt;/h1&gt;&quot;;
+});
+</code></pre>
+<p><strong>جرّب في المتصفح:</strong></p>
+<ul>
+<li><code>http://localhost:8000/hello</code></li>
+<li><code>http://localhost:8000/hello/محمد</code></li>
+<li><code>http://localhost:8000/hello/Ahmed</code></li>
+</ul>
+<h3>التعديل 3: إنشاء view جديد</h3>
+<h4>1. أنشئ ملف <code>resources/views/about.blade.php</code>:</h4>
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;عن المشروع&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 5px solid #667eea;
+            margin: 20px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;عن هذا المشروع&lt;/h1&gt;
+
+    &lt;div class=&quot;info-box&quot;&gt;
+        &lt;h2&gt;📚 ماذا تعلمت؟&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;تثبيت Laravel&lt;/li&gt;
+            &lt;li&gt;إنشاء أول مشروع&lt;/li&gt;
+            &lt;li&gt;استكشاف هيكل Laravel&lt;/li&gt;
+            &lt;li&gt;إنشاء Routes&lt;/li&gt;
+            &lt;li&gt;إنشاء Views&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;info-box&quot;&gt;
+        &lt;h2&gt;🚀 ماذا بعد؟&lt;/h2&gt;
+        &lt;p&gt;في الدروس القادمة سنتعلم:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Controllers&lt;/li&gt;
+            &lt;li&gt;Blade Templates&lt;/li&gt;
+            &lt;li&gt;Database &amp; Models&lt;/li&gt;
+            &lt;li&gt;Authentication&lt;/li&gt;
+            &lt;li&gt;وأكثر!&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;p style=&quot;text-align: center; color: #999; margin-top: 50px;&quot;&gt;
+        Laravel {{ app()-&gt;version() }} | PHP {{ PHP_VERSION }}
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4>2. أضف route في <code>routes/web.php</code>:</h4>
+<pre><code class="language-php">Route::get(&#39;/about&#39;, function () {
+    return view(&#39;about&#39;);
+});
+</code></pre>
+<h4>3. جرّب: <code>http://localhost:8000/about</code></h4>
+<hr>
+<h2>🛠️ Artisan Commands - أوامر مهمة</h2>
+<h3>معلومات عن Artisan</h3>
+<pre><code class="language-bash"># عرض جميع الأوامر المتاحة
+php artisan list
+
+# الحصول على مساعدة حول أمر معين
+php artisan help migrate
+</code></pre>
+<h3>أوامر أساسية</h3>
+<h4>1. تشغيل السيرفر</h4>
+<pre><code class="language-bash"># تشغيل على المنفذ الافتراضي (8000)
+php artisan serve
+
+# تشغيل على منفذ آخر
+php artisan serve --port=8080
+
+# تشغيل على host معين
+php artisan serve --host=192.168.1.100
+</code></pre>
+<h4>2. معلومات التطبيق</h4>
+<pre><code class="language-bash"># عرض إصدار Laravel
+php artisan --version
+
+# عرض معلومات البيئة
+php artisan about
+
+# عرض Routes
+php artisan route:list
+</code></pre>
+<h4>3. Cache</h4>
+<pre><code class="language-bash"># مسح cache
+php artisan cache:clear
+
+# مسح config cache
+php artisan config:clear
+
+# مسح route cache
+php artisan route:clear
+
+# مسح view cache
+php artisan view:clear
+
+# مسح كل شيء
+php artisan optimize:clear
+</code></pre>
+<h4>4. قاعدة البيانات</h4>
+<pre><code class="language-bash"># تشغيل migrations
+php artisan migrate
+
+# rollback آخر migration
+php artisan migrate:rollback
+
+# إعادة تشغيل جميع migrations
+php artisan migrate:fresh
+
+# تشغيل migrations مع seeders
+php artisan migrate:fresh --seed
+</code></pre>
+<h4>5. إنشاء ملفات</h4>
+<pre><code class="language-bash"># إنشاء Controller
+php artisan make:controller UserController
+
+# إنشاء Model
+php artisan make:model Post
+
+# إنشاء Model مع Migration
+php artisan make:model Post -m
+
+# إنشاء Migration
+php artisan make:migration create_posts_table
+
+# إنشاء Seeder
+php artisan make:seeder UserSeeder
+</code></pre>
+<h4>6. Tinker (REPL)</h4>
+<pre><code class="language-bash"># فتح Tinker
+php artisan tinker
+
+# داخل Tinker، يمكنك:
+&gt;&gt;&gt; $users = App\Models\User::all();
+&gt;&gt;&gt; $users-&gt;count();
+&gt;&gt;&gt; $user = App\Models\User::first();
+&gt;&gt;&gt; $user-&gt;name;
+&gt;&gt;&gt; exit
+</code></pre>
+<h3>مثال عملي كامل</h3>
+<pre><code class="language-bash"># 1. إنشاء Model مع Migration
+php artisan make:model Article -m
+
+# 2. سيُنشئ:
+#    - app/Models/Article.php
+#    - database/migrations/YYYY_MM_DD_HHMMSS_create_articles_table.php
+
+# 3. افتح Migration وعدّله
+# 4. ثم شغّل:
+php artisan migrate
+
+# 5. استخدم Tinker لإنشاء بيانات:
+php artisan tinker
+&gt;&gt;&gt; App\Models\Article::create([&#39;title&#39; =&gt; &#39;First Article&#39;, &#39;content&#39; =&gt; &#39;Hello World&#39;]);
+</code></pre>
+<hr>
+<h2>✅ التحقق من الإنجاز</h2>
+<p>تأكد من إكمال جميع الخطوات:</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> تثبيت PHP و Composer</li>
+<li><input checked="" disabled="" type="checkbox"> إنشاء مشروع Laravel جديد</li>
+<li><input checked="" disabled="" type="checkbox"> تشغيل <code>php artisan serve</code></li>
+<li><input checked="" disabled="" type="checkbox"> فتح <code>http://localhost:8000</code> ورؤية الصفحة</li>
+<li><input checked="" disabled="" type="checkbox"> إعداد قاعدة البيانات</li>
+<li><input checked="" disabled="" type="checkbox"> تشغيل <code>php artisan migrate</code></li>
+<li><input checked="" disabled="" type="checkbox"> تعديل <code>welcome.blade.php</code></li>
+<li><input checked="" disabled="" type="checkbox"> إنشاء route جديد</li>
+<li><input checked="" disabled="" type="checkbox"> إنشاء view جديد (<code>about.blade.php</code>)</li>
+<li><input checked="" disabled="" type="checkbox"> تجربة أوامر Artisan</li>
+</ul>
+<hr>
+<h2>🐛 حل المشاكل الشائعة</h2>
+<h3>مشكلة 1: <code>composer</code> command not found</h3>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># تأكد من إضافة Composer إلى PATH
+# أعد فتح Terminal/CMD بعد التثبيت
+</code></pre>
+<h3>مشكلة 2: <code>Class &quot;PDO&quot; not found</code></h3>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># تأكد من تفعيل extension=pdo_mysql في php.ini
+# أعد تشغيل Apache/Server
+</code></pre>
+<h3>مشكلة 3: Permission denied (macOS/Linux)</h3>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># أعطِ صلاحيات للمجلدات:
+chmod -R 775 storage bootstrap/cache
+</code></pre>
+<h3>مشكلة 4: Port 8000 already in use</h3>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># استخدم منفذ آخر:
+php artisan serve --port=8080
+</code></pre>
+<h3>مشكلة 5: Database connection failed</h3>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-env"># تحقق من إعدادات .env
+# تأكد من:
+# 1. اسم قاعدة البيانات صحيح
+# 2. MySQL/Server يعمل
+# 3. اسم المستخدم وكلمة المرور صحيحة
+</code></pre>
+<hr>
+<h2>📝 ملخص الدرس العملي</h2>
+<h3>ما أنجزته اليوم:</h3>
+<pre><code>✅ تثبيت بيئة التطوير الكاملة
+✅ إنشاء أول مشروع Laravel
+✅ فهم هيكل المشروع
+✅ إعداد قاعدة البيانات
+✅ إنشاء Routes و Views
+✅ استخدام Artisan Commands
+✅ تعديل الصفحات
+</code></pre>
+<h3>المفاهيم المهمة:</h3>
+<pre><code>🔑 PHP &amp; Composer = أدوات أساسية
+🔑 php artisan serve = تشغيل المشروع
+🔑 routes/web.php = تعريف المسارات
+🔑 resources/views/ = ملفات العرض
+🔑 .env = إعدادات البيئة
+🔑 php artisan = أداة CLI قوية
+</code></pre>
+<hr>
+<h2>🎯 الخطوة التالية</h2>
+<p>في الدرس التالي (الدرس 2)، سنتعلم:</p>
+<ul>
+<li><strong>Routing بالتفصيل</strong><ul>
+<li>Route Parameters</li>
+<li>Named Routes</li>
+<li>Route Groups</li>
+<li>Route Methods (GET, POST, etc.)</li>
+</ul>
+</li>
+</ul>
+<p><strong>استعد! 🚀</strong></p>
+<hr>
+<h2>📚 مهام إضافية (اختيارية)</h2>
+<h3>مهمة 1: تخصيص صفحة الترحيب</h3>
+<pre><code>عدّل welcome.blade.php لتضيف:
+- اسمك
+- تاريخ اليوم
+- معلومات عن PHP و Laravel version
+</code></pre>
+<h3>مهمة 2: إنشاء صفحة Contact</h3>
+<pre><code>1. أنشئ view اسمه contact.blade.php
+2. أضف route له في web.php
+3. ضع فيه نموذج اتصال بسيط
+</code></pre>
+<h3>مهمة 3: تجربة Tinker</h3>
+<pre><code class="language-bash">php artisan tinker
+
+# جرّب:
+&gt;&gt;&gt; now()
+&gt;&gt;&gt; app()-&gt;version()
+&gt;&gt;&gt; config(&#39;app.name&#39;)
+&gt;&gt;&gt; bcrypt(&#39;password&#39;)
+</code></pre>
+<hr>
+<p><strong>🎉 ممتاز! أنت الآن جاهز للدرس التالي!</strong></p>
+<p><strong>تاريخ آخر تحديث:</strong> 2025-11-03<br><strong>الإصدار:</strong> 1.0<br><strong>متوافق مع:</strong> Laravel 11.x</p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="./01-theory.html">الدرس النظري</a>
+                    <a href="./02-practice.html">التطبيق العملي</a>
+                    <a href="./exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="./resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="./resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="./resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

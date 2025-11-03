@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس الأول من دورة تعلم Laravel من الصفر للاحتراف - مقدمة إلى Laravel والبيئة التطويرية">
+    <title>الدرس 1: مقدمة إلى Laravel | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Reset and fixes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff2d20 0%, #c81e0f 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: #f7fafc;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff2d20;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-box .label {
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2rem;
+            color: #2d3748;
+            margin: 50px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ff2d20;
+        }
+
+        /* Lesson Cards Grid */
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .lesson-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 45, 32, 0.15);
+            border-color: #ff2d20;
+        }
+
+        .lesson-card h3 {
+            color: #ff2d20;
+            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .lesson-card p {
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .lesson-card .btn {
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            padding: 12px 20px;
+            background: #ff2d20;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: auto;
+        }
+
+        .lesson-card .btn:hover {
+            background: #c81e0f;
+        }
+
+        .lesson-card .btn-secondary {
+            background: #2d3748;
+        }
+
+        .lesson-card .btn-secondary:hover {
+            background: #1a202c;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature .icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .quick-links h3 {
+            margin: 0 0 20px 0;
+            color: #2d3748;
+            font-size: 1.5rem;
+        }
+
+        .quick-links ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .quick-links li {
+            margin: 0;
+        }
+
+        .quick-links li a {
+            display: block;
+            padding: 12px 18px;
+            background: white;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #2d3748;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .quick-links li a:hover {
+            background: #ff2d20;
+            color: white;
+            transform: translateX(-3px);
+            border-color: #ff2d20;
+        }
+
+        /* Learning Path Card */
+        .learning-path {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-right: 4px solid #ff2d20;
+        }
+
+        .learning-path h3 {
+            color: #2d3748;
+            margin: 0 0 20px 0;
+            font-size: 1.5rem;
+        }
+
+        .learning-path ol {
+            padding-right: 25px;
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+
+        .learning-path ol li {
+            margin-bottom: 10px;
+        }
+
+        .learning-path a {
+            color: #ff2d20;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .learning-path a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tips Box */
+        .tips-box {
+            background: #ebf8ff;
+            border: 2px solid #4299e1;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+
+        .tips-box h3 {
+            color: #2c5282;
+            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .tips-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-box li {
+            padding: 8px 0;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        .tips-box li::before {
+            content: "✅ ";
+            margin-left: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 25px rgba(72, 187, 120, 0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>🚀 الدرس الأول: مقدمة إلى Laravel</h1>
+            <p>تعلم Laravel من الصفر حتى الاحتراف - رحلتك تبدأ من هنا!</p>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="01-theory.html">النظري</a></li>
+                <li><a href="02-practice.html">العملي</a></li>
+                <li><a href="03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="exercises/README.html">التمارين</a></li>
+                <li><a href="resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Stats Section -->
+        <div class="stats fade-in">
+            <div class="stat-box">
+                <div class="number">4</div>
+                <div class="label">ملفات رئيسية</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">3</div>
+                <div class="label">تمارين عملية</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">10+</div>
+                <div class="label">أمثلة كود</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">8-12</div>
+                <div class="label">ساعات تعلم</div>
+            </div>
+        </div>
+
+        <!-- Main Lessons -->
+        <h2 class="section-title">📚 محتويات الدرس</h2>
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>📖 دليل الدرس</h3>
+                <p>نظرة شاملة على محتويات الدرس، الأهداف التعليمية، والجدول الزمني المقترح</p>
+                <a href="README.html" class="btn">ابدأ من هنا</a>
+            </div>
+
+            <div class="lesson-card">
+                <h3>📝 الدرس النظري</h3>
+                <p>فهم Laravel، معمارية MVC، هيكل المشروع، ودورة حياة الطلب</p>
+                <a href="01-theory.html" class="btn">اقرأ النظري</a>
+            </div>
+
+            <div class="lesson-card">
+                <h3>⚡ التطبيق العملي</h3>
+                <p>تثبيت Laravel، إنشاء أول مشروع، وتشغيله خطوة بخطوة</p>
+                <a href="02-practice.html" class="btn">طبّق الآن</a>
+            </div>
+
+            <div class="lesson-card">
+                <h3>✅ الاختبار + الحلول</h3>
+                <p>100 سؤال مع الحلول النموذجية لاختبار فهمك</p>
+                <a href="03-exam-with-answers.html" class="btn btn-secondary">ادرس الاختبار</a>
+            </div>
+
+            <div class="lesson-card">
+                <h3>📋 الاختبار النهائي</h3>
+                <p>اختبر نفسك! 100 سؤال بدون حلول للتقييم الذاتي</p>
+                <a href="04-exam-only.html" class="btn btn-secondary">ابدأ الاختبار</a>
+            </div>
+
+            <div class="lesson-card" style="border: 3px solid #ff2d20; background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);">
+                <h3>🎯 الاختبار التفاعلي ⭐</h3>
+                <p>اختبار تفاعلي بسيط: 15 سؤال اختيار متعدد مع تصحيح فوري</p>
+                <a href="interactive-exam.html" class="btn" style="background: linear-gradient(135deg, #48bb78, #38a169);">ابدأ الآن 🚀</a>
+            </div>
+
+            <div class="lesson-card" style="border: 3px solid #ed8936; background: linear-gradient(135deg, #fffaf0 0%, #feebc8 100%);">
+                <h3>🎯 الاختبار النهائي - 100 سؤال 🔥</h3>
+                <p>اختبار شامل ومتكامل: 40 اختيار متعدد + 40 صح/خطأ + 20 عملي = 100 نقطة | 120 دقيقة</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="interactive-exam-advanced.html" class="btn" style="background: linear-gradient(135deg, #ed8936, #dd6b20); animation: pulse 2s infinite; flex: 1; min-width: 150px;">ابدأ التحدي! 💪</a>
+                    <a href="exam-solutions.html" class="btn" style="background: linear-gradient(135deg, #667eea, #764ba2); flex: 1; min-width: 150px;">الحلول النموذجية 📚</a>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>💻 أمثلة الكود</h3>
+                <p>أمثلة عملية على Routes، Views، Controllers</p>
+                <a href="code-examples/README.html" class="btn">شاهد الأمثلة</a>
+            </div>
+
+            <div class="lesson-card">
+                <h3>🎯 التمارين</h3>
+                <p>3 تمارين متدرجة مع الحلول النموذجية</p>
+                <a href="exercises/README.html" class="btn">ابدأ التمارين</a>
+            </div>
+
+            <div class="lesson-card">
+                <h3>📑 الموارد</h3>
+                <p>ورقة غش، حل المشاكل، وقراءات إضافية</p>
+                <a href="resources/cheatsheet.html" class="btn btn-secondary">الموارد</a>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <h2 class="section-title">⭐ مميزات الدرس</h2>
+        <div class="features">
+            <div class="feature">
+                <span class="icon">📚</span>
+                <h4>محتوى شامل</h4>
+                <p>نظري وعملي متكامل</p>
+            </div>
+            <div class="feature">
+                <span class="icon">🎯</span>
+                <h4>أمثلة عملية</h4>
+                <p>أكثر من 20 مثال جاهز</p>
+            </div>
+            <div class="feature">
+                <span class="icon">✅</span>
+                <h4>اختبارات</h4>
+                <p>100 سؤال لتقييم الفهم</p>
+            </div>
+            <div class="feature">
+                <span class="icon">🛠️</span>
+                <h4>تمارين تطبيقية</h4>
+                <p>3 تمارين مع حلولها</p>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <h3>🔗 روابط سريعة</h3>
+            <ul>
+                <li><a href="resources/cheatsheet.html">📄 ورقة الغش</a></li>
+                <li><a href="resources/troubleshooting.html">🐛 حل المشاكل</a></li>
+                <li><a href="resources/further-reading.html">📖 قراءات إضافية</a></li>
+                <li><a href="resources/links.html">🔗 روابط مفيدة</a></li>
+                <li><a href="exercises/exercise-01-problem.html">تمرين 1</a></li>
+                <li><a href="exercises/exercise-02-problem.html">تمرين 2</a></li>
+                <li><a href="exercises/exercise-03-problem.html">تمرين 3</a></li>
+            </ul>
+        </div>
+
+        <!-- Learning Path -->
+        <div class="learning-path">
+            <h3>🗺️ المسار التعليمي الموصى به</h3>
+            <ol>
+                <li>ابدأ بـ <a href="README.html">دليل الدرس</a> لفهم البنية</li>
+                <li>اقرأ <a href="01-theory.html">الدرس النظري</a> بتمعن</li>
+                <li>طبّق <a href="02-practice.html">الجزء العملي</a> خطوة بخطوة</li>
+                <li>استكشف <a href="code-examples/README.html">أمثلة الكود</a></li>
+                <li>حل <a href="exercises/README.html">التمارين</a></li>
+                <li>ادرس <a href="03-exam-with-answers.html">الاختبار مع الحلول</a></li>
+                <li>اختبر نفسك بـ <a href="04-exam-only.html">الاختبار النهائي</a></li>
+                <li>راجع <a href="resources/cheatsheet.html">الموارد</a> عند الحاجة</li>
+            </ol>
+        </div>
+
+        <!-- Tips -->
+        <div class="tips-box">
+            <h3>💡 نصائح للنجاح</h3>
+            <ul>
+                <li>خذ وقتك في الفهم - لا تتعجل</li>
+                <li>اكتب الكود بنفسك - لا تنسخ ولصق</li>
+                <li>جرّب وعدّل - التجربة أفضل معلم</li>
+                <li>راجع الموارد عند الحاجة</li>
+                <li>حل التمارين بنفسك قبل النظر للحلول</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="01-theory.html">الدرس النظري</a>
+                    <a href="02-practice.html">التطبيق العملي</a>
+                    <a href="exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

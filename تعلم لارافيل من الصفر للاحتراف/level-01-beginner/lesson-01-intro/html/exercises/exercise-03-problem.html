@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="في هذا التمرين، ستحول الـ Routes من التمرين السابق إلى استخدام Controllers.">
+    <title>التمرين 3: إنشاء Controller | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>exercise 03 problem</span>
+    </div>
+
+    <main class="content container">
+        <h1>التمرين 3: إنشاء Controller</h1>
+<h1>Exercise 3: Creating Controller</h1>
+<hr>
+<h2>📋 وصف التمرين</h2>
+<p>في هذا التمرين، ستحول الـ Routes من التمرين السابق إلى استخدام Controllers.</p>
+<p><strong>المستوى:</strong> ⭐⭐⭐ (متقدم)<br><strong>الوقت المقترح:</strong> 30-40 دقيقة</p>
+<hr>
+<h2>📝 المطلوب</h2>
+<h3>المهمة 1: إنشاء ProductController</h3>
+<pre><code class="language-bash">php artisan make:controller ProductController
+</code></pre>
+<h4>Methods المطلوبة:</h4>
+<ol>
+<li><strong>index()</strong> - عرض قائمة المنتجات</li>
+<li><strong>show($id)</strong> - عرض منتج واحد</li>
+<li><strong>search(Request $request)</strong> - البحث عن منتج</li>
+</ol>
+<h3>المهمة 2: إنشاء CartController</h3>
+<pre><code class="language-bash">php artisan make:controller CartController
+</code></pre>
+<h4>Methods المطلوبة:</h4>
+<ol>
+<li><strong>index()</strong> - عرض سلة المشتريات</li>
+<li><strong>add($productId)</strong> - إضافة منتج للسلة</li>
+<li><strong>remove($productId)</strong> - حذف منتج من السلة</li>
+</ol>
+<h3>المهمة 3: تحديث Routes</h3>
+<p>حوّل جميع الـ Routes لتستخدم Controllers بدلاً من Closures.</p>
+<hr>
+<h2>✅ معايير التقييم</h2>
+<table>
+<thead>
+<tr>
+<th>المعيار</th>
+<th>النقاط</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ProductController</td>
+<td>40</td>
+</tr>
+<tr>
+<td>CartController</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Routes صحيحة</td>
+<td>20</td>
+</tr>
+<tr>
+<td><strong>المجموع</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>بالتوفيق! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

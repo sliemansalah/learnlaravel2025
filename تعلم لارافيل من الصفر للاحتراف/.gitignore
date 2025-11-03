@@ -1,0 +1,203 @@
+# ====================================
+# Laravel Learning Plan - .gitignore
+# ====================================
+
+# =====================================
+# Student Progress Files
+# =====================================
+# Ignore personal progress tracking files
+student-progress/*.md
+!student-progress/progress-template.md
+!student-progress/example-progress.md
+!student-progress/README.md
+
+# Personal notes
+**/my-notes.md
+**/personal-notes.md
+my-progress.md
+
+# =====================================
+# Generated Certificates
+# =====================================
+certificates/generated/*.pdf
+certificates/generated/*.html
+!certificates/generated/.gitkeep
+
+# =====================================
+# IDE and Editor Files
+# =====================================
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IntelliJ IDEA / PhpStorm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# =====================================
+# Operating System Files
+# =====================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+
+# =====================================
+# Temporary Files
+# =====================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.log
+*.old
+~*
+
+# =====================================
+# Python Files (for conversion scripts)
+# =====================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =====================================
+# Node.js Files (if using npm)
+# =====================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# =====================================
+# Generated PDF Files (Optional)
+# =====================================
+# Uncomment if you want to ignore all PDFs
+# *.pdf
+# But keep the template
+# !certificates/certificate-template.pdf
+
+# =====================================
+# Laravel Project Files
+# (if you create example projects)
+# =====================================
+**/vendor/
+**/node_modules/
+**/.env
+**/.env.backup
+**/.phpunit.result.cache
+**/Homestead.json
+**/Homestead.yaml
+**/npm-debug.log
+**/yarn-error.log
+**/storage/*.key
+**/public/hot
+**/public/storage
+**/storage/framework/cache/**
+**/storage/framework/sessions/**
+**/storage/framework/testing/**
+**/storage/framework/views/**
+**/storage/logs/**
+
+# =====================================
+# Build and Compiled Files
+# =====================================
+dist/
+build/
+out/
+*.min.js
+*.min.css
+
+# =====================================
+# Database Files
+# =====================================
+*.sqlite
+*.db
+
+# =====================================
+# Documentation Build Files
+# =====================================
+docs/_build/
+site/
+
+# =====================================
+# Archive Files
+# =====================================
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# =====================================
+# Test Coverage
+# =====================================
+coverage/
+.nyc_output/
+*.lcov
+
+# =====================================
+# Logs and Debugging
+# =====================================
+logs/
+*.log
+debug.log
+error.log
+
+# =====================================
+# Custom Exceptions
+# =====================================
+# Add files you want to track even if they match above patterns
+# Example:
+# !important-file.pdf

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تم إعادة تحويل جميع الملفات باستخدام مكتبة `marked` الاحترافية لضمان تنسيق صحيح 100%.">
+    <title>🌐 دليل استخدام النسخة HTML | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li><a href="./01-theory.html">النظري</a></li>
+                <li><a href="./02-practice.html">العملي</a></li>
+                <li><a href="./03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="./04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="./code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="./exercises/README.html">التمارين</a></li>
+                <li><a href="./resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="./index.html">الرئيسية</a>
+        <span>›</span>
+        <span>HOW TO USE HTML</span>
+    </div>
+
+    <main class="content container">
+        <h1>🌐 دليل استخدام النسخة HTML</h1>
+<hr>
+<h2>✅ تم التحسين!</h2>
+<p>تم إعادة تحويل جميع الملفات باستخدام مكتبة <code>marked</code> الاحترافية لضمان تنسيق صحيح 100%.</p>
+<hr>
+<h2>🚀 البدء السريع</h2>
+<h3>الطريقة الأسهل:</h3>
+<pre><code class="language-bash"># 1. افتح مجلد html
+cd html
+
+# 2. استخدم Python لتشغيل server محلي
+python -m http.server 8000
+
+# 3. افتح المتصفح
+# http://localhost:8000
+</code></pre>
+<h3>أو:</h3>
+<pre><code class="language-bash"># افتح الملف مباشرة
+start html/index.html      # Windows
+open html/index.html       # macOS
+xdg-open html/index.html   # Linux
+</code></pre>
+<hr>
+<h2>📊 ما تم تحسينه</h2>
+<h3>✅ التنسيق:</h3>
+<ul>
+<li>✨ تحويل Markdown صحيح 100%</li>
+<li>📝 العناوين والفقرات منسقة بشكل مثالي</li>
+<li>📋 الجداول تظهر بشكل صحيح</li>
+<li>💻 أكواد البرمجة بتنسيق LTR (من اليسار لليمين)</li>
+<li>✅ القوائم (Bullets &amp; Numbered) صحيحة</li>
+<li>📦 Blockquotes منسقة بشكل جميل</li>
+</ul>
+<h3>✅ الوظائف:</h3>
+<ul>
+<li>🔝 زر العودة للأعلى يعمل</li>
+<li>📋 نسخ الكود بنقرة واحدة</li>
+<li>📊 شريط تقدم القراءة</li>
+<li>🔗 روابط سلسة بين الصفحات</li>
+<li>📑 جدول محتويات تلقائي</li>
+</ul>
+<hr>
+<h2>🎨 المميزات</h2>
+<h3>التصميم:</h3>
+<pre><code>✅ ألوان Laravel الرسمية (#ff2d20)
+✅ خطوط واضحة وسهلة القراءة
+✅ تباعد مريح بين العناصر
+✅ استجابة كاملة (Responsive)
+✅ يعمل على جميع الأجهزة
+</code></pre>
+<h3>التوافق:</h3>
+<pre><code>✅ Chrome
+✅ Firefox
+✅ Safari
+✅ Edge
+✅ Opera
+✅ Mobile Browsers
+</code></pre>
+<hr>
+<h2>📂 بنية المشروع</h2>
+<pre><code>lesson-01-intro/
+│
+├── 📁 html/                    ← النسخة HTML (افتح هذا!)
+│   ├── index.html             ← ابدأ من هنا! ⭐
+│   ├── 01-theory.html
+│   ├── 02-practice.html
+│   ├── 03-exam-with-answers.html
+│   ├── 04-exam-only.html
+│   │
+│   ├── assets/
+│   │   ├── style.css          ← التنسيق
+│   │   └── script.js          ← الوظائف
+│   │
+│   ├── code-examples/
+│   ├── exercises/
+│   └── resources/
+│
+├── convert-improved.js         ← المحول المحسّن (استخدم هذا!)
+├── convert.js                  ← المحول القديم
+├── convert_to_html.py          ← Python (اختياري)
+│
+└── ملفات .md الأصلية          ← للتحرير فقط
+</code></pre>
+<hr>
+<h2>🔄 إعادة التحويل (إذا عدّلت .md)</h2>
+<p>إذا قمت بتعديل أي ملف Markdown وتريد تحديث HTML:</p>
+<pre><code class="language-bash"># استخدم المحول المحسّن
+node convert-improved.js
+</code></pre>
+<p>سيتم تحديث جميع ملفات HTML تلقائياً! ✨</p>
+<hr>
+<h2>💡 نصائح الاستخدام</h2>
+<h3>للقراءة:</h3>
+<ol>
+<li>✅ <strong>افتح <code>index.html</code> أولاً</strong> - يحتوي على جميع الروابط</li>
+<li>✅ <strong>استخدم القائمة العلوية</strong> - للتنقل السريع</li>
+<li>✅ <strong>Ctrl+F للبحث</strong> - ابحث عن أي كلمة</li>
+<li>✅ <strong>انقر على العناوين</strong> - للانتقال المباشر</li>
+</ol>
+<h3>للتعلم:</h3>
+<ol>
+<li>✅ ابدأ بالترتيب (README → Theory → Practice)</li>
+<li>✅ افتح عدة tabs للمقارنة</li>
+<li>✅ انسخ الأكواد وجرّبها</li>
+<li>✅ استخدم Ctrl+P للطباعة أو حفظ PDF</li>
+</ol>
+<h3>للطباعة:</h3>
+<pre><code>1. Ctrl/Cmd + P
+2. اختر &quot;حفظ كـ PDF&quot;
+3. فعّل &quot;Background graphics&quot;
+4. احفظ الملف
+</code></pre>
+<hr>
+<h2>🔧 حل المشاكل</h2>
+<h3>المشكلة 1: CSS لا يظهر</h3>
+<p><strong>السبب:</strong> مسار نسبي خاطئ</p>
+<p><strong>الحل:</strong></p>
+<ul>
+<li>استخدم server محلي (Python/PHP)</li>
+<li>أو افتح <code>index.html</code> من المجلد مباشرة</li>
+</ul>
+<h3>المشكلة 2: الروابط لا تعمل</h3>
+<p><strong>السبب:</strong> بعض المتصفحات تمنع JavaScript المحلي</p>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># استخدم server
+python -m http.server 8000
+# ثم افتح: http://localhost:8000
+</code></pre>
+<h3>المشكلة 3: الخطوط غير واضحة</h3>
+<p><strong>الحل:</strong></p>
+<ul>
+<li>استخدم Zoom: Ctrl/Cmd + Plus</li>
+<li>أو غيّر font-size في المتصفح</li>
+</ul>
+<hr>
+<h2>🎯 اختبار سريع</h2>
+<p>افتح الملفات التالية للتأكد أن كل شيء يعمل:</p>
+<ol>
+<li>✅ <code>html/index.html</code> - الصفحة الرئيسية</li>
+<li>✅ <code>html/01-theory.html</code> - الدرس النظري</li>
+<li>✅ <code>html/resources/cheatsheet.html</code> - ورقة الغش</li>
+<li>✅ <code>html/exercises/exercise-01-problem.html</code> - تمرين</li>
+</ol>
+<p>إذا فتحت جميعها بنجاح - تهانينا! كل شيء يعمل! 🎉</p>
+<hr>
+<h2>📱 الاستخدام على الهاتف</h2>
+<h3>Android/iOS:</h3>
+<ol>
+<li>انقل مجلد <code>html/</code> إلى هاتفك</li>
+<li>افتح <code>index.html</code> باستخدام Chrome/Safari</li>
+<li>أضفه إلى الشاشة الرئيسية (Add to Home Screen)</li>
+<li>استخدمه كتطبيق!</li>
+</ol>
+<hr>
+<h2>🌐 النشر على الإنترنت</h2>
+<h3>GitHub Pages (مجاني):</h3>
+<pre><code class="language-bash"># 1. أنشئ repository جديد
+# 2. ارفع مجلد html/ فقط
+# 3. اذهب لـ Settings → Pages
+# 4. اختر المجلد كمصدر
+# رابطك: username.github.io/repo-name
+</code></pre>
+<h3>Netlify (أسهل):</h3>
+<pre><code class="language-bash"># 1. اذهب لـ netlify.com
+# 2. Drag &amp; Drop مجلد html/
+# 3. انتظر 30 ثانية
+# رابطك جاهز!
+</code></pre>
+<hr>
+<h2>📊 الإحصائيات</h2>
+<table>
+<thead>
+<tr>
+<th>العنصر</th>
+<th>القيمة</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>عدد ملفات HTML</td>
+<td>20 ملف</td>
+</tr>
+<tr>
+<td>حجم CSS</td>
+<td>12 KB</td>
+</tr>
+<tr>
+<td>حجم JavaScript</td>
+<td>12 KB</td>
+</tr>
+<tr>
+<td>إجمالي الحجم</td>
+<td>~600 KB</td>
+</tr>
+<tr>
+<td>وقت التحميل</td>
+<td>&lt; 1 ثانية</td>
+</tr>
+<tr>
+<td>وقت التحويل</td>
+<td>~3 ثواني</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>⌨️ اختصارات مفيدة</h2>
+<table>
+<thead>
+<tr>
+<th>الاختصار</th>
+<th>الوظيفة</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + F</code></td>
+<td>البحث في الصفحة</td>
+</tr>
+<tr>
+<td><code>Ctrl + P</code></td>
+<td>طباعة/حفظ PDF</td>
+</tr>
+<tr>
+<td><code>Home</code></td>
+<td>العودة للأعلى</td>
+</tr>
+<tr>
+<td><code>End</code></td>
+<td>الذهاب للأسفل</td>
+</tr>
+<tr>
+<td><code>F11</code></td>
+<td>ملء الشاشة</td>
+</tr>
+<tr>
+<td><code>Ctrl + +</code></td>
+<td>تكبير</td>
+</tr>
+<tr>
+<td><code>Ctrl + -</code></td>
+<td>تصغير</td>
+</tr>
+<tr>
+<td><code>Ctrl + 0</code></td>
+<td>حجم عادي</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔒 الأمان والخصوصية</h2>
+<ul>
+<li>✅ لا يوجد تتبع (No tracking)</li>
+<li>✅ لا analytics</li>
+<li>✅ جميع الملفات محلية</li>
+<li>✅ يعمل بدون إنترنت (Offline)</li>
+<li>✅ لا cookies</li>
+<li>✅ آمن 100%</li>
+</ul>
+<hr>
+<h2>🎓 للمعلمين</h2>
+<h3>مشاركة مع الطلاب:</h3>
+<p><strong>خيار 1: USB/CD</strong></p>
+<pre><code>انسخ مجلد html/ على USB
+وزّعه على الطلاب
+يفتحون index.html مباشرة
+</code></pre>
+<p><strong>خيار 2: رفع أونلاين</strong></p>
+<pre><code>ارفع على GitHub Pages أو Netlify
+أعط الطلاب الرابط
+يمكنهم الوصول من أي مكان
+</code></pre>
+<p><strong>خيار 3: Zip File</strong></p>
+<pre><code>اضغط مجلد html/ لملف .zip
+ارفعه على Google Drive/Dropbox
+شارك الرابط مع الطلاب
+</code></pre>
+<hr>
+<h2>📞 الدعم</h2>
+<p>إذا واجهت أي مشكلة:</p>
+<ol>
+<li>✅ تأكد من استخدام <code>convert-improved.js</code></li>
+<li>✅ تحقق من console المتصفح (F12)</li>
+<li>✅ جرّب متصفح آخر</li>
+<li>✅ استخدم server محلي</li>
+</ol>
+<hr>
+<h2>✨ التحديثات القادمة</h2>
+<p>خطط مستقبلية:</p>
+<ul>
+<li><input disabled="" type="checkbox"> نسخة PWA (تطبيق ويب)</li>
+<li><input disabled="" type="checkbox"> وضع Dark Mode قابل للتبديل</li>
+<li><input disabled="" type="checkbox"> بحث متقدم</li>
+<li><input disabled="" type="checkbox"> Bookmarks</li>
+<li><input disabled="" type="checkbox"> تتبع التقدم</li>
+<li><input disabled="" type="checkbox"> تصدير PDF محسّن</li>
+</ul>
+<hr>
+<h2>🎉 الخلاصة</h2>
+<p>الآن لديك:</p>
+<p>✅ <strong>19 ملف Markdown أصلي</strong> (للتحرير)<br>✅ <strong>20 ملف HTML احترافي</strong> (للعرض)<br>✅ <strong>محول محسّن</strong> (للتحديث التلقائي)<br>✅ <strong>تصميم responsive</strong> (يعمل في كل مكان)<br>✅ <strong>وظائف تفاعلية</strong> (نسخ الكود، تنقل سلس، إلخ)</p>
+<hr>
+<p><strong>🚀 ابدأ الآن: افتح <code>html/index.html</code></strong></p>
+<p><strong>📚 تعلم ممتع!</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="./01-theory.html">الدرس النظري</a>
+                    <a href="./02-practice.html">التطبيق العملي</a>
+                    <a href="./exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="./resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="./resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="./resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

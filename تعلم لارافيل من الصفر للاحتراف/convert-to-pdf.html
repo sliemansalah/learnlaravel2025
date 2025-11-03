@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل Markdown إلى PDF</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.8;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #95a5a6;
+            padding-bottom: 8px;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        pre code {
+            background: none;
+            color: #ecf0f1;
+        }
+        ul, ol {
+            padding-right: 30px;
+        }
+        blockquote {
+            border-right: 4px solid #3498db;
+            padding-right: 15px;
+            margin-right: 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: right;
+        }
+        table th {
+            background: #3498db;
+            color: white;
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px dashed #3498db;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            background: #f8f9fa;
+        }
+        input[type="file"]:hover {
+            background: #e9ecef;
+        }
+        .success {
+            color: #27ae60;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .error {
+            color: #e74c3c;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .quick-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .quick-link-btn {
+            background: #27ae60;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        .quick-link-btn:hover {
+            background: #229954;
+        }
+        @media print {
+            body {
+                background: white;
+            }
+            .controls {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h2>🔄 تحويل Markdown إلى PDF</h2>
+
+        <div class="info-box">
+            <strong>📌 ملاحظة مهمة:</strong>
+            <p>اختر ملف Markdown (.md) من جهازك لتحويله إلى PDF</p>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <label for="fileInput" style="display: block; margin-bottom: 10px; font-weight: bold;">
+                📁 اختر ملف Markdown:
+            </label>
+            <input type="file" id="fileInput" accept=".md,.markdown" />
+        </div>
+
+        <div class="quick-links">
+            <p style="width: 100%; font-weight: bold;">أو اختر أحد الملفات الجاهزة:</p>
+            <button class="quick-link-btn" onclick="loadPresetFile('arabic')">
+                📄 النسخة العربية
+            </button>
+            <button class="quick-link-btn" onclick="loadPresetFile('english')">
+                📄 النسخة الإنجليزية
+            </button>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <button id="printBtn" onclick="window.print()" disabled>
+                🖨️ طباعة/حفظ كـ PDF
+            </button>
+        </div>
+
+        <p id="status"></p>
+
+        <hr style="margin: 20px 0;">
+
+        <details>
+            <summary style="cursor: pointer; font-weight: bold; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                📖 تعليمات الاستخدام (اضغط لعرض/إخفاء)
+            </summary>
+            <div style="padding: 15px;">
+                <h3>الطريقة 1: تحميل ملف من جهازك</h3>
+                <ol>
+                    <li>اضغط على "اختر ملف" أعلاه</li>
+                    <li>اختر أحد ملفات Markdown (خطة-تعلم-Laravel-الشاملة.md أو Comprehensive-Laravel-Learning-Plan.md)</li>
+                    <li>سيتم عرض المحتوى تلقائياً</li>
+                    <li>اضغط "طباعة/حفظ كـ PDF"</li>
+                    <li>في نافذة الطباعة، اختر "حفظ كـ PDF" بدلاً من الطابعة</li>
+                    <li>احفظ الملف بالاسم الذي تريده</li>
+                </ol>
+
+                <h3>الطريقة 2: استخدام الأزرار السريعة (تجريبي)</h3>
+                <p>⚠️ قد لا تعمل في بعض المتصفحات بسبب قيود الأمان</p>
+                <ol>
+                    <li>اضغط على "النسخة العربية" أو "النسخة الإنجليزية"</li>
+                    <li>إذا لم تعمل، استخدم الطريقة الأولى</li>
+                </ol>
+
+                <h3>💡 نصائح:</h3>
+                <ul>
+                    <li>تأكد من وجود ملفات .md في نفس المجلد مع هذا الملف</li>
+                    <li>استخدم متصفح حديث (Chrome, Firefox, Edge)</li>
+                    <li>في نافذة الطباعة، يمكنك تعديل الهوامش والإعدادات</li>
+                    <li>اختر "حفظ كـ PDF" من قائمة الوجهات في نافذة الطباعة</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+
+    <div class="container" id="content">
+        <div style="text-align: center; color: #7f8c8d; padding: 40px;">
+            <h2>👆 اختر ملف Markdown من الأعلى لعرض المحتوى</h2>
+            <p>الملفات المتاحة:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li>📄 خطة-تعلم-Laravel-الشاملة.md</li>
+                <li>📄 Comprehensive-Laravel-Learning-Plan.md</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const status = document.getElementById('status');
+        const content = document.getElementById('content');
+        const printBtn = document.getElementById('printBtn');
+
+        // Handle file selection
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                loadFile(file);
+            }
+        });
+
+        // Load file content
+        function loadFile(file) {
+            status.textContent = '⏳ جاري تحميل الملف...';
+            status.className = '';
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                try {
+                    const markdown = e.target.result;
+                    const html = marked.parse(markdown);
+                    content.innerHTML = html;
+
+                    // Set direction based on filename
+                    const isArabic = file.name.includes('خطة') || file.name.includes('arabic');
+                    setDirection(isArabic);
+
+                    status.textContent = '✅ تم تحميل الملف بنجاح! يمكنك الآن طباعته كـ PDF';
+                    status.className = 'success';
+                    printBtn.disabled = false;
+
+                } catch (error) {
+                    showError('فشل في معالجة الملف: ' + error.message);
+                }
+            };
+
+            reader.onerror = function() {
+                showError('فشل في قراءة الملف');
+            };
+
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        // Try to load preset files (may not work in all browsers due to CORS)
+        async function loadPresetFile(type) {
+            const filename = type === 'arabic'
+                ? 'خطة-تعلم-Laravel-الشاملة.md'
+                : 'Comprehensive-Laravel-Learning-Plan.md';
+
+            status.textContent = '⏳ جاري تحميل الملف...';
+            status.className = '';
+
+            try {
+                const response = await fetch(filename);
+
+                if (!response.ok) {
+                    throw new Error('لم يتم العثور على الملف');
+                }
+
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+                content.innerHTML = html;
+
+                setDirection(type === 'arabic');
+
+                status.textContent = '✅ تم تحميل الملف بنجاح! يمكنك الآن طباعته كـ PDF';
+                status.className = 'success';
+                printBtn.disabled = false;
+
+            } catch (error) {
+                showError('❌ فشل التحميل التلقائي. الرجاء استخدام زر "اختر ملف" بدلاً من ذلك.');
+                console.error('Error:', error);
+            }
+        }
+
+        // Set text direction
+        function setDirection(isArabic) {
+            if (isArabic) {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                content.style.direction = 'rtl';
+                content.style.textAlign = 'right';
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                content.style.direction = 'ltr';
+                content.style.textAlign = 'left';
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            status.textContent = message;
+            status.className = 'error';
+            printBtn.disabled = true;
+        }
+
+        // Keyboard shortcut for print (Ctrl+P)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                if (!printBtn.disabled) {
+                    e.preventDefault();
+                    window.print();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

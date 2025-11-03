@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="composer create-project laravel/laravel project-name">
+    <title>Laravel - ورقة الغش السريعة | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>cheatsheet</span>
+    </div>
+
+    <main class="content container">
+        <h1>Laravel - ورقة الغش السريعة</h1>
+<h1>Laravel Cheat Sheet</h1>
+<hr>
+<h2>🚀 أوامر Artisan الأساسية</h2>
+<pre><code class="language-bash"># إنشاء مشروع جديد
+composer create-project laravel/laravel project-name
+
+# تشغيل السيرفر المحلي
+php artisan serve
+php artisan serve --port=8080
+
+# عرض جميع الأوامر
+php artisan list
+
+# مسح الـ cache
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+# عرض معلومات Laravel
+php artisan about
+</code></pre>
+<hr>
+<h2>🛣️ Routing</h2>
+<h3>Routes البسيطة</h3>
+<pre><code class="language-php">use Illuminate\Support\Facades\Route;
+
+// GET Route
+Route::get(&#39;/url&#39;, function () {
+    return &#39;response&#39;;
+});
+
+// POST Route
+Route::post(&#39;/url&#39;, function () { /* ... */ });
+
+// PUT/PATCH Route
+Route::put(&#39;/url&#39;, function () { /* ... */ });
+Route::patch(&#39;/url&#39;, function () { /* ... */ });
+
+// DELETE Route
+Route::delete(&#39;/url&#39;, function () { /* ... */ });
+
+// Multiple Methods
+Route::match([&#39;get&#39;, &#39;post&#39;], &#39;/url&#39;, function () { /* ... */ });
+Route::any(&#39;/url&#39;, function () { /* ... */ });
+</code></pre>
+<h3>Route Parameters</h3>
+<pre><code class="language-php">// Required Parameter
+Route::get(&#39;/user/{id}&#39;, function ($id) {
+    return &quot;User {$id}&quot;;
+});
+
+// Optional Parameter
+Route::get(&#39;/user/{name?}&#39;, function ($name = &#39;Guest&#39;) {
+    return &quot;Hello {$name}&quot;;
+});
+
+// Parameter Validation
+Route::get(&#39;/user/{id}&#39;, function ($id) { /* ... */ })
+    -&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;);
+
+// Multiple Parameters
+Route::get(&#39;/post/{postId}/comment/{commentId}&#39;, function ($postId, $commentId) {
+    // ...
+})-&gt;where([&#39;postId&#39; =&gt; &#39;[0-9]+&#39;, &#39;commentId&#39; =&gt; &#39;[0-9]+&#39;]);
+</code></pre>
+<h3>Named Routes</h3>
+<pre><code class="language-php">Route::get(&#39;/dashboard&#39;, function () { /* ... */ })-&gt;name(&#39;dashboard&#39;);
+
+// استخدام Named Route
+redirect()-&gt;route(&#39;dashboard&#39;);
+route(&#39;dashboard&#39;); // يرجع الـ URL
+</code></pre>
+<h3>Route Groups</h3>
+<pre><code class="language-php">// Prefix
+Route::prefix(&#39;admin&#39;)-&gt;group(function () {
+    Route::get(&#39;/users&#39;, function () { /* ... */ }); // /admin/users
+});
+
+// Name Prefix
+Route::name(&#39;admin.&#39;)-&gt;group(function () {
+    Route::get(&#39;/dashboard&#39;, function () { /* ... */ })-&gt;name(&#39;dashboard&#39;); // admin.dashboard
+});
+
+// Middleware
+Route::middleware([&#39;auth&#39;])-&gt;group(function () {
+    Route::get(&#39;/profile&#39;, function () { /* ... */ });
+});
+</code></pre>
+<hr>
+<h2>👀 Views</h2>
+<h3>عرض View</h3>
+<pre><code class="language-php">// طريقة 1
+return view(&#39;welcome&#39;);
+
+// طريقة 2 - مع بيانات
+return view(&#39;user&#39;, [&#39;name&#39; =&gt; &#39;John&#39;]);
+
+// طريقة 3 - compact
+$name = &#39;John&#39;;
+return view(&#39;user&#39;, compact(&#39;name&#39;));
+
+// طريقة 4 - with
+return view(&#39;user&#39;)-&gt;with(&#39;name&#39;, &#39;John&#39;);
+
+// View مباشرة من Route
+Route::view(&#39;/welcome&#39;, &#39;welcome&#39;);
+Route::view(&#39;/welcome&#39;, &#39;welcome&#39;, [&#39;name&#39; =&gt; &#39;John&#39;]);
+</code></pre>
+<hr>
+<h2>🔧 Blade Templates</h2>
+<h3>Directives الأساسية</h3>
+<pre><code class="language-blade">{{-- تعليق --}}
+
+{{-- عرض متغير (محمي من XSS) --}}
+{{ $variable }}
+
+{{-- عرض HTML غير محمي --}}
+{!! $html !!}
+
+{{-- قيمة افتراضية --}}
+{{ $name ?? &#39;Guest&#39; }}
+
+{{-- تنفيذ PHP --}}
+@php
+    $total = 100;
+@endphp
+</code></pre>
+<h3>Control Structures</h3>
+<pre><code class="language-blade">{{-- If Statement --}}
+@if ($score &gt;= 90)
+    ممتاز
+@elseif ($score &gt;= 70)
+    جيد
+@else
+    يحتاج تحسين
+@endif
+
+{{-- Unless (عكس if) --}}
+@unless ($user-&gt;isAdmin())
+    ليس مدير
+@endunless
+
+{{-- Isset و Empty --}}
+@isset($user)
+    موجود
+@endisset
+
+@empty($users)
+    فارغ
+@endempty
+
+{{-- Auth Checks --}}
+@auth
+    مسجل دخول
+@endauth
+
+@guest
+    ضيف
+@endguest
+</code></pre>
+<h3>Loops</h3>
+<pre><code class="language-blade">{{-- For Loop --}}
+@for ($i = 0; $i &lt; 10; $i++)
+    {{ $i }}
+@endfor
+
+{{-- Foreach --}}
+@foreach ($users as $user)
+    {{ $user-&gt;name }}
+@endforeach
+
+{{-- Forelse (مع fallback) --}}
+@forelse ($users as $user)
+    {{ $user-&gt;name }}
+@empty
+    لا يوجد مستخدمين
+@endforelse
+
+{{-- While --}}
+@while ($condition)
+    ...
+@endwhile
+</code></pre>
+<h3>Loop Variable</h3>
+<pre><code class="language-blade">@foreach ($items as $item)
+    {{ $loop-&gt;index }}       {{-- 0, 1, 2, ... --}}
+    {{ $loop-&gt;iteration }}   {{-- 1, 2, 3, ... --}}
+    {{ $loop-&gt;first }}       {{-- true في الدورة الأولى --}}
+    {{ $loop-&gt;last }}        {{-- true في الدورة الأخيرة --}}
+    {{ $loop-&gt;count }}       {{-- عدد العناصر --}}
+    {{ $loop-&gt;remaining }}   {{-- العناصر المتبقية --}}
+@endforeach
+</code></pre>
+<h3>Layouts</h3>
+<pre><code class="language-blade">{{-- Layout: layouts/app.blade.php --}}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;@yield(&#39;title&#39;)&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    @yield(&#39;content&#39;)
+    @stack(&#39;scripts&#39;)
+&lt;/body&gt;
+&lt;/html&gt;
+
+{{-- View يستخدم Layout --}}
+@extends(&#39;layouts.app&#39;)
+
+@section(&#39;title&#39;, &#39;Page Title&#39;)
+
+@section(&#39;content&#39;)
+    &lt;h1&gt;Content&lt;/h1&gt;
+@endsection
+
+@push(&#39;scripts&#39;)
+    &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+@endpush
+</code></pre>
+<h3>Include</h3>
+<pre><code class="language-blade">{{-- Include View --}}
+@include(&#39;partials.header&#39;)
+
+{{-- مع بيانات --}}
+@include(&#39;partials.alert&#39;, [&#39;type&#39; =&gt; &#39;success&#39;])
+
+{{-- If exists --}}
+@includeIf(&#39;partials.header&#39;)
+
+{{-- When condition --}}
+@includeWhen($condition, &#39;partials.header&#39;)
+</code></pre>
+<hr>
+<h2>🎮 Controllers</h2>
+<h3>إنشاء Controller</h3>
+<pre><code class="language-bash"># Controller بسيط
+php artisan make:controller UserController
+
+# Resource Controller
+php artisan make:controller UserController --resource
+
+# API Controller
+php artisan make:controller UserController --api
+
+# Invokable Controller
+php artisan make:controller ShowProfile --invokable
+</code></pre>
+<h3>Controller Example</h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        return view(&#39;users.index&#39;);
+    }
+
+    public function show($id)
+    {
+        return view(&#39;users.show&#39;, [&#39;id&#39; =&gt; $id]);
+    }
+
+    public function store(Request $request)
+    {
+        // حفظ البيانات
+        return redirect()-&gt;route(&#39;users.index&#39;);
+    }
+}
+</code></pre>
+<h3>Resource Routes</h3>
+<pre><code class="language-php">// Route واحد لجميع عمليات CRUD
+Route::resource(&#39;users&#39;, UserController::class);
+
+// ينشئ:
+// GET    /users           -&gt; index
+// GET    /users/create    -&gt; create
+// POST   /users           -&gt; store
+// GET    /users/{id}      -&gt; show
+// GET    /users/{id}/edit -&gt; edit
+// PUT    /users/{id}      -&gt; update
+// DELETE /users/{id}      -&gt; destroy
+</code></pre>
+<hr>
+<h2>🔄 Responses</h2>
+<pre><code class="language-php">// String
+return &#39;Hello&#39;;
+
+// Array (يتحول لـ JSON)
+return [&#39;name&#39; =&gt; &#39;John&#39;];
+
+// View
+return view(&#39;welcome&#39;);
+
+// JSON
+return response()-&gt;json([&#39;name&#39; =&gt; &#39;John&#39;]);
+
+// Redirect
+return redirect(&#39;/home&#39;);
+return redirect()-&gt;route(&#39;dashboard&#39;);
+return redirect()-&gt;back();
+
+// مع رسالة
+return redirect()-&gt;route(&#39;home&#39;)-&gt;with(&#39;success&#39;, &#39;تم الحفظ!&#39;);
+</code></pre>
+<hr>
+<h2>⚙️ Environment Variables</h2>
+<pre><code class="language-php">// قراءة من .env
+env(&#39;APP_NAME&#39;)
+env(&#39;APP_DEBUG&#39;, false) // مع قيمة افتراضية
+
+// في config/app.php
+&#39;name&#39; =&gt; env(&#39;APP_NAME&#39;, &#39;Laravel&#39;),
+
+// استخدام
+config(&#39;app.name&#39;)
+</code></pre>
+<hr>
+<h2>📝 التحقق من البيانات (Basic)</h2>
+<pre><code class="language-php">$request-&gt;validate([
+    &#39;name&#39; =&gt; &#39;required|max:255&#39;,
+    &#39;email&#39; =&gt; &#39;required|email|unique:users&#39;,
+    &#39;age&#39; =&gt; &#39;required|integer|min:18&#39;,
+    &#39;password&#39; =&gt; &#39;required|min:8|confirmed&#39;,
+]);
+</code></pre>
+<hr>
+<h2>💡 نصائح سريعة</h2>
+<pre><code class="language-bash"># عرض جميع Routes
+php artisan route:list
+
+# البحث عن route معين
+php artisan route:list --path=users
+
+# تصفية حسب Method
+php artisan route:list --method=GET
+
+# عرض التفاصيل
+php artisan route:list -v
+</code></pre>
+<hr>
+<p><strong>احفظ هذه الورقة للرجوع إليها! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

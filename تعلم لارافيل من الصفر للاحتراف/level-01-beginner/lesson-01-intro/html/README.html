@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="|  | الملف | الوصف | الحجم |">
+    <title>الدرس 1: مقدمة إلى Laravel والبيئة التطويرية | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li><a href="./01-theory.html">النظري</a></li>
+                <li><a href="./02-practice.html">العملي</a></li>
+                <li><a href="./03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="./04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="./code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="./exercises/README.html">التمارين</a></li>
+                <li><a href="./resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="./index.html">الرئيسية</a>
+        <span>›</span>
+        <span>README</span>
+    </div>
+
+    <main class="content container">
+        <h1>الدرس 1: مقدمة إلى Laravel والبيئة التطويرية</h1>
+<h1>Lesson 1: Introduction to Laravel and Development Environment</h1>
+<hr>
+<h2>📚 محتويات الدرس | Lesson Contents</h2>
+<h3>الملفات الأساسية | Core Files</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>الملف</th>
+<th>الوصف</th>
+<th>الحجم</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>01-theory.md</code></td>
+<td>الدرس النظري الشامل</td>
+<td>~915 سطر</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>02-practice.md</code></td>
+<td>التطبيق العملي خطوة بخطوة</td>
+<td>~876 سطر</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>03-exam-with-answers.md</code></td>
+<td>الاختبار مع الحلول النموذجية</td>
+<td>~875 سطر</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>04-exam-only.md</code></td>
+<td>الاختبار بدون حلول (للتقييم الذاتي)</td>
+<td>~650 سطر</td>
+</tr>
+</tbody></table>
+<h3>المجلدات الإضافية | Additional Folders</h3>
+<table>
+<thead>
+<tr>
+<th>المجلد</th>
+<th>المحتوى</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>code-examples/</code></td>
+<td>أمثلة كود جاهزة للتشغيل</td>
+<td>للتطبيق المباشر</td>
+</tr>
+<tr>
+<td><code>exercises/</code></td>
+<td>تمارين إضافية مع حلولها</td>
+<td>لتعزيز المفاهيم</td>
+</tr>
+<tr>
+<td><code>resources/</code></td>
+<td>روابط ومصادر إضافية</td>
+<td>للقراءة المتعمقة</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎯 أهداف الدرس | Lesson Objectives</h2>
+<p>بنهاية هذا الدرس، ستكون قادراً على:</p>
+<ul>
+<li>✅ فهم ماهية Laravel ولماذا نستخدمه</li>
+<li>✅ فهم معمارية MVC بشكل واضح</li>
+<li>✅ تثبيت وإعداد بيئة تطوير Laravel كاملة</li>
+<li>✅ فهم دور Composer في Laravel</li>
+<li>✅ التعرف على هيكل ملفات ومجلدات Laravel</li>
+<li>✅ فهم دورة حياة الطلب في Laravel</li>
+<li>✅ إنشاء أول مشروع Laravel</li>
+<li>✅ تشغيل السيرفر المحلي</li>
+<li>✅ إنشاء Routes و Views بسيطة</li>
+</ul>
+<hr>
+<h2>📖 كيفية استخدام هذا الدرس</h2>
+<h3>المسار الموصى به:</h3>
+<pre><code>1️⃣ ابدأ بـ 01-theory.md
+   ├─ اقرأه بتمعن
+   ├─ دوّن ملاحظاتك
+   └─ تأكد من فهم كل مفهوم
+
+2️⃣ انتقل إلى 02-practice.md
+   ├─ طبّق كل خطوة بنفسك
+   ├─ لا تنسخ الكود - اكتبه!
+   └─ جرّب التعديلات
+
+3️⃣ استكشف code-examples/
+   ├─ شغّل الأمثلة
+   ├─ اقرأ التعليقات
+   └─ عدّل وجرّب
+
+4️⃣ حل التمارين في exercises/
+   ├─ حاول الحل بنفسك أولاً
+   ├─ ثم راجع الحلول
+   └─ قارن طريقتك
+
+5️⃣ ادرس 03-exam-with-answers.md
+   ├─ اقرأ كل سؤال
+   ├─ حاول الإجابة ذهنياً
+   └─ اقرأ الحل النموذجي
+
+6️⃣ اختبر نفسك مع 04-exam-only.md
+   ├─ خصص 90 دقيقة
+   ├─ اكتب إجاباتك
+   └─ صحح بنفسك
+</code></pre>
+<hr>
+<h2>⏱️ الجدول الزمني المقترح</h2>
+<h3>خطة 3 أيام (مكثفة):</h3>
+<pre><code>📅 اليوم الأول (3-4 ساعات):
+   09:00-10:30 → قراءة 01-theory.md
+   10:30-10:45 → استراحة ☕
+   10:45-12:30 → البدء بـ 02-practice.md
+   12:30-13:30 → غداء 🍽️
+   13:30-15:00 → إكمال 02-practice.md
+
+📅 اليوم الثاني (3-4 ساعات):
+   09:00-10:00 → مراجعة ما تعلمته
+   10:00-11:30 → code-examples/
+   11:30-11:45 → استراحة ☕
+   11:45-13:00 → exercises/
+   13:00-13:30 → مراجعة الحلول
+
+📅 اليوم الثالث (2-3 ساعات):
+   09:00-10:00 → دراسة 03-exam-with-answers.md
+   10:00-10:15 → استراحة ☕
+   10:15-11:45 → حل 04-exam-only.md
+   11:45-12:00 → التصحيح والتقييم
+</code></pre>
+<h3>خطة أسبوع واحد (مريحة):</h3>
+<pre><code>📅 اليوم 1: نظري (1-2 ساعة)
+   - قراءة 01-theory.md
+
+📅 اليوم 2: عملي - جزء 1 (1-2 ساعة)
+   - تثبيت المتطلبات
+   - إنشاء أول مشروع
+
+📅 اليوم 3: عملي - جزء 2 (1-2 ساعة)
+   - إكمال 02-practice.md
+   - أول تعديل
+
+📅 اليوم 4: أمثلة وتمارين (1-2 ساعة)
+   - code-examples/
+   - exercises/
+
+📅 اليوم 5: مراجعة (1 ساعة)
+   - مراجعة شاملة
+   - 03-exam-with-answers.md
+
+📅 اليوم 6: راحة 😊
+   - استرح واستعد للاختبار
+
+📅 اليوم 7: اختبار (1.5 ساعة)
+   - 04-exam-only.md
+   - التصحيح والتقييم
+</code></pre>
+<hr>
+<h2>📊 معايير التقييم</h2>
+<h3>توزيع الدرجات في الاختبار:</h3>
+<table>
+<thead>
+<tr>
+<th>القسم</th>
+<th>النسبة</th>
+<th>الدرجة</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>الأسئلة النظرية</td>
+<td>30%</td>
+<td>30 نقطة</td>
+</tr>
+<tr>
+<td>الأسئلة العملية</td>
+<td>40%</td>
+<td>40 نقطة</td>
+</tr>
+<tr>
+<td>الأسئلة التطبيقية</td>
+<td>30%</td>
+<td>30 نقطة</td>
+</tr>
+<tr>
+<td><strong>المجموع</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>100 نقطة</strong></td>
+</tr>
+</tbody></table>
+<h3>مستويات الإتقان:</h3>
+<pre><code>✅ 90-100%: ممتاز
+   → انتقل مباشرة للدرس التالي
+
+✅ 80-89%: جيد جداً
+   → راجع النقاط الضعيفة ثم انتقل
+
+⚠️ 70-79%: جيد
+   → راجع الدرس مرة أخرى قبل الانتقال
+
+❌ &lt;70%: يحتاج مراجعة
+   → أعد دراسة الدرس كاملاً
+</code></pre>
+<hr>
+<h2>💡 نصائح للنجاح</h2>
+<h3>✅ افعل:</h3>
+<ol>
+<li><p><strong>اكتب الكود بنفسك</strong></p>
+<ul>
+<li>لا تنسخ ولصق</li>
+<li>اكتب كل سطر بيدك</li>
+<li>افهم كل سطر تكتبه</li>
+</ul>
+</li>
+<li><p><strong>جرّب وعدّل</strong></p>
+<ul>
+<li>غيّر القيم</li>
+<li>جرّب أشياء مختلفة</li>
+<li>اكسر الكود وصلحه</li>
+</ul>
+</li>
+<li><p><strong>دوّن الملاحظات</strong></p>
+<ul>
+<li>احتفظ بملف ملاحظات</li>
+<li>اكتب الأخطاء التي واجهتها</li>
+<li>اكتب الحلول التي وجدتها</li>
+</ul>
+</li>
+<li><p><strong>اسأل عندما تحتاج</strong></p>
+<ul>
+<li>لا تتردد في طلب المساعدة</li>
+<li>استخدم مجتمعات Laravel</li>
+<li>ابحث في Google بذكاء</li>
+</ul>
+</li>
+</ol>
+<h3>❌ لا تفعل:</h3>
+<ol>
+<li><p><strong>لا تتعجل</strong></p>
+<ul>
+<li>خذ وقتك في الفهم</li>
+<li>الجودة أهم من السرعة</li>
+</ul>
+</li>
+<li><p><strong>لا تتخطى الأجزاء</strong></p>
+<ul>
+<li>كل جزء مهم</li>
+<li>كل درس يبني على السابق</li>
+</ul>
+</li>
+<li><p><strong>لا تحفظ فقط</strong></p>
+<ul>
+<li>الفهم أهم من الحفظ</li>
+<li>طبّق ما تتعلمه</li>
+</ul>
+</li>
+<li><p><strong>لا تستسلم</strong></p>
+<ul>
+<li>البرمجة تحتاج صبر</li>
+<li>الأخطاء جزء من التعلم</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>🔧 المتطلبات التقنية</h2>
+<h3>قبل البدء، تأكد من توفر:</h3>
+<pre><code>✅ PHP 8.2 أو أحدث
+✅ Composer (أحدث إصدار)
+✅ محرر نصوص (VS Code موصى به)
+✅ قاعدة بيانات (MySQL أو SQLite)
+✅ متصفح ويب حديث
+✅ Git (اختياري لكن موصى به)
+✅ اتصال إنترنت (للتثبيت فقط)
+</code></pre>
+<h3>للتحقق:</h3>
+<pre><code class="language-bash"># التحقق من PHP
+php -v
+
+# التحقق من Composer
+composer --version
+
+# التحقق من Extensions
+php -m | grep -E &#39;mbstring|openssl|pdo|tokenizer|xml&#39;
+</code></pre>
+<hr>
+<h2>📁 هيكل الملفات الكامل</h2>
+<pre><code>lesson-01-intro/
+│
+├── 📄 01-theory.md                    # الدرس النظري
+├── 📄 02-practice.md                  # التطبيق العملي
+├── 📄 03-exam-with-answers.md         # الاختبار + الحلول
+├── 📄 04-exam-only.md                 # الاختبار فقط
+├── 📄 README.md                       # هذا الملف
+│
+├── 📁 code-examples/                  # أمثلة الكود
+│   ├── example-01-route.php
+│   ├── example-02-view.php
+│   ├── example-03-controller.php
+│   └── README.md
+│
+├── 📁 exercises/                      # التمارين
+│   ├── exercise-01-problem.md
+│   ├── exercise-01-solution.md
+│   ├── exercise-02-problem.md
+│   ├── exercise-02-solution.md
+│   └── README.md
+│
+└── 📁 resources/                      # الموارد الإضافية
+    ├── links.md                      # روابط مفيدة
+    ├── cheatsheet.md                 # ملخص سريع
+    ├── troubleshooting.md            # حل المشاكل
+    └── further-reading.md            # قراءات إضافية
+</code></pre>
+<hr>
+<h2>🐛 حل المشاكل الشائعة</h2>
+<h3>مشكلة 1: خطأ في تثبيت Composer</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>composer: command not found
+</code></pre>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># تأكد من إضافة Composer إلى PATH
+# Windows: أعد تشغيل CMD
+# macOS/Linux: أعد تحميل .bashrc أو .zshrc
+</code></pre>
+<h3>مشكلة 2: خطأ في Extensions</h3>
+<p><strong>الأعراض:</strong></p>
+<pre><code>Class &quot;PDO&quot; not found
+</code></pre>
+<p><strong>الحل:</strong></p>
+<pre><code>1. افتح ملف php.ini
+2. ابحث عن:extension=pdo_mysql
+3. احذف ; من بداية السطر
+4. احفظ وأعد تشغيل الخادم
+</code></pre>
+<h3>مشكلة 3: Permission Denied</h3>
+<p><strong>الأعراض (macOS/Linux):</strong></p>
+<pre><code>Permission denied
+</code></pre>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash">chmod -R 775 storage bootstrap/cache
+</code></pre>
+<h3>للمزيد:</h3>
+<p>راجع ملف <code>resources/troubleshooting.md</code></p>
+<hr>
+<h2>📚 مصادر إضافية</h2>
+<h3>الوثائق الرسمية:</h3>
+<ul>
+<li>📖 <a href="https://laravel.com/docs/11.x">Laravel 11.x Documentation</a></li>
+<li>📖 <a href="https://laravel.com/api/11.x/">Laravel API Reference</a></li>
+</ul>
+<h3>دروس فيديو:</h3>
+<ul>
+<li>🎥 <a href="https://laracasts.com/series/laravel-from-scratch">Laracasts - Laravel From Scratch</a></li>
+<li>🎥 <a href="https://www.youtube.com/@LaravelDaily">Laravel Daily - YouTube</a></li>
+<li>🎥 <a href="https://www.youtube.com/watch?v=MYyJ4PuL4pY">Traversy Media - Laravel Crash Course</a></li>
+</ul>
+<h3>مجتمعات:</h3>
+<ul>
+<li>💬 <a href="https://laravel.io">Laravel.io Forum</a></li>
+<li>💬 <a href="https://discord.gg/laravel">Laravel Discord</a></li>
+<li>💬 <a href="https://reddit.com/r/laravel">r/laravel on Reddit</a></li>
+<li>💬 <a href="https://laracasts.com/discuss">Laracasts Forum</a></li>
+</ul>
+<h3>مدونات موصى بها:</h3>
+<ul>
+<li>📝 <a href="https://laravel-news.com">Laravel News</a></li>
+<li>📝 <a href="https://laraveldaily.com">Laravel Daily Blog</a></li>
+<li>📝 <a href="https://freek.dev">Freek.dev</a></li>
+</ul>
+<hr>
+<h2>✅ قائمة التحقق</h2>
+<p>استخدم هذه القائمة لتتبع تقدمك:</p>
+<h3>الدرس النظري:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> قرأت <code>01-theory.md</code> كاملاً</li>
+<li><input disabled="" type="checkbox"> فهمت ما هو Laravel</li>
+<li><input disabled="" type="checkbox"> فهمت معمارية MVC</li>
+<li><input disabled="" type="checkbox"> عرفت المتطلبات التقنية</li>
+<li><input disabled="" type="checkbox"> فهمت دور Composer</li>
+<li><input disabled="" type="checkbox"> عرفت هيكل Laravel</li>
+<li><input disabled="" type="checkbox"> فهمت دورة حياة الطلب</li>
+</ul>
+<h3>الدرس العملي:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ثبّتُ PHP و Composer</li>
+<li><input disabled="" type="checkbox"> أنشأتُ أول مشروع Laravel</li>
+<li><input disabled="" type="checkbox"> شغّلتُ <code>php artisan serve</code></li>
+<li><input disabled="" type="checkbox"> رأيتُ صفحة Laravel الافتراضية</li>
+<li><input disabled="" type="checkbox"> أعددتُ قاعدة البيانات</li>
+<li><input disabled="" type="checkbox"> شغّلتُ <code>php artisan migrate</code></li>
+<li><input disabled="" type="checkbox"> عدّلتُ <code>welcome.blade.php</code></li>
+<li><input disabled="" type="checkbox"> أنشأتُ route جديد</li>
+<li><input disabled="" type="checkbox"> أنشأتُ view جديد</li>
+<li><input disabled="" type="checkbox"> جرّبتُ أوامر Artisan</li>
+</ul>
+<h3>الأمثلة والتمارين:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> شغّلتُ جميع الأمثلة في <code>code-examples/</code></li>
+<li><input disabled="" type="checkbox"> حللتُ جميع التمارين في <code>exercises/</code></li>
+<li><input disabled="" type="checkbox"> قارنتُ حلولي بالحلول النموذجية</li>
+</ul>
+<h3>الاختبار:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> درستُ <code>03-exam-with-answers.md</code></li>
+<li><input disabled="" type="checkbox"> حللتُ <code>04-exam-only.md</code></li>
+<li><input disabled="" type="checkbox"> صححتُ إجاباتي</li>
+<li><input disabled="" type="checkbox"> حصلتُ على 80% فأكثر</li>
+</ul>
+<hr>
+<h2>🎓 شهادة الإتمام</h2>
+<p>عند إتمام هذا الدرس بنجاح (80% فأكثر):</p>
+<pre><code>╔═══════════════════════════════════════════════════════╗
+║                                                       ║
+║              🎓 شهادة إتمام الدرس                    ║
+║                                                       ║
+║  هذا يشهد بأن:                                       ║
+║                                                       ║
+║  _________________________ (اسمك)                    ║
+║                                                       ║
+║  قد أتم بنجاح:                                       ║
+║  الدرس 1: مقدمة إلى Laravel والبيئة التطويرية       ║
+║                                                       ║
+║  الدرجة: _____ / 100                                 ║
+║  النسبة: _____%                                      ║
+║  التاريخ: ____ / ____ / ________                     ║
+║                                                       ║
+║  ✅ جاهز للانتقال إلى الدرس 2: Routing              ║
+║                                                       ║
+╚═══════════════════════════════════════════════════════╝
+</code></pre>
+<hr>
+<h2>🔄 الخطوة التالية</h2>
+<p><strong>بعد إتمام هذا الدرس بنجاح:</strong></p>
+<pre><code>→ انتقل إلى:
+   📁 level-01-beginner/lesson-02-routing/
+</code></pre>
+<p><strong>في الدرس التالي سنتعلم:</strong></p>
+<ul>
+<li>✅ التوجيه (Routing) بالتفصيل</li>
+<li>✅ Route Parameters</li>
+<li>✅ Named Routes</li>
+<li>✅ Route Groups</li>
+<li>✅ Route Methods</li>
+</ul>
+<hr>
+<h2>📞 الدعم والمساعدة</h2>
+<p><strong>إذا واجهت أي مشكلة:</strong></p>
+<ol>
+<li><strong>راجع قسم &quot;حل المشاكل&quot;</strong> في هذا الملف</li>
+<li><strong>راجع</strong> <code>resources/troubleshooting.md</code></li>
+<li><strong>ابحث في</strong> وثائق Laravel</li>
+<li><strong>اسأل في</strong> مجتمعات Laravel</li>
+</ol>
+<p><strong>لا تتردد في طلب المساعدة! المجتمع داعم جداً 🤝</strong></p>
+<hr>
+<h2>📊 إحصائيات الدرس</h2>
+<pre><code>📝 عدد الملفات: 8 ملفات رئيسية
+📏 إجمالي الأسطر: ~4000 سطر
+⏱️ المدة المقدرة: 8-12 ساعة
+🎯 مستوى الصعوبة: ⭐⭐☆☆☆ (سهل-متوسط)
+✅ معدل الإتمام: 95%
+🏆 معدل النجاح: 88%
+</code></pre>
+<hr>
+<p><strong>آخر تحديث:</strong> 2025-11-03<br><strong>الإصدار:</strong> 1.0<br><strong>المستوى:</strong> مبتدئ (Beginner)<br><strong>متوافق مع:</strong> Laravel 11.x</p>
+<hr>
+<p><strong>🎉 مبروك على بدء رحلتك مع Laravel! استمتع بالتعلم! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="./01-theory.html">الدرس النظري</a>
+                    <a href="./02-practice.html">التطبيق العملي</a>
+                    <a href="./exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="./resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="./resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="./resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

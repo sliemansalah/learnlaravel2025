@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="composer require barryvdh/laravel-debugbar --dev">
+    <title>قراءات إضافية ومصادر متقدمة | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>further reading</span>
+    </div>
+
+    <main class="content container">
+        <h1>قراءات إضافية ومصادر متقدمة</h1>
+<h1>Further Reading &amp; Resources</h1>
+<hr>
+<h2>📖 الوثائق الرسمية</h2>
+<h3>Laravel Documentation</h3>
+<ul>
+<li><strong>الرئيسية:</strong> <a href="https://laravel.com/docs/11.x">https://laravel.com/docs/11.x</a></li>
+<li><strong>Installation:</strong> <a href="https://laravel.com/docs/11.x/installation">https://laravel.com/docs/11.x/installation</a></li>
+<li><strong>Routing:</strong> <a href="https://laravel.com/docs/11.x/routing">https://laravel.com/docs/11.x/routing</a></li>
+<li><strong>Views:</strong> <a href="https://laravel.com/docs/11.x/views">https://laravel.com/docs/11.x/views</a></li>
+<li><strong>Blade Templates:</strong> <a href="https://laravel.com/docs/11.x/blade">https://laravel.com/docs/11.x/blade</a></li>
+<li><strong>Controllers:</strong> <a href="https://laravel.com/docs/11.x/controllers">https://laravel.com/docs/11.x/controllers</a></li>
+</ul>
+<h3>Laravel API Reference</h3>
+<ul>
+<li><a href="https://laravel.com/api/11.x/">https://laravel.com/api/11.x/</a></li>
+</ul>
+<hr>
+<h2>🎥 دروس فيديو</h2>
+<h3>عربي</h3>
+<h4>1. <strong>الصافي Laravel</strong></h4>
+<ul>
+<li>YouTube: كورس Laravel شامل</li>
+<li>مستوى: مبتدئ إلى متوسط</li>
+<li>اللغة: عربي</li>
+</ul>
+<h4>2. <strong>Muath Alsowadi</strong></h4>
+<ul>
+<li>YouTube: Laravel من الصفر</li>
+<li>مستوى: مبتدئ</li>
+<li>اللغة: عربي</li>
+</ul>
+<h4>3. <strong>Code with Tony</strong></h4>
+<ul>
+<li>YouTube: Laravel عربي</li>
+<li>مستوى: مبتدئ</li>
+<li>اللغة: عربي</li>
+</ul>
+<h3>إنجليزي</h3>
+<h4>1. <strong>Laracasts</strong> ⭐⭐⭐⭐⭐</h4>
+<ul>
+<li>الموقع: <a href="https://laracasts.com">https://laracasts.com</a></li>
+<li><strong>Laravel From Scratch:</strong> كورس مجاني ممتاز للمبتدئين</li>
+<li><strong>What&#39;s New in Laravel 11:</strong> آخر المستجدات</li>
+<li>مستوى: جميع المستويات</li>
+<li>ملاحظة: بعض الدروس مدفوعة لكن تستحق الاستثمار</li>
+</ul>
+<h4>2. <strong>Traversy Media</strong></h4>
+<ul>
+<li>YouTube: Laravel Crash Course</li>
+<li>الرابط: <a href="https://www.youtube.com/watch?v=MYyJ4PuL4pY">https://www.youtube.com/watch?v=MYyJ4PuL4pY</a></li>
+<li>مستوى: مبتدئ</li>
+<li>مدة: ~2 ساعات</li>
+</ul>
+<h4>3. <strong>Laravel Daily</strong></h4>
+<ul>
+<li>YouTube: <a href="https://www.youtube.com/@LaravelDaily">https://www.youtube.com/@LaravelDaily</a></li>
+<li>مستوى: متوسط إلى متقدم</li>
+<li>محتوى: نصائح يومية، tips &amp; tricks</li>
+</ul>
+<h4>4. <strong>The Net Ninja</strong></h4>
+<ul>
+<li>YouTube: Laravel Tutorial</li>
+<li>مستوى: مبتدئ</li>
+<li>أسلوب: خطوة بخطوة، سهل الفهم</li>
+</ul>
+<hr>
+<h2>📝 مدونات ومواقع مفيدة</h2>
+<h3>1. <strong>Laravel News</strong> ⭐⭐⭐⭐⭐</h3>
+<ul>
+<li>الموقع: <a href="https://laravel-news.com">https://laravel-news.com</a></li>
+<li>محتوى: أخبار، دروس، packages جديدة</li>
+<li>تحديث: يومي</li>
+</ul>
+<h3>2. <strong>Laravel Daily Blog</strong></h3>
+<ul>
+<li>الموقع: <a href="https://laraveldaily.com">https://laraveldaily.com</a></li>
+<li>محتوى: نصائح عملية، examples</li>
+<li>مستوى: متوسط</li>
+</ul>
+<h3>3. <strong>Freek Van der Herten</strong></h3>
+<ul>
+<li>الموقع: <a href="https://freek.dev">https://freek.dev</a></li>
+<li>محتوى: مقالات تقنية عميقة</li>
+<li>مستوى: متوسط إلى متقدم</li>
+</ul>
+<h3>4. <strong>Laravel Beyond CRUD</strong></h3>
+<ul>
+<li>الموقع: <a href="https://laravel-beyond-crud.com">https://laravel-beyond-crud.com</a></li>
+<li>محتوى: best practices، architecture</li>
+<li>مستوى: متقدم</li>
+</ul>
+<h3>5. <strong>Code with Dary Blog</strong></h3>
+<ul>
+<li>محتوى: دروس خطوة بخطوة</li>
+<li>مستوى: مبتدئ إلى متوسط</li>
+</ul>
+<hr>
+<h2>💬 المجتمعات</h2>
+<h3>1. <strong>Laravel.io Forum</strong></h3>
+<ul>
+<li>الرابط: <a href="https://laravel.io">https://laravel.io</a></li>
+<li>النوع: Forum</li>
+<li>مناسب لـ: طرح الأسئلة، مشاركة الخبرات</li>
+</ul>
+<h3>2. <strong>Laravel Discord</strong></h3>
+<ul>
+<li>الرابط: <a href="https://discord.gg/laravel">https://discord.gg/laravel</a></li>
+<li>النوع: Chat</li>
+<li>مناسب لـ: دردشة مباشرة، مساعدة سريعة</li>
+</ul>
+<h3>3. <strong>r/laravel (Reddit)</strong></h3>
+<ul>
+<li>الرابط: <a href="https://reddit.com/r/laravel">https://reddit.com/r/laravel</a></li>
+<li>النوع: Forum</li>
+<li>مناسب لـ: مناقشات، أخبار، resources</li>
+</ul>
+<h3>4. <strong>Laracasts Forum</strong></h3>
+<ul>
+<li>الرابط: <a href="https://laracasts.com/discuss">https://laracasts.com/discuss</a></li>
+<li>النوع: Forum</li>
+<li>مناسب لـ: مناقشات تقنية عميقة</li>
+</ul>
+<h3>5. <strong>Stack Overflow</strong></h3>
+<ul>
+<li>الرابط: <a href="https://stackoverflow.com/questions/tagged/laravel">https://stackoverflow.com/questions/tagged/laravel</a></li>
+<li>مناسب لـ: حل المشاكل التقنية</li>
+</ul>
+<h3>مجتمعات عربية</h3>
+<h4>1. <strong>Laravel Arab</strong></h4>
+<ul>
+<li>Facebook Group</li>
+<li>نشط ومفيد</li>
+</ul>
+<h4>2. <strong>Arab Developers</strong></h4>
+<ul>
+<li>Discord/Telegram</li>
+<li>مجتمع عربي للمطورين</li>
+</ul>
+<hr>
+<h2>📚 كتب موصى بها</h2>
+<h3>1. <strong>Laravel: Up &amp; Running</strong></h3>
+<ul>
+<li>المؤلف: Matt Stauffer</li>
+<li>المستوى: مبتدئ إلى متوسط</li>
+<li>التقييم: ⭐⭐⭐⭐⭐</li>
+<li>ملاحظة: أفضل كتاب Laravel للمبتدئين</li>
+</ul>
+<h3>2. <strong>Laravel Best Practices</strong></h3>
+<ul>
+<li>متوفر على: laraveldaily.com</li>
+<li>المستوى: متوسط</li>
+<li>مجاني</li>
+</ul>
+<h3>3. <strong>Domain-Driven Laravel</strong></h3>
+<ul>
+<li>المؤلف: Brent Roose</li>
+<li>المستوى: متقدم</li>
+<li>للمشاريع الكبيرة</li>
+</ul>
+<hr>
+<h2>🛠️ أدوات مفيدة</h2>
+<h3>1. <strong>Laravel Debugbar</strong></h3>
+<pre><code class="language-bash">composer require barryvdh/laravel-debugbar --dev
+</code></pre>
+<ul>
+<li>عرض queries، routes، variables</li>
+<li>مفيد جداً للـ debugging</li>
+</ul>
+<h3>2. <strong>Laravel IDE Helper</strong></h3>
+<pre><code class="language-bash">composer require --dev barryvdh/laravel-ide-helper
+</code></pre>
+<ul>
+<li>Auto-completion في IDE</li>
+<li>يحسن تجربة التطوير</li>
+</ul>
+<h3>3. <strong>Laravel Telescope</strong></h3>
+<pre><code class="language-bash">composer require laravel/telescope
+</code></pre>
+<ul>
+<li>Dashboard لمراقبة التطبيق</li>
+<li>queries، jobs، mails، إلخ</li>
+</ul>
+<h3>4. <strong>Laravel Tinker</strong></h3>
+<ul>
+<li>مدمج مع Laravel</li>
+<li>REPL للتجربة السريعة</li>
+</ul>
+<pre><code class="language-bash">php artisan tinker
+</code></pre>
+<hr>
+<h2>🎓 كورسات مدفوعة (تستحق)</h2>
+<h3>1. <strong>Laracasts Subscription</strong></h3>
+<ul>
+<li>السعر: $15/شهر</li>
+<li>المحتوى: مئات الدروس</li>
+<li>التقييم: ⭐⭐⭐⭐⭐</li>
+<li>يستحق الاشتراك!</li>
+</ul>
+<h3>2. <strong>Laravel Course by Jeffrey Way</strong></h3>
+<ul>
+<li>Platform: Laracasts</li>
+<li>شامل ومحدث باستمرار</li>
+</ul>
+<h3>3. <strong>Laravel Bootcamp</strong></h3>
+<ul>
+<li>مجاني!</li>
+<li>الرابط: <a href="https://bootcamp.laravel.com">https://bootcamp.laravel.com</a></li>
+<li>مشروع عملي كامل</li>
+</ul>
+<hr>
+<h2>📊 Packages مفيدة</h2>
+<h3>للمبتدئين</h3>
+<ol>
+<li><strong>laravel/breeze</strong> - Authentication starter kit</li>
+<li><strong>spatie/laravel-permission</strong> - إدارة الصلاحيات</li>
+<li><strong>intervention/image</strong> - معالجة الصور</li>
+</ol>
+<h3>للمتقدمين</h3>
+<ol>
+<li><strong>spatie/laravel-query-builder</strong> - API query builder</li>
+<li><strong>barryvdh/laravel-dompdf</strong> - تصدير PDF</li>
+<li><strong>maatwebsite/excel</strong> - تصدير Excel</li>
+</ol>
+<hr>
+<h2>🔍 مواضيع للاستكشاف التالي</h2>
+<p>بعد إتقان الأساسيات، انتقل إلى:</p>
+<h3>Level 2: Intermediate</h3>
+<ol>
+<li>✅ Eloquent ORM</li>
+<li>✅ Database Migrations &amp; Seeding</li>
+<li>✅ Form Validation</li>
+<li>✅ File Uploads</li>
+<li>✅ Authentication &amp; Authorization</li>
+<li>✅ Middleware</li>
+<li>✅ Sessions &amp; Cookies</li>
+</ol>
+<h3>Level 3: Advanced</h3>
+<ol>
+<li>✅ API Development</li>
+<li>✅ Testing (PHPUnit)</li>
+<li>✅ Queues &amp; Jobs</li>
+<li>✅ Events &amp; Listeners</li>
+<li>✅ Service Container</li>
+<li>✅ Service Providers</li>
+<li>✅ Packages Development</li>
+</ol>
+<hr>
+<h2>🎯 مشاريع تطبيقية للتدرب</h2>
+<h3>1. <strong>Blog System</strong></h3>
+<ul>
+<li>Posts, Categories, Tags</li>
+<li>Comments, Likes</li>
+<li>Search functionality</li>
+</ul>
+<h3>2. <strong>Task Management (To-Do)</strong></h3>
+<ul>
+<li>CRUD operations</li>
+<li>User authentication</li>
+<li>Task categories</li>
+</ul>
+<h3>3. <strong>E-commerce Store</strong></h3>
+<ul>
+<li>Products, Categories</li>
+<li>Shopping Cart</li>
+<li>Orders</li>
+</ul>
+<h3>4. <strong>Social Media Clone</strong></h3>
+<ul>
+<li>Posts, Comments</li>
+<li>Likes, Follows</li>
+<li>Notifications</li>
+</ul>
+<hr>
+<h2>📌 نصائح للتعلم المستمر</h2>
+<h3>✅ افعل:</h3>
+<ol>
+<li><strong>اكتب كود كل يوم</strong> - ولو 30 دقيقة</li>
+<li><strong>اقرأ Laravel News</strong> - تابع المستجدات</li>
+<li><strong>شارك في المجتمع</strong> - ساعد الآخرين</li>
+<li><strong>ابنِ مشاريع حقيقية</strong> - التطبيق العملي أهم</li>
+<li><strong>اقرأ كود الآخرين</strong> - تعلم من open source projects</li>
+</ol>
+<h3>❌ تجنب:</h3>
+<ol>
+<li><strong>Tutorial Hell</strong> - لا تشاهد دروس فقط، طبّق!</li>
+<li><strong>المقارنة</strong> - كل واحد له وتيرته</li>
+<li><strong>التنقل بين Frameworks</strong> - اتقن Laravel أولاً</li>
+<li><strong>إهمال الأساسيات</strong> - PHP أساسي لـ Laravel</li>
+</ol>
+<hr>
+<h2>🌟 Laravel في 2025</h2>
+<h3>Trends و Updates</h3>
+<ol>
+<li><strong>Laravel 11</strong> - آخر إصدار</li>
+<li><strong>Livewire 3</strong> - للتطبيقات التفاعلية</li>
+<li><strong>Laravel Folio</strong> - file-based routing</li>
+<li><strong>Laravel Volt</strong> - single-file components</li>
+<li><strong>Laravel Reverb</strong> - WebSocket server</li>
+</ol>
+<h3>اتجاهات السوق</h3>
+<ul>
+<li><strong>API Development</strong> - طلب كبير</li>
+<li><strong>SaaS Applications</strong> - مشاريع مربحة</li>
+<li><strong>Microservices</strong> - للمشاريع الكبيرة</li>
+</ul>
+<hr>
+<h2>🎖️ شهادات</h2>
+<h3>1. <strong>Laravel Certified Developer</strong></h3>
+<ul>
+<li>الموقع: <a href="https://exam.laravelcert.com">https://exam.laravelcert.com</a></li>
+<li>رسمية من Laravel</li>
+<li>معترف بها عالمياً</li>
+</ul>
+<hr>
+<h2>📧 Newsletters</h2>
+<h3>1. <strong>Laravel News Newsletter</strong></h3>
+<ul>
+<li>أسبوعي</li>
+<li>ملخص أهم الأخبار</li>
+</ul>
+<h3>2. <strong>Freek.dev Newsletter</strong></h3>
+<ul>
+<li>شهري</li>
+<li>مقالات quality</li>
+</ul>
+<hr>
+<h2>🚀 الخطوة التالية</h2>
+<p><strong>أنت الآن جاهز لـ:</strong></p>
+<ol>
+<li>✅ الدرس 2: Routing المتقدم</li>
+<li>✅ بناء مشروع صغير</li>
+<li>✅ الانضمام للمجتمعات</li>
+<li>✅ متابعة Laravel News</li>
+</ol>
+<hr>
+<p><strong>استمر في التعلم! Laravel رحلة ممتعة! 🎉</strong></p>
+<hr>
+<p><strong>ملاحظة:</strong> جميع الروابط صحيحة وقت كتابة هذا الملف (2025). قد تتغير بعض الروابط مع الوقت.</p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

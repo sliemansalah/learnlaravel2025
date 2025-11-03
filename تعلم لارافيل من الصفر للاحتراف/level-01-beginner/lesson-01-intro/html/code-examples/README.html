@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="هذا المجلد يحتوي على أمثلة كود عملية جاهزة للتشغيل من الدرس الأول.">
+    <title>أمثلة الكود - الدرس 1 | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>README</span>
+    </div>
+
+    <main class="content container">
+        <h1>أمثلة الكود - الدرس 1</h1>
+<h1>Code Examples - Lesson 1</h1>
+<hr>
+<h2>📚 محتويات هذا المجلد</h2>
+<p>هذا المجلد يحتوي على أمثلة كود عملية جاهزة للتشغيل من الدرس الأول.</p>
+<h3>الملفات المتوفرة:</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>الملف</th>
+<th>الوصف</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>example-01-route.php</code></td>
+<td>مثال على Routes البسيطة</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>example-02-view.php</code></td>
+<td>مثال على Views</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>example-03-controller.php</code></td>
+<td>مثال على Controller بسيط</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎯 كيفية استخدام الأمثلة</h2>
+<h3>الطريقة الأولى: نسخ الكود مباشرة</h3>
+<ol>
+<li>افتح المثال المطلوب</li>
+<li>اقرأ التعليقات بعناية</li>
+<li>انسخ الكود إلى ملفات مشروعك المناسبة</li>
+<li>شغّل التطبيق وجرّب</li>
+</ol>
+<h3>الطريقة الثانية: فهم ثم كتابة</h3>
+<ol>
+<li>اقرأ المثال وافهم فكرته</li>
+<li><strong>لا تنسخ</strong> - اكتب الكود بنفسك</li>
+<li>جرّب وعدّل</li>
+<li>قارن مع المثال الأصلي</li>
+</ol>
+<hr>
+<h2>📁 مكان وضع كل مثال</h2>
+<h3>Example 01 - Routes</h3>
+<pre><code>ضع الكود في:
+routes/web.php
+</code></pre>
+<h3>Example 02 - Views</h3>
+<pre><code>ضع الكود في:
+resources/views/
+</code></pre>
+<h3>Example 03 - Controller</h3>
+<pre><code>ضع الكود في:
+app/Http/Controllers/
+</code></pre>
+<hr>
+<h2>💡 نصائح</h2>
+<p>✅ <strong>افعل:</strong></p>
+<ul>
+<li>اقرأ التعليقات في الكود</li>
+<li>جرّب تعديل القيم</li>
+<li>شغّل كل مثال على حدة</li>
+<li>اكتب الكود بنفسك</li>
+</ul>
+<p>❌ <strong>لا تفعل:</strong></p>
+<ul>
+<li>لا تنسخ ولصق بدون فهم</li>
+<li>لا تتخطى أي مثال</li>
+<li>لا تنسى حفظ الملفات</li>
+</ul>
+<hr>
+<h2>🔧 كيفية التشغيل</h2>
+<p>بعد نسخ الكود:</p>
+<pre><code class="language-bash"># تأكد أنك في مجلد المشروع
+cd my-first-laravel-app
+
+# شغّل السيرفر
+php artisan serve
+
+# افتح المتصفح
+# http://localhost:8000
+</code></pre>
+<hr>
+<h2>❓ مشاكل شائعة</h2>
+<h3>المشكلة 1: الصفحة لا تظهر</h3>
+<p><strong>السبب:</strong> قد تكون نسيت حفظ الملف</p>
+<p><strong>الحل:</strong></p>
+<pre><code>1. احفظ الملف (Ctrl+S / Cmd+S)
+2. حدّث المتصفح (F5)
+</code></pre>
+<h3>المشكلة 2: خطأ في الـ Route</h3>
+<p><strong>السبب:</strong> قد يكون هناك خطأ في كتابة اسم الـ route</p>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-bash"># راجع قائمة جميع الـ routes
+php artisan route:list
+</code></pre>
+<hr>
+<h2>📖 للمزيد</h2>
+<p>راجع الدروس:</p>
+<ul>
+<li><code>01-theory.md</code> - للشرح النظري</li>
+<li><code>02-practice.md</code> - للتطبيق العملي</li>
+</ul>
+<hr>
+<p><strong>جاهز؟ ابدأ بـ <code>example-01-route.php</code> 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

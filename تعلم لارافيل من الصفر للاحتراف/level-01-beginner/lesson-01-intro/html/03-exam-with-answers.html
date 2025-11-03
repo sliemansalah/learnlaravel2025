@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="المدة المقترحة: 90 دقيقة | Suggested Duration: 90 minutes">
+    <title>الدرس 1: الاختبار الشامل مع الحلول | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li><a href="./01-theory.html">النظري</a></li>
+                <li><a href="./02-practice.html">العملي</a></li>
+                <li><a href="./03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="./04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="./code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="./exercises/README.html">التمارين</a></li>
+                <li><a href="./resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="./index.html">الرئيسية</a>
+        <span>›</span>
+        <span>03 exam with answers</span>
+    </div>
+
+    <main class="content container">
+        <h1>الدرس 1: الاختبار الشامل مع الحلول</h1>
+<h1>Lesson 1: Comprehensive Exam with Answers</h1>
+<p><strong>المدة المقترحة:</strong> 90 دقيقة | Suggested Duration: 90 minutes<br><strong>الدرجة الكلية:</strong> 100 نقطة | Total Score: 100 points</p>
+<hr>
+<h2>📋 تعليمات الاختبار | Exam Instructions</h2>
+<h3>طريقة الاستخدام:</h3>
+<ol>
+<li><p><strong>للدراسة والمراجعة:</strong></p>
+<ul>
+<li>اقرأ السؤال</li>
+<li>حاول الإجابة ذهنياً أو على ورقة</li>
+<li>اقرأ الحل النموذجي</li>
+<li>تأكد من فهمك الكامل</li>
+</ul>
+</li>
+<li><p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>الأسئلة النظرية: 30 نقطة (30%)</li>
+<li>الأسئلة العملية: 40 نقطة (40%)</li>
+<li>الأسئلة التطبيقية: 30 نقطة (30%)</li>
+</ul>
+</li>
+<li><p><strong>مستويات الإتقان:</strong></p>
+<ul>
+<li>90-100: ممتاز ✅ - انتقل للدرس التالي</li>
+<li>80-89: جيد جداً ✅ - راجع النقاط الضعيفة</li>
+<li>70-79: جيد ⚠️ - راجع الدرس مرة أخرى</li>
+<li>أقل من 70: ❌ - أعد دراسة الدرس</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>📚 القسم الأول: الأسئلة النظرية (30 نقطة)</h2>
+<h3>السؤال 1: اختيار من متعدد (10 نقاط - نقطتان لكل سؤال)</h3>
+<h4>1.1 ما هو Laravel؟</h4>
+<p>a) لغة برمجة جديدة<br>b) إطار عمل (Framework) لـ PHP<br>c) قاعدة بيانات<br>d) محرر نصوص</p>
+<p><strong>✅ الإجابة الصحيحة: b) إطار عمل (Framework) لـ PHP</strong></p>
+<p><strong>الشرح:</strong><br>Laravel هو إطار عمل مفتوح المصدر مبني على لغة PHP، يستخدم لتطوير تطبيقات الويب. تم إنشاؤه بواسطة Taylor Otwell في 2011.</p>
+<hr>
+<h4>1.2 أي من التالي يمثل معمارية MVC بشكل صحيح؟</h4>
+<p>a) Model = قاعدة البيانات، View = الكود، Controller = التصميم<br>b) Model = البيانات والمنطق، View = العرض، Controller = الوسيط<br>c) Model = Controller، View = Model، Controller = View<br>d) Model = العرض، View = البيانات، Controller = المستخدم</p>
+<p><strong>✅ الإجابة الصحيحة: b) Model = البيانات والمنطق، View = العرض، Controller = الوسيط</strong></p>
+<p><strong>الشرح:</strong></p>
+<ul>
+<li><strong>Model:</strong> يدير البيانات والمنطق التجاري (Business Logic)</li>
+<li><strong>View:</strong> يعرض البيانات للمستخدم (HTML/CSS/JS)</li>
+<li><strong>Controller:</strong> الوسيط الذي يربط بين Model و View</li>
+</ul>
+<hr>
+<h4>1.3 ما هو Composer؟</h4>
+<p>a) برنامج لتحرير النصوص<br>b) أداة لإدارة الاعتماديات في PHP<br>c) قاعدة بيانات<br>d) متصفح ويب</p>
+<p><strong>✅ الإجابة الصحيحة: b) أداة لإدارة الاعتماديات في PHP</strong></p>
+<p><strong>الشرح:</strong><br>Composer هو أداة dependency manager لـ PHP، مشابه لـ npm في Node.js. يستخدم لتثبيت وإدارة المكتبات والحزم في مشاريع PHP.</p>
+<hr>
+<h4>1.4 أي من المجلدات التالية يحتوي على Controllers في Laravel؟</h4>
+<p>a) resources/controllers/<br>b) app/Http/Controllers/<br>c) routes/controllers/<br>d) public/controllers/</p>
+<p><strong>✅ الإجابة الصحيحة: b) app/Http/Controllers/</strong></p>
+<p><strong>الشرح:</strong><br>في Laravel، جميع Controllers توجد في المجلد <code>app/Http/Controllers/</code>. هذا جزء من الهيكل القياسي للمشروع.</p>
+<hr>
+<h4>1.5 ما هي نقطة الدخول الرئيسية لتطبيق Laravel؟</h4>
+<p>a) routes/web.php<br>b) app/index.php<br>c) public/index.php<br>d) resources/index.php</p>
+<p><strong>✅ الإجابة الصحيحة: c) public/index.php</strong></p>
+<p><strong>الشرح:</strong><br>جميع الطلبات تبدأ من <code>public/index.php</code>. هذا الملف يقوم بتحميل autoloader وإنشاء instance من التطبيق.</p>
+<hr>
+<h3>السؤال 2: صح أم خطأ (10 نقاط - نقطتان لكل سؤال)</h3>
+<h4>2.1 Laravel يدعم فقط قاعدة بيانات MySQL.</h4>
+<p><strong>❌ خطأ - False</strong></p>
+<p><strong>الشرح:</strong><br>Laravel يدعم عدة أنواع من قواعد البيانات:</p>
+<ul>
+<li>MySQL 5.7+</li>
+<li>PostgreSQL 12.0+</li>
+<li>SQLite 3.35.0+</li>
+<li>SQL Server 2017+</li>
+</ul>
+<hr>
+<h4>2.2 ملف .env يحتوي على معلومات حساسة ويجب عدم مشاركته.</h4>
+<p><strong>✅ صح - True</strong></p>
+<p><strong>الشرح:</strong><br>ملف <code>.env</code> يحتوي على معلومات حساسة مثل:</p>
+<ul>
+<li>مفاتيح التطبيق (APP_KEY)</li>
+<li>بيانات قاعدة البيانات</li>
+<li>مفاتيح API</li>
+<li>وهو مُستثنى تلقائياً من Git عبر <code>.gitignore</code></li>
+</ul>
+<hr>
+<h4>2.3 الأمر php artisan serve يستخدم لإنشاء مشروع جديد.</h4>
+<p><strong>❌ خطأ - False</strong></p>
+<p><strong>الشرح:</strong><br><code>php artisan serve</code> يستخدم لتشغيل السيرفر المحلي للتطوير.<br>لإنشاء مشروع جديد نستخدم:</p>
+<pre><code class="language-bash">composer create-project laravel/laravel project-name
+</code></pre>
+<hr>
+<h4>2.4 في MVC، الـ View يجب أن يحتوي على منطق معقد للتطبيق.</h4>
+<p><strong>❌ خطأ - False</strong></p>
+<p><strong>الشرح:</strong><br>View يجب أن يحتوي فقط على:</p>
+<ul>
+<li>عرض البيانات</li>
+<li>منطق عرض بسيط (loops, conditions للعرض فقط)</li>
+<li>المنطق المعقد يجب أن يكون في Controller أو Model</li>
+</ul>
+<hr>
+<h4>2.5 Laravel 11 يتطلب PHP 8.2 أو أحدث.</h4>
+<p><strong>✅ صح - True</strong></p>
+<p><strong>الشرح:</strong><br>Laravel 11.x يتطلب:</p>
+<ul>
+<li>PHP &gt;= 8.2</li>
+<li>Composer (أحدث إصدار)</li>
+<li>Extensions معينة (mbstring, openssl, pdo, etc.)</li>
+</ul>
+<hr>
+<h3>السؤال 3: أسئلة مقالية قصيرة (10 نقاط)</h3>
+<h4>3.1 اشرح دورة حياة الطلب (Request Lifecycle) في Laravel بإيجاز. (5 نقاط)</h4>
+<p><strong>✅ الإجابة النموذجية:</strong></p>
+<p>دورة حياة الطلب في Laravel تمر بالخطوات التالية:</p>
+<ol>
+<li><strong>Entry Point:</strong> يبدأ من <code>public/index.php</code></li>
+<li><strong>HTTP Kernel:</strong> يتم تحميل HTTP Kernel</li>
+<li><strong>Service Providers:</strong> يتم تسجيل وتشغيل Service Providers</li>
+<li><strong>Router:</strong> يبحث عن Route المناسب للطلب</li>
+<li><strong>Middleware:</strong> يتم تشغيل Middleware (Authentication, CSRF, etc.)</li>
+<li><strong>Controller:</strong> ينفذ كود Controller المناسب</li>
+<li><strong>Response:</strong> يتم إنشاء Response (HTML, JSON, etc.)</li>
+<li><strong>Middleware (Return):</strong> يمر Response عبر Middleware مرة أخرى</li>
+<li><strong>Browser:</strong> يُرسل Response للمتصفح</li>
+</ol>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>ذكر 5-6 خطوات رئيسية: 3 نقاط</li>
+<li>شرح مختصر لكل خطوة: 2 نقطة</li>
+</ul>
+<hr>
+<h4>3.2 ما الفرق بين Model و Controller في Laravel؟ (5 نقاط)</h4>
+<p><strong>✅ الإجابة النموذجية:</strong></p>
+<p><strong>Model:</strong></p>
+<ul>
+<li>يمثل البيانات وجداول قاعدة البيانات</li>
+<li>يحتوي على المنطق التجاري (Business Logic)</li>
+<li>يدير العلاقات بين الجداول</li>
+<li>يستخدم Eloquent ORM</li>
+<li>مثال: <code>User</code>, <code>Post</code>, <code>Product</code></li>
+</ul>
+<p><strong>Controller:</strong></p>
+<ul>
+<li>يستقبل طلبات المستخدم (HTTP Requests)</li>
+<li>يعالج البيانات ويحضرها</li>
+<li>يستدعي Models للحصول على البيانات</li>
+<li>يُرجع Views أو Responses</li>
+<li>مثال: <code>UserController</code>, <code>PostController</code></li>
+</ul>
+<p><strong>الفرق الأساسي:</strong></p>
+<ul>
+<li>Model = <strong>ماذا</strong> (What) - البيانات والمنطق</li>
+<li>Controller = <strong>كيف</strong> (How) - معالجة الطلبات</li>
+</ul>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>شرح Model: نقطتان</li>
+<li>شرح Controller: نقطتان</li>
+<li>ذكر الفرق الأساسي: نقطة واحدة</li>
+</ul>
+<hr>
+<h2>💻 القسم الثاني: الأسئلة العملية (40 نقطة)</h2>
+<h3>السؤال 4: أوامر Terminal (10 نقاط - نقطتان لكل سؤال)</h3>
+<h4>4.1 ما هو الأمر الصحيح لإنشاء مشروع Laravel جديد باسم &quot;blog&quot;؟</h4>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-bash">composer create-project laravel/laravel blog
+</code></pre>
+<p><strong>أو:</strong></p>
+<pre><code class="language-bash">laravel new blog
+</code></pre>
+<p><strong>الشرح:</strong></p>
+<ul>
+<li>الطريقة الأولى تستخدم Composer مباشرة</li>
+<li>الطريقة الثانية تتطلب تثبيت Laravel Installer أولاً</li>
+</ul>
+<hr>
+<h4>4.2 ما هو الأمر لتشغيل السيرفر المحلي على المنفذ 8080؟</h4>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-bash">php artisan serve --port=8080
+</code></pre>
+<p><strong>الشرح:</strong></p>
+<ul>
+<li><code>php artisan serve</code> يشغل على المنفذ 8000 افتراضياً</li>
+<li><code>--port=8080</code> يحدد منفذ مختلف</li>
+<li>يمكن أيضاً تحديد host: <code>--host=192.168.1.100</code></li>
+</ul>
+<hr>
+<h4>4.3 ما هو الأمر لتشغيل Migrations؟</h4>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-bash">php artisan migrate
+</code></pre>
+<p><strong>أوامر ذات صلة:</strong></p>
+<pre><code class="language-bash">php artisan migrate:fresh    # إعادة إنشاء كل الجداول
+php artisan migrate:rollback # التراجع عن آخر migration
+php artisan migrate:status   # عرض حالة migrations
+</code></pre>
+<hr>
+<h4>4.4 ما هو الأمر لمسح جميع أنواع Cache؟</h4>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-bash">php artisan optimize:clear
+</code></pre>
+<p><strong>أو بشكل منفصل:</strong></p>
+<pre><code class="language-bash">php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+</code></pre>
+<hr>
+<h4>4.5 ما هو الأمر لفتح Laravel Tinker؟</h4>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-bash">php artisan tinker
+</code></pre>
+<p><strong>الشرح:</strong><br>Tinker هو REPL (Read-Eval-Print Loop) يسمح بتنفيذ كود PHP بشكل تفاعلي.</p>
+<p>مثال:</p>
+<pre><code class="language-php">&gt;&gt;&gt; App\Models\User::count()
+=&gt; 10
+&gt;&gt;&gt; $user = App\Models\User::first()
+&gt;&gt;&gt; $user-&gt;name
+=&gt; &quot;John Doe&quot;
+</code></pre>
+<hr>
+<h3>السؤال 5: قراءة وفهم الكود (15 نقطة)</h3>
+<h4>5.1 اشرح ماذا يفعل هذا الكود: (5 نقاط)</h4>
+<pre><code class="language-php">Route::get(&#39;/users/{id}&#39;, function ($id) {
+    return &quot;User ID: &quot; . $id;
+});
+</code></pre>
+<p><strong>✅ الإجابة النموذجية:</strong></p>
+<p>هذا الكود يُعرّف route في Laravel:</p>
+<ol>
+<li><strong><code>Route::get()</code></strong>: يحدد أن هذا route يستجيب لـ GET request</li>
+<li><strong><code>&#39;/users/{id}&#39;</code></strong>: المسار، حيث <code>{id}</code> هو parameter متغير</li>
+<li><strong><code>function ($id)</code></strong>: دالة مجهولة (closure) تستقبل قيمة <code>{id}</code></li>
+<li><strong><code>return</code></strong>: يُرجع نص يحتوي على User ID</li>
+</ol>
+<p><strong>أمثلة على الاستخدام:</strong></p>
+<ul>
+<li>زيارة <code>/users/5</code> → يعرض &quot;User ID: 5&quot;</li>
+<li>زيارة <code>/users/123</code> → يعرض &quot;User ID: 123&quot;</li>
+</ul>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>شرح Route::get(): نقطة</li>
+<li>شرح parameter: نقطتان</li>
+<li>شرح الناتج: نقطتان</li>
+</ul>
+<hr>
+<h4>5.2 ما الخطأ في هذا الكود؟ (5 نقاط)</h4>
+<pre><code class="language-php">Route::get(&#39;/about&#39;, function () {
+    return view(&#39;about-page&#39;);
+});
+</code></pre>
+<p><strong>الكود الصحيح يجب أن يكون:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/about&#39;, function () {
+    return view(&#39;about-page&#39;);  // أو &#39;about_page&#39; أو &#39;about&#39;
+});
+</code></pre>
+<p><strong>✅ الإجابة النموذجية:</strong></p>
+<p>الكود نفسه <strong>ليس خطأ</strong> من الناحية التقنية، لكن:</p>
+<p><strong>المشكلة المحتملة:</strong></p>
+<ul>
+<li>اسم View <code>&#39;about-page&#39;</code> يحتوي على شرطة (-)</li>
+<li>Laravel سيبحث عن ملف: <code>resources/views/about-page.blade.php</code></li>
+<li><strong>التسمية القياسية:</strong> يُفضل استخدام underscore أو camelCase</li>
+</ul>
+<p><strong>الطريقة الموصى بها:</strong></p>
+<pre><code class="language-php">return view(&#39;about&#39;);      // about.blade.php
+return view(&#39;about_page&#39;); // about_page.blade.php
+return view(&#39;aboutPage&#39;);  // aboutPage.blade.php
+</code></pre>
+<p><strong>ملاحظة:</strong> إذا كان الملف موجود بالاسم <code>about-page.blade.php</code>، فالكود سيعمل بدون مشاكل.</p>
+<hr>
+<h4>5.3 اشرح هذا الكود: (5 نقاط)</h4>
+<pre><code class="language-php">$users = User::where(&#39;status&#39;, &#39;active&#39;)
+              -&gt;orderBy(&#39;created_at&#39;, &#39;desc&#39;)
+              -&gt;limit(10)
+              -&gt;get();
+</code></pre>
+<p><strong>✅ الإجابة النموذجية:</strong></p>
+<p>هذا كود Eloquent ORM يقوم بالتالي:</p>
+<ol>
+<li><p><strong><code>User::where(&#39;status&#39;, &#39;active&#39;)</code></strong></p>
+<ul>
+<li>يبحث عن المستخدمين الذين status = &#39;active&#39;</li>
+</ul>
+</li>
+<li><p><strong><code>-&gt;orderBy(&#39;created_at&#39;, &#39;desc&#39;)</code></strong></p>
+<ul>
+<li>يرتب النتائج حسب تاريخ الإنشاء من الأحدث للأقدم</li>
+</ul>
+</li>
+<li><p><strong><code>-&gt;limit(10)</code></strong></p>
+<ul>
+<li>يحدد النتائج بـ 10 صفوف فقط</li>
+</ul>
+</li>
+<li><p><strong><code>-&gt;get()</code></strong></p>
+<ul>
+<li>ينفذ الاستعلام ويُرجع Collection من النتائج</li>
+</ul>
+</li>
+</ol>
+<p><strong>الناتج:</strong> Collection يحتوي على أحدث 10 مستخدمين نشطين.</p>
+<p><strong>SQL المقابل:</strong></p>
+<pre><code class="language-sql">SELECT * FROM users
+WHERE status = &#39;active&#39;
+ORDER BY created_at DESC
+LIMIT 10;
+</code></pre>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>شرح where: نقطة</li>
+<li>شرح orderBy: نقطة</li>
+<li>شرح limit: نقطة</li>
+<li>شرح get(): نقطة</li>
+<li>ذكر الناتج النهائي: نقطة</li>
+</ul>
+<hr>
+<h3>السؤال 6: ملء الفراغات (15 نقطة - 3 نقاط لكل فراغ)</h3>
+<h4>6.1 أكمل الكود لإنشاء route يعرض view اسمه &quot;contact&quot;:</h4>
+<pre><code class="language-php">Route::___(&#39;/contact&#39;, function () {
+    return ___(&#39;contact&#39;);
+});
+</code></pre>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-php">Route::get(&#39;/contact&#39;, function () {
+    return view(&#39;contact&#39;);
+});
+</code></pre>
+<hr>
+<h4>6.2 أكمل الكود لتعريف Model اسمه Post يرث من Eloquent:</h4>
+<pre><code class="language-php">namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends ___
+{
+    protected $fillable = [&#39;___&#39;, &#39;___&#39;, &#39;___&#39;];
+}
+</code></pre>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-php">namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    protected $fillable = [&#39;title&#39;, &#39;content&#39;, &#39;user_id&#39;];
+    // أو أي أعمدة أخرى مناسبة: [&#39;title&#39;, &#39;body&#39;, &#39;status&#39;]
+}
+</code></pre>
+<hr>
+<h4>6.3 أكمل الأمر لإنشاء Controller اسمه PostController:</h4>
+<pre><code class="language-bash">php artisan ___:___ PostController
+</code></pre>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-bash">php artisan make:controller PostController
+</code></pre>
+<hr>
+<h4>6.4 أكمل الكود لعرض Laravel version في Blade:</h4>
+<pre><code class="language-blade">&lt;p&gt;Laravel Version: {{ ___()-&gt;version() }}&lt;/p&gt;
+</code></pre>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-blade">&lt;p&gt;Laravel Version: {{ app()-&gt;version() }}&lt;/p&gt;
+</code></pre>
+<hr>
+<h4>6.5 أكمل متغيرات .env لقاعدة بيانات MySQL:</h4>
+<pre><code class="language-env">DB_CONNECTION=___
+DB_HOST=___
+DB_PORT=___
+DB_DATABASE=my_app
+DB_USERNAME=root
+DB_PASSWORD=
+</code></pre>
+<p><strong>✅ الإجابة الصحيحة:</strong></p>
+<pre><code class="language-env">DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=my_app
+DB_USERNAME=root
+DB_PASSWORD=
+</code></pre>
+<hr>
+<h2>🚀 القسم الثالث: الأسئلة التطبيقية (30 نقطة)</h2>
+<h3>السؤال 7: مشروع عملي صغير (30 نقطة)</h3>
+<p><strong>المطلوب:</strong> إنشاء صفحة &quot;من نحن&quot; (About Us) في مشروع Laravel</p>
+<h4>7.1 الخطوة 1: إنشاء Route (5 نقاط)</h4>
+<p><strong>المطلوب:</strong> أضف route في <code>routes/web.php</code> للمسار <code>/about</code></p>
+<p><strong>✅ الحل النموذجي:</strong></p>
+<pre><code class="language-php">&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/&#39;, function () {
+    return view(&#39;welcome&#39;);
+});
+
+// Route جديد
+Route::get(&#39;/about&#39;, function () {
+    return view(&#39;about&#39;);
+});
+</code></pre>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>استخدام Route::get() صحيح: نقطتان</li>
+<li>المسار &#39;/about&#39; صحيح: نقطة</li>
+<li>return view() صحيح: نقطتان</li>
+</ul>
+<hr>
+<h4>7.2 الخطوة 2: إنشاء View (10 نقاط)</h4>
+<p><strong>المطلوب:</strong> أنشئ ملف <code>resources/views/about.blade.php</code> يعرض:</p>
+<ul>
+<li>عنوان الصفحة &quot;من نحن&quot;</li>
+<li>فقرة عن الموقع</li>
+<li>Laravel version</li>
+<li>رابط للعودة للصفحة الرئيسية</li>
+</ul>
+<p><strong>✅ الحل النموذجي:</strong></p>
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;من نحن&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 5px solid #667eea;
+            margin: 20px 0;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        a:hover {
+            background: #5568d3;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;من نحن&lt;/h1&gt;
+
+    &lt;div class=&quot;info-box&quot;&gt;
+        &lt;h2&gt;عن موقعنا&lt;/h2&gt;
+        &lt;p&gt;
+            نحن موقع تعليمي متخصص في تعليم Laravel من الصفر إلى الاحتراف.
+            نهدف إلى توفير محتوى تعليمي عالي الجودة باللغة العربية.
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;info-box&quot;&gt;
+        &lt;h2&gt;تقنياتنا&lt;/h2&gt;
+        &lt;p&gt;نستخدم أحدث التقنيات:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Laravel {{ app()-&gt;version() }}&lt;/li&gt;
+            &lt;li&gt;PHP {{ PHP_VERSION }}&lt;/li&gt;
+            &lt;li&gt;MySQL Database&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;a href=&quot;/&quot;&gt;← العودة للصفحة الرئيسية&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>HTML structure صحيح: نقطتان</li>
+<li>عنوان &quot;من نحن&quot;: نقطة</li>
+<li>محتوى مناسب: نقطتان</li>
+<li>عرض Laravel version: نقطتان</li>
+<li>رابط العودة: نقطة</li>
+<li>تنسيق CSS: نقطتان</li>
+</ul>
+<hr>
+<h4>7.3 الخطوة 3: تحسين Route (5 نقاط)</h4>
+<p><strong>المطلوب:</strong> بدلاً من استخدام Closure، أنشئ Controller</p>
+<p><strong>الأمر لإنشاء Controller:</strong></p>
+<pre><code class="language-bash">php artisan make:controller PageController
+</code></pre>
+<p><strong>✅ محتوى PageController:</strong></p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PageController extends Controller
+{
+    public function about()
+    {
+        $data = [
+            &#39;page_title&#39; =&gt; &#39;من نحن&#39;,
+            &#39;site_name&#39; =&gt; &#39;موقع تعليم Laravel&#39;,
+            &#39;description&#39; =&gt; &#39;نحن موقع متخصص في تعليم Laravel&#39;
+        ];
+
+        return view(&#39;about&#39;, $data);
+    }
+}
+</code></pre>
+<p><strong>✅ تحديث Route:</strong></p>
+<pre><code class="language-php">use App\Http\Controllers\PageController;
+
+Route::get(&#39;/about&#39;, [PageController::class, &#39;about&#39;]);
+</code></pre>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>إنشاء Controller: نقطة</li>
+<li>Method صحيح: نقطتان</li>
+<li>تحديث Route: نقطتان</li>
+</ul>
+<hr>
+<h4>7.4 الخطوة 4: تمرير البيانات (5 نقاط)</h4>
+<p><strong>المطلوب:</strong> عدّل View لاستخدام البيانات الممررة</p>
+<p><strong>✅ View محدّث:</strong></p>
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;{{ $page_title }}&lt;/title&gt;
+    &lt;!-- ... --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;{{ $page_title }}&lt;/h1&gt;
+
+    &lt;div class=&quot;info-box&quot;&gt;
+        &lt;h2&gt;عن {{ $site_name }}&lt;/h2&gt;
+        &lt;p&gt;{{ $description }}&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- ... --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>استخدام {{ $page_title }}: نقطة</li>
+<li>استخدام {{ $site_name }}: نقطة</li>
+<li>استخدام {{ $description }}: نقطة</li>
+<li>Blade syntax صحيح: نقطتان</li>
+</ul>
+<hr>
+<h4>7.5 الخطوة 5: التحقق من العمل (5 نقاط)</h4>
+<p><strong>خطوات التحقق:</strong></p>
+<ol>
+<li>تشغيل السيرفر:</li>
+</ol>
+<pre><code class="language-bash">php artisan serve
+</code></pre>
+<ol start="2">
+<li><p>زيارة: <code>http://localhost:8000/about</code></p>
+</li>
+<li><p>التأكد من:</p>
+<ul>
+<li>✅ الصفحة تعرض بشكل صحيح</li>
+<li>✅ العنوان يظهر</li>
+<li>✅ المحتوى يظهر</li>
+<li>✅ Laravel version يظهر</li>
+<li>✅ رابط العودة يعمل</li>
+</ul>
+</li>
+</ol>
+<p><strong>✅ لقطة شاشة أو وصف للناتج المتوقع:</strong></p>
+<pre><code>╔════════════════════════════════════╗
+║                                    ║
+║          من نحن                    ║
+║ ──────────────────────────────     ║
+║                                    ║
+║  عن موقع تعليم Laravel            ║
+║  نحن موقع متخصص في تعليم Laravel  ║
+║                                    ║
+║  التقنيات المستخدمة:               ║
+║  • Laravel 11.x                    ║
+║  • PHP 8.2                         ║
+║                                    ║
+║  [← العودة للصفحة الرئيسية]        ║
+║                                    ║
+╚════════════════════════════════════╝
+</code></pre>
+<p><strong>معايير التقييم:</strong></p>
+<ul>
+<li>الصفحة تعمل: 3 نقاط</li>
+<li>جميع العناصر تظهر: نقطتان</li>
+</ul>
+<hr>
+<h2>📊 ملخص الاختبار</h2>
+<h3>توزيع الدرجات:</h3>
+<table>
+<thead>
+<tr>
+<th>القسم</th>
+<th>عدد الأسئلة</th>
+<th>الدرجة</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>القسم الأول: النظري</strong></td>
+<td>15 سؤال</td>
+<td>30 نقطة</td>
+</tr>
+<tr>
+<td>- اختيار من متعدد</td>
+<td>5 أسئلة</td>
+<td>10 نقاط</td>
+</tr>
+<tr>
+<td>- صح وخطأ</td>
+<td>5 أسئلة</td>
+<td>10 نقاط</td>
+</tr>
+<tr>
+<td>- مقالية قصيرة</td>
+<td>2 سؤال</td>
+<td>10 نقاط</td>
+</tr>
+<tr>
+<td><strong>القسم الثاني: العملي</strong></td>
+<td>15 سؤال</td>
+<td>40 نقطة</td>
+</tr>
+<tr>
+<td>- أوامر Terminal</td>
+<td>5 أسئلة</td>
+<td>10 نقاط</td>
+</tr>
+<tr>
+<td>- قراءة كود</td>
+<td>3 أسئلة</td>
+<td>15 نقطة</td>
+</tr>
+<tr>
+<td>- ملء فراغات</td>
+<td>5 أسئلة</td>
+<td>15 نقطة</td>
+</tr>
+<tr>
+<td><strong>القسم الثالث: التطبيقي</strong></td>
+<td>مشروع واحد</td>
+<td>30 نقطة</td>
+</tr>
+<tr>
+<td><strong>الإجمالي</strong></td>
+<td></td>
+<td><strong>100 نقطة</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎯 معايير التقييم النهائية</h2>
+<h3>احسب نقاطك:</h3>
+<pre><code>النقاط الكلية: _____ / 100
+
+النسبة المئوية: _____%
+
+المستوى:
+□ 90-100%: ممتاز ✅
+□ 80-89%: جيد جداً ✅
+□ 70-79%: جيد ⚠️
+□ أقل من 70%: يحتاج مراجعة ❌
+</code></pre>
+<h3>التوصيات حسب النتيجة:</h3>
+<h4>✅ 90-100% (ممتاز)</h4>
+<pre><code>مبروك! أنت جاهز للدرس التالي!
+- فهمك ممتاز للمفاهيم الأساسية
+- يمكنك الانتقال للدرس 2: Routing
+</code></pre>
+<h4>✅ 80-89% (جيد جداً)</h4>
+<pre><code>أداء جيد! راجع النقاط التالية:
+- الأسئلة التي أخطأت فيها
+- أعد قراءة الأقسام المتعلقة بها
+- ثم انتقل للدرس التالي
+</code></pre>
+<h4>⚠️ 70-79% (جيد)</h4>
+<pre><code>تحتاج لمراجعة:
+- أعد دراسة الدرس النظري
+- طبّق التمارين العملية مرة أخرى
+- أعد الاختبار بعد المراجعة
+</code></pre>
+<h4>❌ أقل من 70% (يحتاج مراجعة)</h4>
+<pre><code>يُنصح بـ:
+- إعادة دراسة الدرس كاملاً
+- مشاهدة فيديوهات تعليمية إضافية
+- التطبيق العملي أكثر
+- طلب المساعدة من المجتمع
+- إعادة الاختبار
+</code></pre>
+<hr>
+<h2>📝 ملاحظات مهمة</h2>
+<h3>للحصول على أقصى استفادة:</h3>
+<ol>
+<li><p><strong>لا تحفظ الإجابات</strong></p>
+<ul>
+<li>افهم المفاهيم بعمق</li>
+<li>الحفظ لن يفيدك في المشاريع الحقيقية</li>
+</ul>
+</li>
+<li><p><strong>طبّق عملياً</strong></p>
+<ul>
+<li>اكتب الكود بنفسك</li>
+<li>جرّب تعديلات مختلفة</li>
+<li>اكسر الكود وصلحه (Learn by Doing)</li>
+</ul>
+</li>
+<li><p><strong>استخدم المصادر</strong></p>
+<ul>
+<li>وثائق Laravel الرسمية</li>
+<li>Laracasts</li>
+<li>مجتمع Laravel</li>
+</ul>
+</li>
+<li><p><strong>لا تتردد في السؤال</strong></p>
+<ul>
+<li>Laravel IO Forum</li>
+<li>Laravel Discord</li>
+<li>Stack Overflow</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>🔄 الخطوة التالية</h2>
+<p><strong>بعد إتمام هذا الاختبار بنجاح:</strong></p>
+<ol>
+<li>✅ راجع أي أخطاء</li>
+<li>✅ تأكد من فهم جميع المفاهيم</li>
+<li>✅ انتقل إلى ملف <code>04-exam-only.md</code> لاختبار نفسك بدون حلول</li>
+<li>✅ ثم انتقل إلى <strong>الدرس 2: Routing</strong></li>
+</ol>
+<hr>
+<p><strong>تاريخ الإنشاء:</strong> 2025-11-03<br><strong>الإصدار:</strong> 1.0<br><strong>المستوى:</strong> مبتدئ<br><strong>متوافق مع:</strong> Laravel 11.x</p>
+<p><strong>حظاً موفقاً! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="./01-theory.html">الدرس النظري</a>
+                    <a href="./02-practice.html">التطبيق العملي</a>
+                    <a href="./exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="./resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="./resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="./resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

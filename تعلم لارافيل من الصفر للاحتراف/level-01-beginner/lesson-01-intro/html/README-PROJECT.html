@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية">
+    <title>🚀 Laravel Learning - Lesson 01: Introduction | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li><a href="./01-theory.html">النظري</a></li>
+                <li><a href="./02-practice.html">العملي</a></li>
+                <li><a href="./03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="./04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="./code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="./exercises/README.html">التمارين</a></li>
+                <li><a href="./resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="./index.html">الرئيسية</a>
+        <span>›</span>
+        <span>README PROJECT</span>
+    </div>
+
+    <main class="content container">
+        <h1>🚀 Laravel Learning - Lesson 01: Introduction</h1>
+<p><strong>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</strong></p>
+<hr>
+<h2>📦 محتويات المشروع</h2>
+<p>هذا المشروع يحتوي على:</p>
+<h3>✅ نسختين من المحتوى:</h3>
+<ol>
+<li><strong>Markdown (.md)</strong> - للتحرير والكتابة</li>
+<li><strong>HTML (.html)</strong> - للعرض والمشاركة</li>
+</ol>
+<h3>📁 الهيكل:</h3>
+<pre><code>lesson-01-intro/
+│
+├── 📁 html/                          ← النسخة HTML (جاهزة للعرض!)
+│   ├── index.html                   ← ابدأ من هنا! ⭐
+│   ├── assets/
+│   │   ├── style.css               ← تصميم احترافي
+│   │   └── script.js               ← وظائف تفاعلية
+│   └── [جميع الصفحات...]
+│
+├── 📁 code-examples/                 ← أمثلة كود PHP
+├── 📁 exercises/                     ← التمارين والحلول
+├── 📁 resources/                     ← موارد إضافية
+│
+├── 📄 01-theory.md                   ← الدرس النظري
+├── 📄 02-practice.md                 ← التطبيق العملي
+├── 📄 03-exam-with-answers.md        ← الاختبار + الحلول
+├── 📄 04-exam-only.md                ← الاختبار فقط
+├── 📄 README.md                      ← دليل الدرس
+│
+├── 📄 convert-improved.js            ← المحول المحسّن ⭐
+├── 📄 package.json                   ← إعدادات NPM
+├── 📄 HOW-TO-USE-HTML.md             ← دليل استخدام HTML
+└── 📄 README-PROJECT.md              ← هذا الملف
+</code></pre>
+<hr>
+<h2>🚀 البدء السريع</h2>
+<h3>خيار 1: عرض HTML مباشرة</h3>
+<pre><code class="language-bash"># افتح في المتصفح
+start html/index.html          # Windows
+open html/index.html           # macOS
+xdg-open html/index.html       # Linux
+</code></pre>
+<h3>خيار 2: استخدام Server محلي</h3>
+<pre><code class="language-bash"># باستخدام Python
+cd html
+python -m http.server 8000
+# افتح: http://localhost:8000
+
+# أو باستخدام PHP
+cd html
+php -S localhost:8000
+# افتح: http://localhost:8000
+
+# أو باستخدام NPM
+npm run serve
+# افتح: http://localhost:8000
+</code></pre>
+<hr>
+<h2>🔄 التحويل من Markdown إلى HTML</h2>
+<h3>المتطلبات:</h3>
+<pre><code class="language-bash"># ثبّت Node.js أولاً من nodejs.org
+# ثم ثبّت المكتبات:
+npm install
+</code></pre>
+<h3>التحويل:</h3>
+<pre><code class="language-bash"># طريقة 1: مباشرة
+node convert-improved.js
+
+# طريقة 2: باستخدام NPM
+npm run convert
+
+# طريقة 3: تحويل وتشغيل
+npm start
+</code></pre>
+<hr>
+<h2>📚 كيفية الاستخدام</h2>
+<h3>للطلاب:</h3>
+<pre><code>1. افتح html/index.html في المتصفح
+2. اتبع المسار التعليمي:
+   → README
+   → Theory (النظري)
+   → Practice (العملي)
+   → Code Examples (الأمثلة)
+   → Exercises (التمارين)
+   → Exam (الاختبار)
+3. استخدم resources/ عند الحاجة
+</code></pre>
+<h3>للمعلمين:</h3>
+<pre><code>1. عدّل ملفات .md حسب الحاجة
+2. شغّل npm run convert
+3. وزّع مجلد html/ على الطلاب
+4. أو ارفعه على GitHub Pages/Netlify
+</code></pre>
+<h3>للمطورين:</h3>
+<pre><code>1. استنسخ المشروع
+2. عدّل الملفات
+3. استخدم convert-improved.js
+4. ساهم في التحسينات
+</code></pre>
+<hr>
+<h2>🎨 المميزات</h2>
+<h3>التصميم:</h3>
+<ul>
+<li>✨ تصميم احترافي بألوان Laravel</li>
+<li>📱 Responsive - يعمل على جميع الأجهزة</li>
+<li>🌙 دعم Dark Mode تلقائي</li>
+<li>🎯 تنقل سهل بين الصفحات</li>
+</ul>
+<h3>الوظائف:</h3>
+<ul>
+<li>📋 نسخ الكود بنقرة واحدة</li>
+<li>🔝 زر العودة للأعلى</li>
+<li>📊 شريط تقدم القراءة</li>
+<li>📑 جدول محتويات تلقائي</li>
+<li>🔗 Smooth scrolling</li>
+</ul>
+<h3>المحتوى:</h3>
+<ul>
+<li>📖 دروس نظرية شاملة</li>
+<li>⚡ تطبيقات عملية</li>
+<li>💻 أمثلة كود جاهزة</li>
+<li>🎯 تمارين مع حلول</li>
+<li>✅ اختبارات تقييمية</li>
+</ul>
+<hr>
+<h2>📊 الإحصائيات</h2>
+<table>
+<thead>
+<tr>
+<th>العنصر</th>
+<th>العدد</th>
+<th>الحجم</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ملفات Markdown</td>
+<td>19</td>
+<td>~400 KB</td>
+</tr>
+<tr>
+<td>ملفات HTML</td>
+<td>20</td>
+<td>~500 KB</td>
+</tr>
+<tr>
+<td>ملفات CSS</td>
+<td>1</td>
+<td>12 KB</td>
+</tr>
+<tr>
+<td>ملفات JavaScript</td>
+<td>1</td>
+<td>12 KB</td>
+</tr>
+<tr>
+<td>أمثلة PHP</td>
+<td>3</td>
+<td>~40 KB</td>
+</tr>
+<tr>
+<td><strong>المجموع</strong></td>
+<td><strong>44</strong></td>
+<td><strong>~1 MB</strong></td>
+</tr>
+</tbody></table>
+<h3>وقت الدراسة:</h3>
+<ul>
+<li>📚 النظري: 2 ساعة</li>
+<li>⚡ العملي: 2 ساعة</li>
+<li>💻 الأمثلة: 1.5 ساعة</li>
+<li>🎯 التمارين: 1.5 ساعة</li>
+<li>✅ الاختبار: 1 ساعة</li>
+<li><strong>المجموع: 8 ساعات</strong></li>
+</ul>
+<hr>
+<h2>🛠️ التقنيات المستخدمة</h2>
+<h3>للمحتوى:</h3>
+<ul>
+<li>Markdown (كتابة المحتوى)</li>
+<li>HTML5 (العرض)</li>
+<li>CSS3 (التنسيق)</li>
+<li>JavaScript ES6 (التفاعل)</li>
+</ul>
+<h3>للتحويل:</h3>
+<ul>
+<li>Node.js</li>
+<li>marked (مكتبة تحويل Markdown)</li>
+<li>File System API</li>
+</ul>
+<h3>للخطوط والأيقونات:</h3>
+<ul>
+<li>System Fonts (سريع وآمن)</li>
+<li>Unicode Emojis (لا حاجة لمكتبات خارجية)</li>
+</ul>
+<hr>
+<h2>📝 Scripts المتاحة</h2>
+<pre><code class="language-bash"># تحويل MD إلى HTML
+npm run convert
+
+# تشغيل server محلي
+npm run serve
+
+# بناء المشروع
+npm run build
+
+# تحويل + تشغيل
+npm start
+</code></pre>
+<hr>
+<h2>🔧 التخصيص</h2>
+<h3>تغيير الألوان:</h3>
+<p>في <code>html/assets/style.css</code>:</p>
+<pre><code class="language-css">:root {
+  --primary-color: #ff2d20;      /* لون Laravel */
+  --secondary-color: #2d3748;    /* لون ثانوي */
+  /* غيّر كما تشاء */
+}
+</code></pre>
+<h3>تغيير الخطوط:</h3>
+<pre><code class="language-css">body {
+  font-family: &#39;Cairo&#39;, &#39;Segoe UI&#39;, sans-serif;
+}
+</code></pre>
+<h3>إضافة صفحات جديدة:</h3>
+<pre><code class="language-bash"># 1. أنشئ ملف .md جديد
+# 2. شغّل المحول
+npm run convert
+# 3. الصفحة HTML ستُنشأ تلقائياً!
+</code></pre>
+<hr>
+<h2>🌐 النشر</h2>
+<h3>GitHub Pages:</h3>
+<pre><code class="language-bash"># 1. أنشئ repository
+# 2. ارفع المشروع كاملاً
+# 3. في Settings → Pages
+# 4. اختر المجلد html/ أو الرئيسي
+# 5. رابطك: username.github.io/repo-name
+</code></pre>
+<h3>Netlify:</h3>
+<pre><code class="language-bash"># 1. اذهب لـ netlify.com
+# 2. Drag &amp; Drop مجلد html/
+# 3. انتهى! رابط جاهز في 30 ثانية
+</code></pre>
+<h3>Vercel:</h3>
+<pre><code class="language-bash"># 1. ثبّت Vercel CLI
+npm i -g vercel
+
+# 2. انشر
+vercel html/
+</code></pre>
+<hr>
+<h2>📱 الاستخدام Offline</h2>
+<p>المشروع يعمل 100% بدون إنترنت:</p>
+<pre><code>✅ لا يوجد CDN
+✅ لا يوجد Google Fonts خارجية
+✅ جميع الملفات محلية
+✅ لا tracking أو analytics
+✅ آمن تماماً
+</code></pre>
+<hr>
+<h2>🤝 المساهمة</h2>
+<p>نرحب بالمساهمات!</p>
+<h3>كيفية المساهمة:</h3>
+<pre><code class="language-bash"># 1. Fork المشروع
+# 2. أنشئ branch جديد
+git checkout -b feature/amazing-feature
+
+# 3. عدّل ما تريد
+# 4. Commit
+git commit -m &#39;Add amazing feature&#39;
+
+# 5. Push
+git push origin feature/amazing-feature
+
+# 6. افتح Pull Request
+</code></pre>
+<h3>أفكار للمساهمة:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> ترجمة لغات أخرى</li>
+<li><input disabled="" type="checkbox"> إضافة أمثلة جديدة</li>
+<li><input disabled="" type="checkbox"> تحسين التصميم</li>
+<li><input disabled="" type="checkbox"> إضافة وظائف جديدة</li>
+<li><input disabled="" type="checkbox"> إصلاح أخطاء</li>
+<li><input disabled="" type="checkbox"> تحسين التوثيق</li>
+</ul>
+<hr>
+<h2>🐛 الإبلاغ عن مشاكل</h2>
+<p>وجدت مشكلة؟</p>
+<ol>
+<li>تحقق من <a href="HOW-TO-USE-HTML.md">HOW-TO-USE-HTML.md</a></li>
+<li>ابحث في Issues الموجودة</li>
+<li>افتح Issue جديد مع التفاصيل</li>
+</ol>
+<hr>
+<h2>📄 الترخيص</h2>
+<p>هذا المشروع مجاني للاستخدام:</p>
+<ul>
+<li>✅ للتعليم</li>
+<li>✅ للاستخدام الشخصي</li>
+<li>✅ للمشاركة</li>
+<li>✅ للتعديل</li>
+</ul>
+<p><strong>MIT License</strong> - استخدمه كما تشاء!</p>
+<hr>
+<h2>🙏 شكر خاص</h2>
+<ul>
+<li><strong>Laravel Framework</strong> - أفضل PHP framework</li>
+<li><strong>Marked.js</strong> - مكتبة تحويل Markdown ممتازة</li>
+<li><strong>المجتمع العربي</strong> - دعمكم مذهل!</li>
+<li><strong>جميع المساهمين</strong> - شكراً لكم!</li>
+</ul>
+<hr>
+<h2>📞 التواصل</h2>
+<ul>
+<li>🌐 Website: (أضف رابطك)</li>
+<li>📧 Email: (أضف بريدك)</li>
+<li>💬 Discord: (أضف سيرفرك)</li>
+<li>🐦 Twitter: (أضف حسابك)</li>
+</ul>
+<hr>
+<h2>🗺️ خريطة الطريق</h2>
+<h3>الإصدار الحالي (v1.0):</h3>
+<ul>
+<li>✅ المحتوى الأساسي</li>
+<li>✅ تحويل MD إلى HTML</li>
+<li>✅ تصميم responsive</li>
+<li>✅ وظائف تفاعلية</li>
+</ul>
+<h3>الإصدارات القادمة:</h3>
+<p><strong>v1.1:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> بحث متقدم</li>
+<li><input disabled="" type="checkbox"> Dark mode toggle</li>
+<li><input disabled="" type="checkbox"> Print optimization</li>
+</ul>
+<p><strong>v1.2:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> PWA support</li>
+<li><input disabled="" type="checkbox"> Offline caching</li>
+<li><input disabled="" type="checkbox"> Progress tracking</li>
+</ul>
+<p><strong>v2.0:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Interactive code playground</li>
+<li><input disabled="" type="checkbox"> Video tutorials integration</li>
+<li><input disabled="" type="checkbox"> Quiz system with scoring</li>
+</ul>
+<hr>
+<h2>📚 دروس أخرى</h2>
+<p>هذا هو الدرس الأول. قريباً:</p>
+<ul>
+<li>📖 Lesson 02: Routing</li>
+<li>📖 Lesson 03: Views &amp; Blade</li>
+<li>📖 Lesson 04: Controllers</li>
+<li>📖 Lesson 05: Database &amp; Eloquent</li>
+<li>📖 ... والمزيد!</li>
+</ul>
+<hr>
+<h2>💡 نصيحة أخيرة</h2>
+<pre><code>&quot;أفضل طريقة لتعلم Laravel هي بالممارسة.
+لا تكتفِ بالقراءة - اكتب الكود، جرّب، أخطئ، تعلم!&quot;
+
+- كل مطور Laravel ناجح
+</code></pre>
+<hr>
+<p><strong>🚀 ابدأ الآن: <code>html/index.html</code></strong></p>
+<p><strong>📚 تعلم ممتع! ونراك في الدرس التالي!</strong></p>
+<hr>
+<p>⭐ إذا أعجبك المشروع، لا تنسَ Star على GitHub!</p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="./01-theory.html">الدرس النظري</a>
+                    <a href="./02-practice.html">التطبيق العملي</a>
+                    <a href="./exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="./resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="./resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="./resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

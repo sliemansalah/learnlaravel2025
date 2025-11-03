@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="هذا المجلد يحتوي على تمارين عملية لتطبيق ما تعلمته في الدرس الأول.">
+    <title>التمارين - الدرس 1 | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>README</span>
+    </div>
+
+    <main class="content container">
+        <h1>التمارين - الدرس 1</h1>
+<h1>Exercises - Lesson 1</h1>
+<hr>
+<h2>📚 محتويات هذا المجلد</h2>
+<p>هذا المجلد يحتوي على تمارين عملية لتطبيق ما تعلمته في الدرس الأول.</p>
+<h3>الملفات المتوفرة:</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>الملف</th>
+<th>الوصف</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>exercise-01-problem.md</code></td>
+<td>التمرين الأول: إنشاء Routes بسيطة</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>exercise-01-solution.md</code></td>
+<td>حل التمرين الأول</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>exercise-02-problem.md</code></td>
+<td>التمرين الثاني: إنشاء Views و Layout</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>exercise-02-solution.md</code></td>
+<td>حل التمرين الثاني</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>exercise-03-problem.md</code></td>
+<td>التمرين الثالث: إنشاء Controller</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>exercise-03-solution.md</code></td>
+<td>حل التمرين الثالث</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🎯 هدف التمارين</h2>
+<p>التمارين مصممة لـ:</p>
+<ul>
+<li>✅ تطبيق المفاهيم النظرية</li>
+<li>✅ تعزيز الفهم من خلال الممارسة</li>
+<li>✅ بناء ثقتك في استخدام Laravel</li>
+<li>✅ اكتشاف نقاط الضعف ومعالجتها</li>
+</ul>
+<hr>
+<h2>📖 كيفية استخدام التمارين</h2>
+<h3>خطوات الحل الصحيحة:</h3>
+<pre><code>1️⃣ اقرأ التمرين بعناية
+   ├─ افهم المطلوب بالضبط
+   ├─ حدد الملفات التي ستحتاجها
+   └─ خطط للحل
+
+2️⃣ حاول الحل بنفسك أولاً
+   ├─ لا تنظر للحل مباشرة!
+   ├─ جرّب وأخطئ
+   └─ استخدم Google إذا احتجت
+
+3️⃣ راجع الحل النموذجي
+   ├─ قارن حلك بالحل النموذجي
+   ├─ افهم الفروقات
+   └─ تعلم من الأخطاء
+
+4️⃣ حسّن حلك
+   ├─ طبّق ما تعلمته
+   ├─ أعد كتابة الحل
+   └─ جرّب تحسينات إضافية
+</code></pre>
+<hr>
+<h2>⏱️ الوقت المقترح</h2>
+<table>
+<thead>
+<tr>
+<th>التمرين</th>
+<th>الوقت المقترح</th>
+<th>المستوى</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>التمرين 1</td>
+<td>15-20 دقيقة</td>
+<td>⭐☆☆ (سهل)</td>
+</tr>
+<tr>
+<td>التمرين 2</td>
+<td>25-30 دقيقة</td>
+<td>⭐⭐☆ (متوسط)</td>
+</tr>
+<tr>
+<td>التمرين 3</td>
+<td>30-40 دقيقة</td>
+<td>⭐⭐⭐ (متقدم)</td>
+</tr>
+<tr>
+<td><strong>المجموع</strong></td>
+<td><strong>70-90 دقيقة</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>💡 نصائح للنجاح</h2>
+<h3>قبل البدء:</h3>
+<p>✅ <strong>تأكد من:</strong></p>
+<ul>
+<li>تثبيت Laravel بشكل صحيح</li>
+<li>عمل مشروع Laravel جديد للتمارين</li>
+<li>تشغيل السيرفر المحلي</li>
+<li>جاهزية محرر الأكواد</li>
+</ul>
+<h3>أثناء الحل:</h3>
+<p>✅ <strong>افعل:</strong></p>
+<ul>
+<li>اقرأ رسائل الأخطاء بعناية</li>
+<li>استخدم <code>php artisan route:list</code> للتحقق من Routes</li>
+<li>جرّب الكود بعد كل خطوة</li>
+<li>دوّن الصعوبات التي واجهتك</li>
+</ul>
+<p>❌ <strong>لا تفعل:</strong></p>
+<ul>
+<li>لا تنسخ الحل مباشرة</li>
+<li>لا تستسلم بسرعة</li>
+<li>لا تتخطى أي تمرين</li>
+<li>لا تنسى حفظ الملفات!</li>
+</ul>
+<hr>
+<h2>🔧 الإعداد للتمارين</h2>
+<h3>خطوات التحضير:</h3>
+<pre><code class="language-bash"># 1. أنشئ مشروع جديد للتمارين
+composer create-project laravel/laravel lesson-01-exercises
+cd lesson-01-exercises
+
+# 2. شغّل السيرفر المحلي
+php artisan serve
+
+# 3. افتح المتصفح
+# http://localhost:8000
+
+# 4. افتح محرر الأكواد
+code .
+</code></pre>
+<hr>
+<h2>📊 معايير التقييم</h2>
+<h3>تقييم حلولك:</h3>
+<p>✅ <strong>ممتاز (90-100%):</strong></p>
+<ul>
+<li>الكود يعمل بدون أخطاء</li>
+<li>الحل كامل ومنظم</li>
+<li>استخدام best practices</li>
+<li>كود نظيف وواضح</li>
+</ul>
+<p>✅ <strong>جيد جداً (80-89%):</strong></p>
+<ul>
+<li>الكود يعمل</li>
+<li>الحل شبه كامل</li>
+<li>بعض التحسينات ممكنة</li>
+</ul>
+<p>⚠️ <strong>جيد (70-79%):</strong></p>
+<ul>
+<li>الكود يعمل مع بعض الأخطاء</li>
+<li>الحل ناقص في بعض الجوانب</li>
+<li>يحتاج مراجعة</li>
+</ul>
+<p>❌ <strong>يحتاج تحسين (&lt;70%):</strong></p>
+<ul>
+<li>أخطاء كثيرة</li>
+<li>الحل غير مكتمل</li>
+<li>أعد المحاولة</li>
+</ul>
+<hr>
+<h2>🎓 بعد إكمال التمارين</h2>
+<h3>إذا أكملت جميع التمارين بنجاح:</h3>
+<pre><code>✅ مبروك! أنت الآن:
+   ├─ تعرف كيف تنشئ Routes
+   ├─ تستطيع إنشاء Views و Layouts
+   ├─ قادر على إنشاء Controllers
+   └─ جاهز للدرس التالي!
+</code></pre>
+<h3>إذا واجهت صعوبات:</h3>
+<pre><code>⚠️ لا تقلق!
+   ├─ راجع الدرس النظري مرة أخرى
+   ├─ راجع الأمثلة في code-examples/
+   ├─ اقرأ الحل النموذجي بعناية
+   ├─ جرّب مرة أخرى
+   └─ اطلب المساعدة إذا احتجت
+</code></pre>
+<hr>
+<h2>📁 هيكل المجلد الكامل</h2>
+<pre><code>exercises/
+│
+├── 📄 README.md                        # هذا الملف
+│
+├── 📄 exercise-01-problem.md          # التمرين 1: المشكلة
+├── 📄 exercise-01-solution.md         # التمرين 1: الحل
+│
+├── 📄 exercise-02-problem.md          # التمرين 2: المشكلة
+├── 📄 exercise-02-solution.md         # التمرين 2: الحل
+│
+├── 📄 exercise-03-problem.md          # التمرين 3: المشكلة
+└── 📄 exercise-03-solution.md         # التمرين 3: الحل
+</code></pre>
+<hr>
+<h2>🐛 مشاكل شائعة وحلولها</h2>
+<h3>المشكلة 1: Route لا يعمل</h3>
+<pre><code>الأعراض: 404 Not Found
+
+الحلول المحتملة:
+✅ تأكد من كتابة الـ URL بشكل صحيح
+✅ تأكد من حفظ ملف routes/web.php
+✅ تحقق من وجود أخطاء syntax
+✅ شغّل: php artisan route:list
+</code></pre>
+<h3>المشكلة 2: View لا يظهر</h3>
+<pre><code>الأعراض: View not found
+
+الحلول المحتملة:
+✅ تأكد من وجود الملف في resources/views/
+✅ تأكد من التسمية الصحيحة (.blade.php)
+✅ تأكد من المسار (admin.dashboard = admin/dashboard.blade.php)
+✅ شغّل: php artisan view:clear
+</code></pre>
+<h3>المشكلة 3: Controller لا يعمل</h3>
+<pre><code>الأعراض: Class not found
+
+الحلول المحتملة:
+✅ تأكد من namespace الصحيح
+✅ تأكد من use statement في routes/web.php
+✅ شغّل: composer dump-autoload
+</code></pre>
+<hr>
+<h2>📞 الدعم</h2>
+<p><strong>إذا واجهت مشكلة:</strong></p>
+<ol>
+<li>راجع قسم &quot;مشاكل شائعة&quot; أعلاه</li>
+<li>راجع <code>resources/troubleshooting.md</code></li>
+<li>ابحث في وثائق Laravel</li>
+<li>اسأل في مجتمعات Laravel</li>
+</ol>
+<hr>
+<h2>🎯 التحدي الإضافي</h2>
+<p><strong>بعد إكمال التمارين الثلاثة، جرّب:</strong></p>
+<h3>التحدي: أنشئ Blog بسيط</h3>
+<pre><code>المتطلبات:
+✅ صفحة رئيسية تعرض قائمة المقالات
+✅ صفحة لعرض مقال واحد
+✅ استخدام Layout موحد
+✅ Controller لإدارة المقالات
+✅ استخدام Route Parameters
+✅ تصميم بسيط باستخدام CSS
+
+الوقت المقترح: 1-2 ساعة
+المستوى: ⭐⭐⭐☆☆
+</code></pre>
+<hr>
+<h2>✅ قائمة التحقق</h2>
+<p>استخدم هذه القائمة لتتبع تقدمك:</p>
+<h3>التمرين الأول:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> قرأت المشكلة</li>
+<li><input disabled="" type="checkbox"> فهمت المطلوب</li>
+<li><input disabled="" type="checkbox"> حللت التمرين بنفسي</li>
+<li><input disabled="" type="checkbox"> راجعت الحل النموذجي</li>
+<li><input disabled="" type="checkbox"> فهمت الفروقات</li>
+</ul>
+<h3>التمرين الثاني:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> قرأت المشكلة</li>
+<li><input disabled="" type="checkbox"> فهمت المطلوب</li>
+<li><input disabled="" type="checkbox"> حللت التمرين بنفسي</li>
+<li><input disabled="" type="checkbox"> راجعت الحل النموذجي</li>
+<li><input disabled="" type="checkbox"> فهمت الفروقات</li>
+</ul>
+<h3>التمرين الثالث:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> قرأت المشكلة</li>
+<li><input disabled="" type="checkbox"> فهمت المطلوب</li>
+<li><input disabled="" type="checkbox"> حللت التمرين بنفسي</li>
+<li><input disabled="" type="checkbox"> راجعت الحل النموذجي</li>
+<li><input disabled="" type="checkbox"> فهمت الفروقات</li>
+</ul>
+<h3>التحدي الإضافي:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> أنشأت Blog بسيط</li>
+<li><input disabled="" type="checkbox"> الكود يعمل بدون أخطاء</li>
+<li><input disabled="" type="checkbox"> راضٍ عن النتيجة</li>
+</ul>
+<hr>
+<p><strong>جاهز؟ ابدأ بالتمرين الأول! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

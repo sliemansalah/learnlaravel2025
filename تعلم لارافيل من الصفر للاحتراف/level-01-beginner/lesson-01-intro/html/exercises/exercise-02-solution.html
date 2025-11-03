@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<html lang="ar" dir="rtl">">
+    <title>حل التمرين 2: إنشاء Views و Layout | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>exercise 02 solution</span>
+    </div>
+
+    <main class="content container">
+        <h1>حل التمرين 2: إنشاء Views و Layout</h1>
+<h1>Exercise 2 Solution</h1>
+<hr>
+<h2>💻 الحل الكامل</h2>
+<h3>1. Layout: <code>resources/views/layouts/app.blade.php</code></h3>
+<pre><code class="language-blade">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;@yield(&#39;title&#39;, &#39;متجري&#39;)&lt;/title&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        nav { background: #333; color: white; padding: 15px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        footer { background: #f4f4f4; padding: 20px; text-align: center; margin-top: 40px; }
+        .product-card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .price { color: #28a745; font-weight: bold; font-size: 18px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;a href=&quot;/&quot;&gt;الرئيسية&lt;/a&gt;
+            &lt;a href=&quot;/products&quot;&gt;المنتجات&lt;/a&gt;
+            &lt;a href=&quot;/cart&quot;&gt;سلة المشتريات&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+        @yield(&#39;content&#39;)
+    &lt;/div&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2025 متجري - جميع الحقوق محفوظة&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>2. Home: <code>resources/views/home.blade.php</code></h3>
+<pre><code class="language-blade">@extends(&#39;layouts.app&#39;)
+
+@section(&#39;title&#39;, &#39;الصفحة الرئيسية&#39;)
+
+@section(&#39;content&#39;)
+    &lt;h1&gt;مرحباً بك في متجرنا الإلكتروني!&lt;/h1&gt;
+    &lt;p&gt;نقدم لك أفضل المنتجات بأسعار منافسة&lt;/p&gt;
+
+    &lt;h2&gt;مميزات متجرنا:&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;شحن مجاني للطلبات فوق 500 ريال&lt;/li&gt;
+        &lt;li&gt;ضمان استرجاع المنتج خلال 14 يوم&lt;/li&gt;
+        &lt;li&gt;دعم فني متوفر 24/7&lt;/li&gt;
+    &lt;/ul&gt;
+@endsection
+</code></pre>
+<h3>3. Products: <code>resources/views/products.blade.php</code></h3>
+<pre><code class="language-blade">@extends(&#39;layouts.app&#39;)
+
+@section(&#39;title&#39;, &#39;المنتجات&#39;)
+
+@section(&#39;content&#39;)
+    &lt;h1&gt;منتجاتنا&lt;/h1&gt;
+
+    @forelse($products as $product)
+        &lt;div class=&quot;product-card&quot;&gt;
+            &lt;h3&gt;{{ $product[&#39;name&#39;] }}&lt;/h3&gt;
+            &lt;p class=&quot;price&quot;&gt;{{ $product[&#39;price&#39;] }} ريال&lt;/p&gt;
+            &lt;p&gt;{{ $product[&#39;description&#39;] }}&lt;/p&gt;
+        &lt;/div&gt;
+    @empty
+        &lt;p&gt;لا توجد منتجات حالياً&lt;/p&gt;
+    @endforelse
+@endsection
+</code></pre>
+<h3>4. Cart: <code>resources/views/cart.blade.php</code></h3>
+<pre><code class="language-blade">@extends(&#39;layouts.app&#39;)
+
+@section(&#39;title&#39;, &#39;سلة المشتريات&#39;)
+
+@section(&#39;content&#39;)
+    &lt;h1&gt;سلة المشتريات&lt;/h1&gt;
+
+    @if(count($cartItems) &gt; 0)
+        @php($total = 0)
+
+        @foreach($cartItems as $item)
+            &lt;div class=&quot;product-card&quot;&gt;
+                &lt;h3&gt;{{ $item[&#39;name&#39;] }}&lt;/h3&gt;
+                &lt;p&gt;السعر: {{ $item[&#39;price&#39;] }} ريال&lt;/p&gt;
+                &lt;p&gt;الكمية: {{ $item[&#39;quantity&#39;] }}&lt;/p&gt;
+                &lt;p class=&quot;price&quot;&gt;المجموع: {{ $item[&#39;price&#39;] * $item[&#39;quantity&#39;] }} ريال&lt;/p&gt;
+            &lt;/div&gt;
+            @php($total += $item[&#39;price&#39;] * $item[&#39;quantity&#39;])
+        @endforeach
+
+        &lt;h2&gt;المجموع الكلي: &lt;span class=&quot;price&quot;&gt;{{ $total }} ريال&lt;/span&gt;&lt;/h2&gt;
+    @else
+        &lt;p&gt;سلة المشتريات فارغة&lt;/p&gt;
+    @endif
+@endsection
+</code></pre>
+<h3>5. Routes: <code>routes/web.php</code></h3>
+<pre><code class="language-php">&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/&#39;, function () {
+    return view(&#39;home&#39;);
+});
+
+Route::get(&#39;/products&#39;, function () {
+    $products = [
+        [&#39;id&#39; =&gt; 1, &#39;name&#39; =&gt; &#39;لابتوب HP&#39;, &#39;price&#39; =&gt; 3000, &#39;description&#39; =&gt; &#39;لابتوب قوي للعمل&#39;],
+        [&#39;id&#39; =&gt; 2, &#39;name&#39; =&gt; &#39;هاتف Samsung&#39;, &#39;price&#39; =&gt; 2000, &#39;description&#39; =&gt; &#39;هاتف ذكي حديث&#39;],
+        [&#39;id&#39; =&gt; 3, &#39;name&#39; =&gt; &#39;سماعات Sony&#39;, &#39;price&#39; =&gt; 500, &#39;description&#39; =&gt; &#39;سماعات عالية الجودة&#39;],
+    ];
+
+    return view(&#39;products&#39;, compact(&#39;products&#39;));
+});
+
+Route::get(&#39;/cart&#39;, function () {
+    $cartItems = [
+        [&#39;name&#39; =&gt; &#39;لابتوب HP&#39;, &#39;price&#39; =&gt; 3000, &#39;quantity&#39; =&gt; 1],
+        [&#39;name&#39; =&gt; &#39;سماعات Sony&#39;, &#39;price&#39; =&gt; 500, &#39;quantity&#39; =&gt; 2],
+    ];
+
+    return view(&#39;cart&#39;, compact(&#39;cartItems&#39;));
+});
+</code></pre>
+<hr>
+<h2>📖 شرح الحل</h2>
+<h3>استخدام @extends و @yield</h3>
+<pre><code class="language-blade">{{-- في Layout --}}
+@yield(&#39;content&#39;)
+
+{{-- في View --}}
+@extends(&#39;layouts.app&#39;)
+@section(&#39;content&#39;)
+    المحتوى هنا
+@endsection
+</code></pre>
+<h3>استخدام @forelse</h3>
+<pre><code class="language-blade">@forelse($items as $item)
+    {{ $item }}
+@empty
+    لا توجد عناصر
+@endforelse
+</code></pre>
+<p>أفضل من <code>@foreach</code> لأنه يتعامل مع الحالة الفارغة تلقائياً.</p>
+<h3>حساب المجموع</h3>
+<pre><code class="language-blade">@php($total = 0)
+@foreach($items as $item)
+    @php($total += $item[&#39;price&#39;])
+@endforeach
+&lt;p&gt;المجموع: {{ $total }}&lt;/p&gt;
+</code></pre>
+<hr>
+<p><strong>مبروك! 🎉</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="المستوى: مبتدئ | Beginner">
+    <title>الدرس 1: مقدمة إلى Laravel والبيئة التطويرية | Laravel Learning</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="./index.html">الرئيسية</a></li>
+                <li><a href="./01-theory.html">النظري</a></li>
+                <li><a href="./02-practice.html">العملي</a></li>
+                <li><a href="./03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="./04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="./code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="./exercises/README.html">التمارين</a></li>
+                <li><a href="./resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="./index.html">الرئيسية</a>
+        <span>›</span>
+        <span>01 theory</span>
+    </div>
+
+    <main class="content container">
+        <h1>الدرس 1: مقدمة إلى Laravel والبيئة التطويرية</h1>
+<h1>Lesson 1: Introduction to Laravel and Development Environment</h1>
+<p><strong>المستوى:</strong> مبتدئ | Beginner<br><strong>المدة المقدرة:</strong> 3-4 ساعات | 3-4 hours<br><strong>المتطلبات السابقة:</strong> معرفة أساسية بـ PHP و HTML | Basic knowledge of PHP and HTML</p>
+<hr>
+<h2>📑 جدول المحتويات | Table of Contents</h2>
+<ol>
+<li><a href="#%D9%85%D8%A7-%D9%87%D9%88-laravel">ما هو Laravel؟</a></li>
+<li><a href="#%D9%84%D9%85%D8%A7%D8%B0%D8%A7-%D9%86%D8%B3%D8%AA%D8%AE%D8%AF%D9%85-laravel">لماذا نستخدم Laravel؟</a></li>
+<li><a href="#%D9%85%D8%B9%D9%85%D8%A7%D8%B1%D9%8A%D8%A9-mvc">معمارية MVC</a></li>
+<li><a href="#%D9%85%D8%AA%D8%B7%D9%84%D8%A8%D8%A7%D8%AA-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D9%85">متطلبات النظام</a></li>
+<li><a href="#%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%B7%D9%88%D9%8A%D8%B1">أدوات التطوير</a></li>
+<li><a href="#composer-%D9%88%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%AD%D8%B2%D9%85">Composer وإدارة الحزم</a></li>
+<li><a href="#%D9%87%D9%8A%D9%83%D9%84-%D9%85%D8%B4%D8%B1%D9%88%D8%B9-laravel">هيكل مشروع Laravel</a></li>
+<li><a href="#%D8%AF%D9%88%D8%B1%D8%A9-%D8%AD%D9%8A%D8%A7%D8%A9-%D8%A7%D9%84%D8%B7%D9%84%D8%A8">دورة حياة الطلب</a></li>
+</ol>
+<hr>
+<h2>🎯 أهداف الدرس | Lesson Objectives</h2>
+<p>بنهاية هذا الدرس، ستكون قادراً على:</p>
+<ul>
+<li>✅ فهم ماهية Laravel ولماذا نستخدمه</li>
+<li>✅ فهم معمارية MVC بشكل واضح</li>
+<li>✅ تثبيت وإعداد بيئة تطوير Laravel</li>
+<li>✅ فهم دور Composer في Laravel</li>
+<li>✅ التعرف على هيكل ملفات ومجلدات Laravel</li>
+<li>✅ فهم دورة حياة الطلب في Laravel</li>
+</ul>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>✅ Understand what Laravel is and why we use it</li>
+<li>✅ Understand MVC architecture clearly</li>
+<li>✅ Install and set up Laravel development environment</li>
+<li>✅ Understand the role of Composer in Laravel</li>
+<li>✅ Know Laravel&#39;s file and folder structure</li>
+<li>✅ Understand request lifecycle in Laravel</li>
+</ul>
+<hr>
+<h2>📚 ما هو Laravel؟</h2>
+<h3>التعريف | Definition</h3>
+<p><strong>Laravel</strong> هو إطار عمل (Framework) مفتوح المصدر لتطوير تطبيقات الويب باستخدام لغة PHP. تم إنشاؤه بواسطة <strong>Taylor Otwell</strong> في عام 2011، وهو الآن أحد أكثر أطر عمل PHP شعبية واستخداماً في العالم.</p>
+<p><strong>Laravel</strong> is an open-source web application framework written in PHP. Created by <strong>Taylor Otwell</strong> in 2011, it is now one of the most popular and widely used PHP frameworks in the world.</p>
+<h3>الفلسفة | Philosophy</h3>
+<p>Laravel يتبع فلسفة &quot;البساطة والأناقة&quot;، ويهدف إلى:</p>
+<ul>
+<li><strong>جعل عملية التطوير ممتعة</strong> دون التضحية بالوظائف</li>
+<li><strong>توفير صياغة واضحة وأنيقة</strong> (Expressive Syntax)</li>
+<li><strong>تسريع عملية التطوير</strong> من خلال أدوات جاهزة</li>
+<li><strong>توفير أفضل الممارسات</strong> بشكل افتراضي</li>
+</ul>
+<p>Laravel follows the philosophy of &quot;simplicity and elegance,&quot; aiming to:</p>
+<ul>
+<li><strong>Make development enjoyable</strong> without sacrificing functionality</li>
+<li><strong>Provide clear and elegant syntax</strong></li>
+<li><strong>Speed up development</strong> through ready-made tools</li>
+<li><strong>Provide best practices</strong> by default</li>
+</ul>
+<h3>الإصدارات | Versions</h3>
+<p>Laravel يتبع نظام <strong>Semantic Versioning</strong>:</p>
+<pre><code>الإصدار الحالي (2025): Laravel 11.x
+Current Version (2025): Laravel 11.x
+
+نظام الإصدارات:
+- Major.Minor.Patch
+- مثال: 11.2.5
+  - 11 = إصدار رئيسي (Major)
+  - 2 = إصدار ثانوي (Minor)
+  - 5 = تحديث صيانة (Patch)
+</code></pre>
+<p><strong>دورة الإصدارات:</strong></p>
+<ul>
+<li>إصدار رئيسي جديد كل عام (فبراير)</li>
+<li>دعم Bug Fixes لمدة 18 شهر</li>
+<li>دعم الأمان لمدة سنتين</li>
+</ul>
+<hr>
+<h2>💡 لماذا نستخدم Laravel؟</h2>
+<h3>1. الإنتاجية العالية | High Productivity</h3>
+<pre><code>✅ Authentication &amp; Authorization جاهزة
+✅ ORM قوي (Eloquent)
+✅ Queue System متكامل
+✅ Email &amp; Notifications سهلة
+✅ File Storage مبسط
+✅ Task Scheduling مدمج
+</code></pre>
+<h3>2. المجتمع النشط | Active Community</h3>
+<ul>
+<li>📊 أكثر من 75,000 نجمة على GitHub</li>
+<li>📚 وثائق شاملة ومُحدثة باستمرار</li>
+<li>🎥 Laracasts - منصة تعليمية متخصصة</li>
+<li>💬 منتديات ومجموعات نشطة</li>
+<li>🔧 آلاف الحزم (Packages) الجاهزة</li>
+</ul>
+<h3>3. الأمان | Security</h3>
+<p>Laravel يوفر حماية ضد:</p>
+<pre><code class="language-php">// SQL Injection
+✅ Laravel يستخدم PDO Prepared Statements
+
+// XSS (Cross-Site Scripting)
+✅ Blade Engine ينظف البيانات تلقائياً
+
+// CSRF (Cross-Site Request Forgery)
+✅ CSRF Token تلقائي في كل نموذج
+
+// Clickjacking
+✅ X-Frame-Options header
+
+// SQL Injection via Mass Assignment
+✅ Fillable/Guarded في Models
+</code></pre>
+<h3>4. قابلية التوسع | Scalability</h3>
+<p>Laravel مناسب لجميع أحجام المشاريع:</p>
+<ul>
+<li>🏠 <strong>Small Projects:</strong> مدونة شخصية، موقع شركة صغيرة</li>
+<li>🏢 <strong>Medium Projects:</strong> متجر إلكتروني، نظام إدارة</li>
+<li>🏭 <strong>Large Projects:</strong> منصات اجتماعية، تطبيقات Enterprise</li>
+</ul>
+<h3>5. الأدوات المساعدة | Helpful Tools</h3>
+<pre><code>🔧 Artisan CLI - واجهة سطر أوامر قوية
+🔍 Laravel Telescope - أداة debugging
+📊 Laravel Horizon - لوحة تحكم للـ Queues
+🚀 Laravel Forge - إدارة السيرفرات
+☁️  Laravel Vapor - Serverless deployment
+</code></pre>
+<h3>6. النظام البيئي | Ecosystem</h3>
+<pre><code>📦 Laravel Packages:
+   - Laravel Sanctum (API Authentication)
+   - Laravel Passport (OAuth2)
+   - Laravel Cashier (Payments)
+   - Laravel Scout (Full-text Search)
+   - Laravel Socialite (Social Login)
+   - Laravel Echo (WebSockets)
+   - وآلاف الحزم الأخرى
+</code></pre>
+<hr>
+<h2>🏗️ معمارية MVC</h2>
+<h3>ما هي MVC؟</h3>
+<p><strong>MVC</strong> تعني <strong>Model-View-Controller</strong>، وهي نمط معماري لتنظيم الكود.</p>
+<h3>المكونات الثلاثة | Three Components</h3>
+<h4>1️⃣ Model (النموذج)</h4>
+<p><strong>الدور:</strong> إدارة البيانات والمنطق التجاري</p>
+<pre><code class="language-php">// مثال: User Model
+class User extends Model
+{
+    // يتعامل مع جدول users في قاعدة البيانات
+    // Handles the &#39;users&#39; table in the database
+
+    protected $fillable = [&#39;name&#39;, &#39;email&#39;, &#39;password&#39;];
+
+    // العلاقات | Relationships
+    public function posts()
+    {
+        return $this-&gt;hasMany(Post::class);
+    }
+}
+</code></pre>
+<p><strong>المسؤوليات:</strong></p>
+<ul>
+<li>✅ التعامل مع قاعدة البيانات</li>
+<li>✅ تطبيق قواعد العمل (Business Logic)</li>
+<li>✅ التحقق من صحة البيانات</li>
+<li>✅ إدارة العلاقات بين الجداول</li>
+</ul>
+<h4>2️⃣ View (العرض)</h4>
+<p><strong>الدور:</strong> عرض البيانات للمستخدم (HTML/CSS/JS)</p>
+<pre><code class="language-blade">{{-- مثال: welcome.blade.php --}}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;مرحباً&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;مرحباً {{ $user-&gt;name }}&lt;/h1&gt;
+    &lt;p&gt;لديك {{ $posts-&gt;count() }} منشور&lt;/p&gt;
+
+    @foreach($posts as $post)
+        &lt;div class=&quot;post&quot;&gt;
+            &lt;h2&gt;{{ $post-&gt;title }}&lt;/h2&gt;
+            &lt;p&gt;{{ $post-&gt;content }}&lt;/p&gt;
+        &lt;/div&gt;
+    @endforeach
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>المسؤوليات:</strong></p>
+<ul>
+<li>✅ عرض البيانات بشكل جميل</li>
+<li>✅ التنسيق والتصميم</li>
+<li>✅ التفاعل مع المستخدم (UI)</li>
+<li>❌ لا يحتوي على منطق معقد</li>
+</ul>
+<h4>3️⃣ Controller (المتحكم)</h4>
+<p><strong>الدور:</strong> الوسيط بين Model و View</p>
+<pre><code class="language-php">// مثال: UserController
+class UserController extends Controller
+{
+    public function index()
+    {
+        // 1. الحصول على البيانات من Model
+        $users = User::with(&#39;posts&#39;)-&gt;get();
+
+        // 2. إرسال البيانات إلى View
+        return view(&#39;users.index&#39;, compact(&#39;users&#39;));
+    }
+
+    public function store(Request $request)
+    {
+        // 1. التحقق من البيانات
+        $validated = $request-&gt;validate([
+            &#39;name&#39; =&gt; &#39;required|max:255&#39;,
+            &#39;email&#39; =&gt; &#39;required|email|unique:users&#39;,
+            &#39;password&#39; =&gt; &#39;required|min:8&#39;,
+        ]);
+
+        // 2. إنشاء مستخدم جديد
+        $user = User::create($validated);
+
+        // 3. إعادة التوجيه
+        return redirect()-&gt;route(&#39;users.show&#39;, $user);
+    }
+}
+</code></pre>
+<p><strong>المسؤوليات:</strong></p>
+<ul>
+<li>✅ استقبال طلبات المستخدم</li>
+<li>✅ معالجة البيانات</li>
+<li>✅ استدعاء Models</li>
+<li>✅ إرجاع Views أو Responses</li>
+</ul>
+<h3>تدفق البيانات | Data Flow</h3>
+<pre><code>المستخدم (User)
+     ↓
+     ↓ (1) يرسل طلب (HTTP Request)
+     ↓
+Controller (المتحكم)
+     ↓
+     ↓ (2) يطلب البيانات
+     ↓
+Model (النموذج)
+     ↓
+     ↓ (3) يستعلم عن البيانات
+     ↓
+Database (قاعدة البيانات)
+     ↓
+     ↓ (4) يُرجع البيانات
+     ↓
+Model
+     ↓
+     ↓ (5) يُرسل البيانات
+     ↓
+Controller
+     ↓
+     ↓ (6) يُمرر البيانات
+     ↓
+View (العرض)
+     ↓
+     ↓ (7) يُرجع HTML
+     ↓
+المستخدم (User)
+</code></pre>
+<h3>مثال عملي كامل | Complete Practical Example</h3>
+<p><strong>السيناريو:</strong> عرض قائمة المستخدمين</p>
+<h4>1. Route (web.php)</h4>
+<pre><code class="language-php">Route::get(&#39;/users&#39;, [UserController::class, &#39;index&#39;]);
+</code></pre>
+<h4>2. Controller</h4>
+<pre><code class="language-php">class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::all(); // Model
+        return view(&#39;users.index&#39;, compact(&#39;users&#39;)); // View
+    }
+}
+</code></pre>
+<h4>3. Model</h4>
+<pre><code class="language-php">class User extends Model
+{
+    protected $table = &#39;users&#39;;
+    protected $fillable = [&#39;name&#39;, &#39;email&#39;];
+}
+</code></pre>
+<h4>4. View (resources/views/users/index.blade.php)</h4>
+<pre><code class="language-blade">@foreach($users as $user)
+    &lt;p&gt;{{ $user-&gt;name }} - {{ $user-&gt;email }}&lt;/p&gt;
+@endforeach
+</code></pre>
+<h3>فوائد MVC | Benefits of MVC</h3>
+<pre><code>✅ فصل الاهتمامات (Separation of Concerns)
+   - كل جزء له مسؤولية واضحة
+
+✅ سهولة الصيانة (Maintainability)
+   - يمكن تعديل جزء دون التأثير على الأجزاء الأخرى
+
+✅ إعادة الاستخدام (Reusability)
+   - يمكن استخدام نفس Model في Controllers متعددة
+
+✅ قابلية الاختبار (Testability)
+   - يمكن اختبار كل جزء بشكل منفصل
+
+✅ العمل الجماعي (Teamwork)
+   - يمكن للفريق العمل على أجزاء مختلفة بنفس الوقت
+</code></pre>
+<hr>
+<h2>💻 متطلبات النظام</h2>
+<h3>المتطلبات الأساسية | Basic Requirements</h3>
+<h4>لـ Laravel 11.x:</h4>
+<pre><code>✅ PHP &gt;= 8.2
+✅ Composer (أحدث إصدار)
+✅ Extensions مطلوبة:
+   - Ctype PHP Extension
+   - cURL PHP Extension
+   - DOM PHP Extension
+   - Fileinfo PHP Extension
+   - Filter PHP Extension
+   - Hash PHP Extension
+   - Mbstring PHP Extension
+   - OpenSSL PHP Extension
+   - PCRE PHP Extension
+   - PDO PHP Extension
+   - Session PHP Extension
+   - Tokenizer PHP Extension
+   - XML PHP Extension
+</code></pre>
+<h3>قاعدة البيانات | Database</h3>
+<p>Laravel يدعم:</p>
+<pre><code>✅ MySQL 5.7+ / 8.0+
+✅ PostgreSQL 12.0+
+✅ SQLite 3.35.0+
+✅ SQL Server 2017+
+</code></pre>
+<h3>التحقق من PHP | Check PHP</h3>
+<pre><code class="language-bash"># التحقق من إصدار PHP
+php -v
+
+# التحقق من Extensions المثبتة
+php -m
+
+# التحقق من extension معين
+php -m | grep mbstring
+</code></pre>
+<hr>
+<h2>🛠️ أدوات التطوير</h2>
+<h3>1. بيئة التطوير المحلية | Local Development Environment</h3>
+<h4>الخيار الأول: Laravel Herd (موصى به للمبتدئين)</h4>
+<pre><code>🚀 Laravel Herd
+- سهل التثبيت والاستخدام
+- يحتوي على PHP, Nginx, MySQL
+- تشغيل تلقائي للمشاريع
+- متوفر لـ Windows و macOS
+
+التحميل:
+https://herd.laravel.com
+</code></pre>
+<h4>الخيار الثاني: XAMPP/WAMP</h4>
+<pre><code>📦 XAMPP (Windows, macOS, Linux)
+- Apache, MySQL, PHP, PhpMyAdmin
+- سهل للمبتدئين
+- https://www.apachefriends.org
+
+📦 WAMP (Windows)
+- Apache, MySQL, PHP
+- https://www.wampserver.com
+</code></pre>
+<h4>الخيار الثالث: Docker</h4>
+<pre><code>🐳 Laravel Sail (Docker)
+- بيئة متكاملة معزولة
+- يعمل على جميع أنظمة التشغيل
+- موصى به للمشاريع الكبيرة
+
+# تثبيت مشروع جديد مع Sail
+curl -s https://laravel.build/example-app | bash
+cd example-app
+./vendor/bin/sail up
+</code></pre>
+<h3>2. محرر النصوص | Code Editor</h3>
+<h4>Visual Studio Code (موصى به)</h4>
+<pre><code>💻 VS Code
+- مجاني ومفتوح المصدر
+- Extensions مفيدة:
+  ✅ Laravel Extension Pack
+  ✅ Laravel Blade Snippets
+  ✅ Laravel goto view
+  ✅ PHP Intelephense
+  ✅ PHP Namespace Resolver
+
+التحميل:
+https://code.visualstudio.com
+</code></pre>
+<h4>بدائل أخرى:</h4>
+<pre><code>💻 PhpStorm (مدفوع، احترافي)
+💻 Sublime Text (خفيف وسريع)
+💻 Atom (مجاني)
+</code></pre>
+<h3>3. أدوات إضافية | Additional Tools</h3>
+<pre><code>🔧 Git - نظام التحكم بالإصدارات
+   https://git-scm.com
+
+🔧 Node.js &amp; NPM - لإدارة Assets
+   https://nodejs.org
+
+🔧 Postman - لاختبار APIs
+   https://www.postman.com
+
+🔧 TablePlus/DBeaver - إدارة قواعد البيانات
+   https://tableplus.com
+   https://dbeaver.io
+</code></pre>
+<hr>
+<h2>📦 Composer وإدارة الحزم</h2>
+<h3>ما هو Composer؟</h3>
+<p><strong>Composer</strong> هو أداة لإدارة الاعتماديات (Dependencies) في PHP، مشابه لـ npm في Node.js أو pip في Python.</p>
+<h3>لماذا نحتاج Composer؟</h3>
+<pre><code>✅ إدارة مكتبات PHP بسهولة
+✅ تثبيت Laravel والحزم
+✅ تحديث الحزم بأمان
+✅ Autoloading تلقائي للكلاسات
+✅ إدارة إصدارات الحزم
+</code></pre>
+<h3>تثبيت Composer</h3>
+<h4>Windows:</h4>
+<pre><code class="language-bash"># تحميل من:
+https://getcomposer.org/Composer-Setup.exe
+# ثم اتبع خطوات التثبيت
+</code></pre>
+<h4>macOS/Linux:</h4>
+<pre><code class="language-bash"># تثبيت عبر Terminal
+php -r &quot;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&quot;
+php composer-setup.php
+php -r &quot;unlink(&#39;composer-setup.php&#39;);&quot;
+sudo mv composer.phar /usr/local/bin/composer
+</code></pre>
+<h3>التحقق من التثبيت</h3>
+<pre><code class="language-bash">composer --version
+# Expected output: Composer version 2.x.x
+</code></pre>
+<h3>ملف composer.json</h3>
+<p>هذا الملف يحدد اعتماديات المشروع:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;laravel/laravel&quot;,
+    &quot;type&quot;: &quot;project&quot;,
+    &quot;description&quot;: &quot;Laravel Application&quot;,
+    &quot;require&quot;: {
+        &quot;php&quot;: &quot;^8.2&quot;,
+        &quot;laravel/framework&quot;: &quot;^11.0&quot;,
+        &quot;laravel/sanctum&quot;: &quot;^4.0&quot;,
+        &quot;laravel/tinker&quot;: &quot;^2.9&quot;
+    },
+    &quot;require-dev&quot;: {
+        &quot;fakerphp/faker&quot;: &quot;^1.23&quot;,
+        &quot;laravel/pint&quot;: &quot;^1.13&quot;,
+        &quot;mockery/mockery&quot;: &quot;^1.6&quot;,
+        &quot;phpunit/phpunit&quot;: &quot;^10.5&quot;
+    },
+    &quot;autoload&quot;: {
+        &quot;psr-4&quot;: {
+            &quot;App\\&quot;: &quot;app/&quot;,
+            &quot;Database\\Factories\\&quot;: &quot;database/factories/&quot;,
+            &quot;Database\\Seeders\\&quot;: &quot;database/seeders/&quot;
+        }
+    }
+}
+</code></pre>
+<h3>أوامر Composer الأساسية</h3>
+<pre><code class="language-bash"># تثبيت جميع الاعتماديات
+composer install
+
+# تحديث الاعتماديات
+composer update
+
+# إضافة حزمة جديدة
+composer require package-name
+
+# إضافة حزمة للتطوير فقط
+composer require --dev package-name
+
+# إزالة حزمة
+composer remove package-name
+
+# إعادة بناء autoload
+composer dump-autoload
+</code></pre>
+<hr>
+<h2>📁 هيكل مشروع Laravel</h2>
+<p>عند إنشاء مشروع Laravel جديد، ستجد الهيكل التالي:</p>
+<pre><code>my-laravel-app/
+│
+├── 📁 app/                    # كود التطبيق الأساسي
+│   ├── Console/              # Artisan Commands
+│   ├── Exceptions/           # معالجة الأخطاء
+│   ├── Http/                 # Controllers, Middleware
+│   │   ├── Controllers/
+│   │   └── Middleware/
+│   ├── Models/               # Eloquent Models
+│   └── Providers/            # Service Providers
+│
+├── 📁 bootstrap/              # ملفات بدء التطبيق
+│   ├── app.php              # إنشاء تطبيق Laravel
+│   └── cache/               # ملفات cache للأداء
+│
+├── 📁 config/                 # ملفات الإعدادات
+│   ├── app.php              # إعدادات التطبيق الرئيسية
+│   ├── database.php         # إعدادات قاعدة البيانات
+│   ├── mail.php             # إعدادات البريد
+│   └── ...
+│
+├── 📁 database/               # قاعدة البيانات
+│   ├── factories/           # Model Factories
+│   ├── migrations/          # جداول قاعدة البيانات
+│   └── seeders/             # بيانات تجريبية
+│
+├── 📁 public/                 # المجلد العام (Document Root)
+│   ├── index.php            # نقطة الدخول
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+├── 📁 resources/              # الموارد غير المعالجة
+│   ├── css/                 # CSS files
+│   ├── js/                  # JavaScript files
+│   └── views/               # Blade Templates
+│       └── welcome.blade.php
+│
+├── 📁 routes/                 # ملفات التوجيه
+│   ├── web.php              # Web routes
+│   ├── api.php              # API routes
+│   ├── console.php          # Console routes
+│   └── channels.php         # Broadcast channels
+│
+├── 📁 storage/                # الملفات المُنشأة
+│   ├── app/                 # ملفات التطبيق
+│   ├── framework/           # ملفات Framework
+│   └── logs/                # Log files
+│
+├── 📁 tests/                  # ملفات الاختبار
+│   ├── Feature/             # Feature Tests
+│   └── Unit/                # Unit Tests
+│
+├── 📁 vendor/                 # Composer packages
+│
+├── 📄 .env                    # متغيرات البيئة (لا تُرفع لـ Git)
+├── 📄 .env.example           # مثال على .env
+├── 📄 artisan                # Artisan CLI
+├── 📄 composer.json          # Composer dependencies
+├── 📄 package.json           # NPM dependencies
+└── 📄 phpunit.xml            # PHPUnit configuration
+</code></pre>
+<h3>شرح المجلدات المهمة:</h3>
+<h4>1. app/ - قلب التطبيق</h4>
+<pre><code>app/
+├── Http/Controllers/     ← Controllers هنا
+├── Models/              ← Models هنا
+├── Http/Middleware/     ← Middleware هنا
+└── Providers/           ← Service Providers
+</code></pre>
+<h4>2. resources/ - الموارد</h4>
+<pre><code>resources/
+├── views/               ← Blade templates
+├── css/                 ← CSS files
+└── js/                  ← JavaScript files
+</code></pre>
+<h4>3. routes/ - التوجيه</h4>
+<pre><code>routes/
+├── web.php              ← للصفحات العادية
+├── api.php              ← للـ APIs
+└── console.php          ← للـ Commands
+</code></pre>
+<h4>4. database/ - قاعدة البيانات</h4>
+<pre><code>database/
+├── migrations/          ← تعريف الجداول
+├── seeders/            ← بيانات تجريبية
+└── factories/          ← إنشاء بيانات وهمية
+</code></pre>
+<h4>5. config/ - الإعدادات</h4>
+<pre><code>config/
+├── app.php             ← إعدادات عامة
+├── database.php        ← إعدادات DB
+├── mail.php            ← إعدادات البريد
+└── ...
+</code></pre>
+<hr>
+<h2>🔄 دورة حياة الطلب</h2>
+<p>فهم كيف يعالج Laravel الطلبات مهم جداً:</p>
+<h3>الخطوات:</h3>
+<pre><code>1. Entry Point (public/index.php)
+   ↓
+2. HTTP Kernel (app/Http/Kernel.php)
+   ↓
+3. Service Providers
+   ↓
+4. Router
+   ↓
+5. Middleware
+   ↓
+6. Controller
+   ↓
+7. Response
+   ↓
+8. Middleware (مرة أخرى)
+   ↓
+9. HTTP Response للمتصفح
+</code></pre>
+<h3>بالتفصيل:</h3>
+<h4>1️⃣ نقطة الدخول (public/index.php)</h4>
+<pre><code class="language-php">// جميع الطلبات تبدأ من هنا
+require __DIR__.&#39;/../vendor/autoload.php&#39;;
+
+// إنشاء التطبيق
+$app = require_once __DIR__.&#39;/../bootstrap/app.php&#39;;
+
+// معالجة الطلب
+$kernel = $app-&gt;make(Kernel::class);
+$response = $kernel-&gt;handle(
+    $request = Request::capture()
+);
+$response-&gt;send();
+</code></pre>
+<h4>2️⃣ HTTP Kernel</h4>
+<pre><code class="language-php">// يحتوي على Middleware والإعدادات
+class Kernel extends HttpKernel
+{
+    protected $middleware = [
+        // Global Middleware
+        \Illuminate\Http\Middleware\TrustProxies::class,
+        \Illuminate\Http\Middleware\ValidatePostSize::class,
+        // ...
+    ];
+}
+</code></pre>
+<h4>3️⃣ Service Providers</h4>
+<pre><code class="language-php">// يتم تشغيل Service Providers
+// لتسجيل الخدمات وإعداد التطبيق
+AppServiceProvider
+AuthServiceProvider
+RouteServiceProvider
+// ...
+</code></pre>
+<h4>4️⃣ Router</h4>
+<pre><code class="language-php">// يبحث عن Route المناسب
+Route::get(&#39;/users&#39;, [UserController::class, &#39;index&#39;]);
+</code></pre>
+<h4>5️⃣ Middleware</h4>
+<pre><code class="language-php">// يتم تشغيل Middleware قبل الوصول للـ Controller
+- Authentication
+- CSRF Protection
+- Session
+// ...
+</code></pre>
+<h4>6️⃣ Controller</h4>
+<pre><code class="language-php">// يُنفّذ كود Controller
+public function index()
+{
+    $users = User::all();
+    return view(&#39;users.index&#39;, compact(&#39;users&#39;));
+}
+</code></pre>
+<h4>7️⃣ Response</h4>
+<pre><code class="language-php">// يتم إنشاء Response (HTML, JSON, etc.)
+return view(&#39;welcome&#39;);
+return response()-&gt;json([&#39;data&#39; =&gt; $data]);
+return redirect(&#39;/home&#39;);
+</code></pre>
+<h3>رسم توضيحي:</h3>
+<pre><code>المستخدم يطلب: http://example.com/users
+         ↓
+    public/index.php
+         ↓
+    HTTP Kernel
+         ↓
+  🔧 Global Middleware
+         ↓
+    Router → routes/web.php
+         ↓
+    🛡️ Route Middleware
+         ↓
+    UserController@index
+         ↓
+    User::all() → Database
+         ↓
+    return view(&#39;users.index&#39;)
+         ↓
+    Blade Engine
+         ↓
+    HTML Response
+         ↓
+    المستخدم يرى الصفحة
+</code></pre>
+<hr>
+<h2>📝 ملخص الدرس | Lesson Summary</h2>
+<h3>النقاط الرئيسية:</h3>
+<ol>
+<li><strong>Laravel</strong> هو إطار عمل PHP قوي وشائع</li>
+<li><strong>MVC</strong> يفصل الكود إلى Model, View, Controller</li>
+<li><strong>Composer</strong> يدير اعتماديات PHP</li>
+<li><strong>هيكل Laravel</strong> منظم ويتبع best practices</li>
+<li><strong>دورة حياة الطلب</strong> تمر بعدة مراحل قبل الوصول للمستخدم</li>
+</ol>
+<h3>المفاهيم الأساسية:</h3>
+<pre><code>✅ Framework vs Library
+✅ MVC Pattern
+✅ Dependency Management
+✅ Request Lifecycle
+✅ Directory Structure
+</code></pre>
+<hr>
+<h2>🎯 ماذا بعد؟</h2>
+<p>في الدرس التالي، سنتعلم:</p>
+<ul>
+<li>✅ تثبيت Laravel فعلياً</li>
+<li>✅ إنشاء أول مشروع</li>
+<li>✅ تشغيل السيرفر المحلي</li>
+<li>✅ استكشاف التطبيق</li>
+</ul>
+<p><strong>استعد للدرس العملي! 🚀</strong></p>
+<hr>
+<h2>📚 مصادر إضافية | Additional Resources</h2>
+<h3>الوثائق الرسمية:</h3>
+<ul>
+<li>📖 <a href="https://laravel.com/docs">Laravel Documentation</a></li>
+<li>📖 <a href="https://laravel.com/api/11.x/">Laravel API Reference</a></li>
+</ul>
+<h3>دروس فيديو:</h3>
+<ul>
+<li>🎥 <a href="https://laracasts.com">Laracasts</a></li>
+<li>🎥 <a href="https://www.youtube.com/@LaravelDaily">Laravel Daily</a></li>
+</ul>
+<h3>مجتمعات:</h3>
+<ul>
+<li>💬 <a href="https://laravel.io">Laravel Forums</a></li>
+<li>💬 <a href="https://discord.gg/laravel">Laravel Discord</a></li>
+<li>💬 <a href="https://reddit.com/r/laravel">r/laravel</a></li>
+</ul>
+<hr>
+<p><strong>📌 ملاحظة:</strong> تأكد من فهم جميع المفاهيم قبل الانتقال للدرس العملي!</p>
+<p><strong>تاريخ آخر تحديث:</strong> 2025-11-03<br><strong>الإصدار:</strong> 1.0<br><strong>متوافق مع:</strong> Laravel 11.x</p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="./01-theory.html">الدرس النظري</a>
+                    <a href="./02-practice.html">التطبيق العملي</a>
+                    <a href="./exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="./resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="./resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="./resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

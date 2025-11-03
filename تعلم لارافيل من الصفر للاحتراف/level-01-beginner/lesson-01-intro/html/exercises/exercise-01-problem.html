@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="في هذا التمرين، ستتعلم كيفية إنشاء Routes مختلفة في Laravel وكيفية التعامل مع Route Parameters.">
+    <title>التمرين 1: إنشاء Routes بسيطة | Laravel Learning</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Additional RTL and code block fixes */
+        pre {
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        table {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .content > * {
+            max-width: 100%;
+        }
+
+        /* Fix for lists */
+        .content ul,
+        .content ol {
+            padding-right: 40px;
+            padding-left: 0;
+        }
+
+        /* Fix for blockquotes */
+        .content blockquote {
+            border-right: 4px solid var(--primary-color);
+            border-left: none;
+            padding-right: 20px;
+            padding-left: 10px;
+            margin-right: 0;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 تعلم Laravel من الصفر</h1>
+            <p>الدرس الأول: مقدمة إلى Laravel والبيئة التطويرية</p>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="../01-theory.html">النظري</a></li>
+                <li><a href="../02-practice.html">العملي</a></li>
+                <li><a href="../03-exam-with-answers.html">الاختبار + الحلول</a></li>
+                <li><a href="../04-exam-only.html">الاختبار فقط</a></li>
+                <li><a href="../code-examples/README.html">أمثلة الكود</a></li>
+                <li><a href="../exercises/README.html">التمارين</a></li>
+                <li><a href="../resources/cheatsheet.html">الموارد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb container">
+        <a href="../index.html">الرئيسية</a>
+        <span>›</span>
+        <span>exercise 01 problem</span>
+    </div>
+
+    <main class="content container">
+        <h1>التمرين 1: إنشاء Routes بسيطة</h1>
+<h1>Exercise 1: Creating Simple Routes</h1>
+<hr>
+<h2>📋 وصف التمرين</h2>
+<p>في هذا التمرين، ستتعلم كيفية إنشاء Routes مختلفة في Laravel وكيفية التعامل مع Route Parameters.</p>
+<p><strong>المستوى:</strong> ⭐☆☆ (سهل)<br><strong>الوقت المقترح:</strong> 15-20 دقيقة<br><strong>الملفات المطلوبة:</strong> <code>routes/web.php</code></p>
+<hr>
+<h2>🎯 الأهداف التعليمية</h2>
+<p>بنهاية هذا التمرين، ستكون قادراً على:</p>
+<ul>
+<li>✅ إنشاء routes بسيطة</li>
+<li>✅ استخدام route parameters</li>
+<li>✅ تطبيق validation على parameters</li>
+<li>✅ استخدام named routes</li>
+<li>✅ عمل redirects</li>
+</ul>
+<hr>
+<h2>📝 المطلوب</h2>
+<h3>المهمة 1: Routes البسيطة (5 دقائق)</h3>
+<p>أنشئ الـ routes التالية في ملف <code>routes/web.php</code>:</p>
+<h4>1. الصفحة الرئيسية</h4>
+<ul>
+<li><strong>URL:</strong> <code>/</code></li>
+<li><strong>النتيجة:</strong> عرض نص &quot;مرحباً بك في متجرنا الإلكتروني&quot;</li>
+</ul>
+<h4>2. صفحة من نحن</h4>
+<ul>
+<li><strong>URL:</strong> <code>/about</code></li>
+<li><strong>النتيجة:</strong> عرض HTML يحتوي على:<ul>
+<li>عنوان <code>&lt;h1&gt;</code>: &quot;من نحن&quot;</li>
+<li>فقرة <code>&lt;p&gt;</code>: &quot;نحن شركة متخصصة في البرمجة منذ عام 2020&quot;</li>
+</ul>
+</li>
+</ul>
+<h4>3. صفحة الاتصال</h4>
+<ul>
+<li><strong>URL:</strong> <code>/contact</code></li>
+<li><strong>النتيجة:</strong> عرض JSON يحتوي على:<pre><code class="language-json">{
+  &quot;email&quot;: &quot;info@example.com&quot;,
+  &quot;phone&quot;: &quot;+966500000000&quot;,
+  &quot;address&quot;: &quot;الرياض، المملكة العربية السعودية&quot;
+}
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3>المهمة 2: Routes مع Parameters (5 دقائق)</h3>
+<h4>4. صفحة المنتج</h4>
+<ul>
+<li><strong>URL:</strong> <code>/product/{id}</code></li>
+<li><strong>النتيجة:</strong> عرض &quot;رقم المنتج: {id}&quot;</li>
+<li><strong>مثال:</strong> <code>/product/123</code> يعرض &quot;رقم المنتج: 123&quot;</li>
+<li><strong>Validation:</strong> يجب أن يكون id رقماً فقط</li>
+</ul>
+<h4>5. صفحة المستخدم</h4>
+<ul>
+<li><strong>URL:</strong> <code>/user/{username}</code></li>
+<li><strong>النتيجة:</strong> عرض &quot;صفحة المستخدم: {username}&quot;</li>
+<li><strong>مثال:</strong> <code>/user/ahmed</code> يعرض &quot;صفحة المستخدم: ahmed&quot;</li>
+<li><strong>Validation:</strong> يجب أن يكون username حروف إنجليزية فقط (a-z)</li>
+</ul>
+<h4>6. صفحة المقال مع التعليق</h4>
+<ul>
+<li><strong>URL:</strong> <code>/article/{articleId}/comment/{commentId}</code></li>
+<li><strong>النتيجة:</strong> عرض &quot;المقال رقم {articleId}، التعليق رقم {commentId}&quot;</li>
+<li><strong>Validation:</strong> كلا الـ parameters يجب أن تكون أرقاماً</li>
+</ul>
+<hr>
+<h3>المهمة 3: Optional Parameters (3 دقائق)</h3>
+<h4>7. صفحة الترحيب</h4>
+<ul>
+<li><strong>URL:</strong> <code>/welcome/{name?}</code></li>
+<li><strong>النتيجة:</strong><ul>
+<li>إذا تم تمرير اسم: &quot;أهلاً {name}، نورت الموقع!&quot;</li>
+<li>إذا لم يتم تمرير اسم: &quot;أهلاً ضيفنا العزيز، نورت الموقع!&quot;</li>
+</ul>
+</li>
+<li><strong>مثال 1:</strong> <code>/welcome/أحمد</code> يعرض &quot;أهلاً أحمد، نورت الموقع!&quot;</li>
+<li><strong>مثال 2:</strong> <code>/welcome</code> يعرض &quot;أهلاً ضيفنا العزيز، نورت الموقع!&quot;</li>
+</ul>
+<hr>
+<h3>المهمة 4: Named Routes و Redirects (5 دقائق)</h3>
+<h4>8. Dashboard Route</h4>
+<ul>
+<li><strong>URL:</strong> <code>/dashboard</code></li>
+<li><strong>النتيجة:</strong> عرض &quot;لوحة التحكم&quot;</li>
+<li><strong>الاسم:</strong> <code>dashboard</code></li>
+</ul>
+<h4>9. Admin Panel Route</h4>
+<ul>
+<li><strong>URL:</strong> <code>/admin</code></li>
+<li><strong>النتيجة:</strong> Redirect إلى <code>/dashboard</code></li>
+</ul>
+<h4>10. Old Shop Route</h4>
+<ul>
+<li><strong>URL:</strong> <code>/old-shop</code></li>
+<li><strong>النتيجة:</strong> Permanent Redirect (301) إلى <code>/</code></li>
+</ul>
+<hr>
+<h3>المهمة 5: Route Groups (3 دقائق)</h3>
+<h4>11. مجموعة Admin Routes</h4>
+<p>أنشئ route group بـ prefix <code>/admin</code> تحتوي على:</p>
+<ul>
+<li><code>/admin/users</code> → عرض &quot;قائمة المستخدمين&quot;</li>
+<li><code>/admin/products</code> → عرض &quot;قائمة المنتجات&quot;</li>
+<li><code>/admin/orders</code> → عرض &quot;قائمة الطلبات&quot;</li>
+</ul>
+<hr>
+<h2>🧪 كيفية الاختبار</h2>
+<h3>1. تشغيل السيرفر</h3>
+<pre><code class="language-bash">php artisan serve
+</code></pre>
+<h3>2. اختبار Routes</h3>
+<p>افتح المتصفح واختبر كل URL:</p>
+<pre><code>✅ http://localhost:8000/
+✅ http://localhost:8000/about
+✅ http://localhost:8000/contact
+✅ http://localhost:8000/product/123
+✅ http://localhost:8000/user/ahmed
+✅ http://localhost:8000/article/5/comment/10
+✅ http://localhost:8000/welcome/أحمد
+✅ http://localhost:8000/welcome
+✅ http://localhost:8000/dashboard
+✅ http://localhost:8000/admin
+✅ http://localhost:8000/old-shop
+✅ http://localhost:8000/admin/users
+✅ http://localhost:8000/admin/products
+✅ http://localhost:8000/admin/orders
+</code></pre>
+<h3>3. اختبار Validation</h3>
+<p>جرّب:</p>
+<ul>
+<li>❌ <code>/product/abc</code> (يجب أن يفشل)</li>
+<li>✅ <code>/product/123</code> (يجب أن ينجح)</li>
+<li>❌ <code>/user/123</code> (يجب أن يفشل)</li>
+<li>✅ <code>/user/ahmed</code> (يجب أن ينجح)</li>
+</ul>
+<h3>4. التحقق من Routes</h3>
+<pre><code class="language-bash">php artisan route:list
+</code></pre>
+<p>يجب أن ترى جميع الـ routes التي أنشأتها.</p>
+<hr>
+<h2>✅ معايير التقييم</h2>
+<h3>المطلوب للنجاح:</h3>
+<ul>
+<li><input disabled="" type="checkbox"> جميع الـ routes تعمل بشكل صحيح</li>
+<li><input disabled="" type="checkbox"> Validation على Parameters يعمل</li>
+<li><input disabled="" type="checkbox"> Optional parameter يعمل مع وبدون قيمة</li>
+<li><input disabled="" type="checkbox"> Redirects تعمل بشكل صحيح</li>
+<li><input disabled="" type="checkbox"> Route group يعمل بشكل صحيح</li>
+<li><input disabled="" type="checkbox"> الكود منظم ومعلّق</li>
+</ul>
+<h3>معايير التقييم:</h3>
+<table>
+<thead>
+<tr>
+<th>المعيار</th>
+<th>النقاط</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Routes البسيطة (1-3)</td>
+<td>20 نقطة</td>
+</tr>
+<tr>
+<td>Routes مع Parameters (4-6)</td>
+<td>30 نقطة</td>
+</tr>
+<tr>
+<td>Optional Parameters (7)</td>
+<td>10 نقطة</td>
+</tr>
+<tr>
+<td>Named Routes و Redirects (8-10)</td>
+<td>20 نقطة</td>
+</tr>
+<tr>
+<td>Route Groups (11)</td>
+<td>20 نقطة</td>
+</tr>
+<tr>
+<td><strong>المجموع</strong></td>
+<td><strong>100 نقطة</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>💡 نصائح</h2>
+<h3>نصيحة 1: استخدم التعليقات</h3>
+<pre><code class="language-php">// 1. الصفحة الرئيسية
+Route::get(&#39;/&#39;, function () {
+    return &#39;مرحباً بك في متجرنا الإلكتروني&#39;;
+});
+</code></pre>
+<h3>نصيحة 2: اختبر بعد كل route</h3>
+<p>لا تكتب جميع الـ routes مرة واحدة. اكتب واحداً واختبره، ثم انتقل للتالي.</p>
+<h3>نصيحة 3: استخدم أوامر artisan</h3>
+<pre><code class="language-bash"># لعرض جميع الـ routes
+php artisan route:list
+
+# لمسح route cache
+php artisan route:clear
+</code></pre>
+<h3>نصيحة 4: راجع الأمثلة</h3>
+<p>إذا نسيت syntax معين، راجع ملف <code>code-examples/example-01-route.php</code></p>
+<hr>
+<h2>🐛 مشاكل شائعة</h2>
+<h3>المشكلة 1: 404 Not Found</h3>
+<p><strong>السبب:</strong> خطأ في كتابة URL أو لم يتم حفظ الملف</p>
+<p><strong>الحل:</strong></p>
+<ol>
+<li>تأكد من حفظ <code>routes/web.php</code></li>
+<li>تأكد من كتابة URL بشكل صحيح</li>
+<li>شغّل <code>php artisan route:list</code> للتحقق</li>
+</ol>
+<h3>المشكلة 2: Regex لا يعمل</h3>
+<p><strong>السبب:</strong> خطأ في كتابة regular expression</p>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-php">// صحيح
+-&gt;where(&#39;id&#39;, &#39;[0-9]+&#39;)
+
+// خطأ
+-&gt;where(&#39;id&#39;, &#39;[0-9]&#39;)  // ينقص +
+</code></pre>
+<h3>المشكلة 3: Redirect لا يعمل</h3>
+<p><strong>السبب:</strong> خطأ في syntax</p>
+<p><strong>الحل:</strong></p>
+<pre><code class="language-php">// صحيح
+Route::redirect(&#39;/old&#39;, &#39;/new&#39;);
+
+// خطأ
+Route::get(&#39;/old&#39;, redirect(&#39;/new&#39;));  // syntax خاطئ
+</code></pre>
+<hr>
+<h2>📚 مراجع مفيدة</h2>
+<ul>
+<li><a href="https://laravel.com/docs/11.x/routing">Laravel Routing Documentation</a></li>
+<li><code>code-examples/example-01-route.php</code></li>
+<li><code>01-theory.md</code> - قسم Routing</li>
+</ul>
+<hr>
+<h2>⏭️ بعد الانتهاء</h2>
+<p>✅ <strong>إذا أنهيت التمرين:</strong></p>
+<ol>
+<li>تأكد من اختبار جميع الـ routes</li>
+<li>راجع <code>exercise-01-solution.md</code></li>
+<li>قارن حلك بالحل النموذجي</li>
+<li>انتقل إلى <code>exercise-02-problem.md</code></li>
+</ol>
+<p>⚠️ <strong>إذا واجهت صعوبة:</strong></p>
+<ol>
+<li>راجع الأمثلة في <code>code-examples/</code></li>
+<li>راجع الدرس النظري</li>
+<li>حاول مرة أخرى</li>
+<li>إذا لم تنجح، راجع الحل</li>
+</ol>
+<hr>
+<p><strong>بالتوفيق! 🚀</strong></p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الدورة</h3>
+                    <p>دورة شاملة لتعلم Laravel من الصفر حتى الاحتراف باللغة العربية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <a href="../01-theory.html">الدرس النظري</a>
+                    <a href="../02-practice.html">التطبيق العملي</a>
+                    <a href="../exercises/README.html">التمارين</a>
+                </div>
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="../resources/cheatsheet.html">ورقة الغش</a>
+                    <a href="../resources/troubleshooting.html">حل المشاكل</a>
+                    <a href="../resources/further-reading.html">قراءات إضافية</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laravel Learning Platform. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>
